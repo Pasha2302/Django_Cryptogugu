@@ -1,0 +1,1221 @@
+.careers {
+  width: 100%;
+  padding-bottom: 120px;
+
+  @media (max-width: 1100px) {
+    padding-bottom: 90px;
+ }
+
+ @media (max-width: 600px) {
+  padding-bottom: 70px;
+}
+
+
+  // .careers__hero
+  &__hero {
+    width: 100%;
+  }
+  // .careers__hero-wrap
+  &__hero-wrap {
+    max-width: 1240px;
+    padding: 86px 0 120px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    @media (max-width: 1100px) {
+      padding: 80px 0 90px;
+    }
+
+    @media (max-width: 900px) {
+       flex-direction: column;
+       align-items: center;
+       padding: 70px 0 90px;
+    }
+
+    @media (max-width: 600px) {
+      padding: 50px 0 70px;
+    }
+  }
+  // .careers__hero-text
+  &__hero-text {
+    width: 48%;
+    max-width: 500px;
+    margin-right: 50px;
+
+    @media (max-width: 1300px) {
+      max-width: 470px;
+    }
+
+    @media (max-width: 1020px) {
+      margin-right: 10px;
+      max-width: 420px;
+   }
+
+   @media (max-width: 900px) {
+    text-align: center;
+    width: 100%;
+    max-width: 100%;
+    margin-right: 0;
+    margin-bottom: 60px;
+ }
+
+ @media (max-width: 600px) {
+    margin-bottom: 40px;
+ }
+
+    .label {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 8px 10px;
+      border-radius: 17px;
+      border: 1px solid var(--main-text);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 35px;
+
+      @media (max-width: 900px) {
+        margin-bottom: 25px;
+     }
+
+     @media (max-width: 600px) {
+      margin-bottom: 15px;
+     }
+    }
+
+    h1, .h1{
+      font-size: 45px;
+      font-weight: 700;
+      text-transform: capitalize;
+      margin-bottom: 25px;
+
+      @media (max-width: 1100px) {
+        font-size: 37px;
+      }
+
+      @media (max-width: 900px) {
+        max-width: 728px;
+        margin: 0 auto 20px;
+     }
+
+    @media (max-width: 600px) {
+      font-size: 27px;
+      margin-bottom: 12px;
+    }
+    }
+
+    p {
+      color: var(--low-gray-text);
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 170%;
+      margin-bottom: 40px;
+
+      @media (max-width: 900px) {
+        margin-bottom: 30px;
+     }
+
+     @media (max-width: 600px) {
+      font-size: 14px;
+     }
+    }
+  }
+  // .careers__hero-text-actions
+  &__hero-text-actions {
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+
+    @media (max-width: 900px) {
+      justify-content: center;
+   }
+
+    .accent-link {
+      color: #111111;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 20px 24px;
+      border-radius: 7px;
+      background: #EED936;
+      border: 1px solid #EED936;
+      margin-right: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 160px;
+
+      @media (max-width: 600px) {
+        max-width: calc(50% - 5px);
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      @media (max-width: 370px) {
+        min-width: 0;
+        flex-grow: 1;
+      }
+
+      &:hover {
+        background: none;
+        color: #EED936;
+      }
+    }
+
+    .stroke-link {
+      font-size: 15px;
+      font-weight: 700;
+      padding: 20px 24px;
+      border-radius: 7px;
+      border: 1px solid #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 160px;
+
+      @media (max-width: 600px) {
+        max-width: calc(50% - 5px);
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      @media (max-width: 370px) {
+        min-width: 0;
+        flex-grow: 1;
+      }
+
+      &:hover {
+        // background: #EED936;
+        border-color: #EED936;
+        color: #EED936;
+      }
+    }
+  }
+
+  // .careers__hero-image
+  &__hero-image {
+    width: 52%;
+
+    @media (max-width: 1300px) {
+      width: calc(100% - 470px);
+    }
+
+    @media (max-width: 1020px) {
+      width: calc(100% - 420px);
+   }
+
+
+   @media (max-width: 900px) {
+    width: 100%;
+    max-width: 608px;
+    margin: 0 auto;
+ }
+
+    img {
+      width: 100%;
+      vertical-align: bottom;
+    }
+  }
+
+  // .careers__values
+  &__values {
+    margin: 0 auto;
+    max-width: 1600px;
+    border-radius: 14px;
+    background: #1A1A1A;
+
+    @media (max-width: 1670px) {
+       margin: 0 35px;
+    }
+
+    @media (max-width: 1300px) {
+      margin: 0 30px;
+    }
+
+    @media (max-width: 900px) {
+      margin: 0 20px;
+   }
+
+   @media (max-width: 600px) {
+    margin: 0;
+    border-radius: 0;
+ }
+
+  }
+  // .careers__values-wrap
+  &__values-wrap {
+    max-width: 1240px;
+    padding: 70px 0;
+
+    @media (max-width: 1300px) {
+      padding: 45px !important;
+    }
+
+    @media (max-width: 900px) {
+      padding: 40px !important;
+   }
+
+   @media (max-width: 600px) {
+    padding: 50px 20px !important;
+ }
+
+
+    h2, .h2{
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 23px;
+      line-height: normal;
+
+      @media (max-width: 1100px) {
+        font-size: 27px;
+        margin-bottom: 18px;
+      }
+
+      @media (max-width: 600px) {
+        font-size: 25px;
+        margin-bottom: 12px;
+     }
+
+    }
+
+    &>p {
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 170%;
+      max-width: 550px;
+      margin-bottom: 60px;
+      color: var(--low-gray-text);
+
+      @media (max-width: 1100px) {
+        font-size: 14px;
+        margin-bottom: 45px;
+      }
+
+      @media (max-width: 600px) {
+        font-size: 13px;
+        margin-bottom: 40px;
+     }
+
+    }
+  }
+  // .careers__values-grid
+  &__values-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 50px 105px;
+
+    @media (max-width: 1100px) {
+      gap: 56px 62px;
+    }
+
+    @media (max-width: 900px) {
+      grid-template-columns: 1fr 1fr;
+      gap: 60px 48px;
+   }
+
+   @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+    gap: 36px;
+ }
+
+  }
+  // .careers__values-item
+  &__values-item {
+    .icon {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 20px;
+      color: var(--yellow);
+
+      @media (max-width: 600px) {
+        margin-bottom: 16px;
+     }
+
+     use {
+      fill: none;
+     }
+    }
+
+    .title {
+      font-size: 22px;
+      font-weight: 500;
+      margin-bottom: 15px;
+
+      @media (max-width: 1100px) {
+        font-size: 19px;
+        margin-bottom: 20px;
+      }
+
+      @media (max-width: 600px) {
+        font-size: 17px;
+        margin-bottom: 12px;
+     }
+
+    }
+
+    p {
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 170%;
+      color: var(--low-gray-text);
+
+      @media (max-width: 1100px) {
+        font-size: 12px;
+      }
+    }
+
+    &.promo {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-start;
+      padding-bottom: 20px;
+
+      @media (max-width: 600px) {
+        padding-bottom: 0;
+     }
+
+
+      .title {
+        margin-bottom: 30px;
+
+        @media (max-width: 1100px) {
+          margin-bottom: 38px;
+        }
+
+        @media (max-width: 600px) {
+          font-size: 19px;
+          margin-bottom: 24px;
+       }
+
+      }
+
+      a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        font-weight: 600;
+        padding: 12px 20px;
+        border-radius: 7px;
+        background: var(--yellow);
+        color: #111111;
+        border: 1px solid var(--yellow);
+
+        &:hover {
+          background: none;
+          color: var(--yellow);
+        }
+      }
+    }
+  }
+
+  // .careers__jobs
+  &__jobs {
+    width: 100%;
+  }
+  // .careers__jobs-wrap
+  &__jobs-wrap {
+    max-width: 1240px;
+    width: 100%;
+    padding: 100px 0;
+
+    @media (max-width: 1100px) {
+      padding: 90px 0;
+    }
+
+    @media (max-width: 600px) {
+      padding: 70px 0;
+   }
+
+
+    h2, .h2{
+      font-size: 37px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: normal;
+
+      @media (max-width: 1100px) {
+        font-size: 27px;
+        margin-bottom: 18px;
+      }
+
+      @media (max-width: 600px) {
+        margin-bottom: 12px;
+     }
+
+    }
+
+    &>p {
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 170%;
+      margin-bottom: 20px;
+      color: var(--low-gray-text);
+
+      @media (max-width: 1100px) {
+        font-size: 14px;
+      }
+
+      @media (max-width: 600px) {
+        font-size: 13px;
+        margin-bottom: 25px;
+     }
+
+    }
+  }
+  // .careers__jobs-list
+  &__jobs-list {
+    width: 100%;
+    display: grid;
+    gap: 8px;
+  }
+  // .careers__jobs-item
+  &__jobs-item {
+    width: 100%;
+    border-radius: 14px;
+    background: #1A1A1A;
+    padding: 30px;
+    transition: background .3s;
+    transition-delay: 1s;
+
+    @media (max-width: 1100px) {
+      padding: 30px 20px;
+    }
+
+    @media (max-width: 900px) {
+      padding: 20px;
+   }
+
+    &.open {
+      background: #232323;
+      transition-delay: 0s;
+
+      .careers__jobs-item-content {
+        grid-template-rows: 1fr;
+      }
+
+      .plus {
+        background: rgba(255, 255, 255, 0.15);
+
+        .icon {
+          transform: rotate(45deg);
+        }
+      }
+    }
+  }
+  // .careers__jobs-item-top
+  &__jobs-item-top {
+    position: relative;
+    cursor: pointer;
+    padding-right: 60px;
+
+    .title {
+      font-size: 22px;
+      font-weight: 400;
+      margin-bottom: 12px;
+
+      @media (max-width: 900px) {
+        font-size: 20px;
+        margin-bottom: 10px;
+     }
+
+     @media (max-width: 600px) {
+      font-size: 17px;
+   }
+
+    }
+
+    .tags {
+      display: flex;
+      align-items: center;
+    }
+
+    .tag {
+      font-size: 10px;
+      font-weight: 500;
+      padding: 6px 10px;
+      border-radius: 17px;
+      border: 1px solid currentColor;
+      margin-right: 6px;
+
+      &.green {
+        color: var(--green-accent);
+      }
+
+      &.yellow {
+        color: var(--yellow);
+      }
+    }
+
+    .plus {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      width: 54px;
+      height: 54px;
+      border-radius: 54px;
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @media (max-width: 600px) {
+        width: 36px;
+        height: 36px;
+        top: 0;
+        transform: none;
+     }
+
+
+      .icon {
+        width: 24px;
+        height: 24px;
+        transition: .3s;
+
+        @media (max-width: 600px) {
+          width: 22px;
+          height: 22px;
+       }
+
+      }
+    }
+
+    &:hover {
+      .plus {
+        background: rgba(255, 255, 255, 0.15);
+      }
+    }
+  }
+  // .careers__jobs-item-content
+  &__jobs-item-content {
+    width: 100%;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 1s;
+    overflow: hidden;
+  }
+  // .careers__jobs-item-content-wrap
+  &__jobs-item-content-wrap {
+    min-height: 0;
+  }
+  // .careers__jobs-item-grid
+  &__jobs-item-grid {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 160px);
+    gap: 6px;
+    margin-bottom: 30px;
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+      gap: 8px;
+      margin-bottom: 25px;
+   }
+
+  }
+  // .careers__jobs-item-block
+  &__jobs-item-block {
+    border-radius: 14px;
+    background: #2E2E2E;
+    padding: 15px;
+
+    @media (max-width: 600px) {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+   }
+
+
+    .label {
+      color: var(--mid-gray-text);
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 14px;
+
+      @media (max-width: 600px) {
+        margin-bottom: 0;
+        font-size: 11px;
+     }
+
+    }
+
+    .value {
+      font-size: 15px;
+      font-weight: 600;
+
+      @media (max-width: 600px) {
+        font-size: 12px;
+     }
+
+    }
+  }
+  // .careers__jobs-item-text
+  &__jobs-item-text {
+    width: 100%;
+    max-width: 1000px;
+
+    .label {
+      font-size: 17px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+
+      @media (max-width: 600px) {
+        font-size: 15px;
+        margin-bottom: 16px;
+     }
+
+
+      &.mb24 {
+        margin-bottom: 24px;
+
+        @media (max-width: 600px) {
+          margin-bottom: 20px;
+       }
+
+      }
+
+      &.mt40 {
+        margin-top: 40px;
+
+        @media (max-width: 900px) {
+          margin-top: 24px;
+       }
+      }
+    }
+
+    .title {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 18px;
+      margin-top: 24px;
+
+      @media (max-width: 600px) {
+        margin-top: 20px;
+     }
+
+    }
+
+    p {
+      color: var(--low-gray-text);
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 160%;
+      margin-bottom: 12px;
+
+      @media (max-width: 900px) {
+        font-size: 12px;
+        margin-bottom: 16px;
+     }
+    }
+
+    ul {
+      list-style-type: disc;
+    }
+
+    ul, ol {
+      color: var(--low-gray-text);
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 160%;
+      margin-bottom: 12px;
+      padding-left: 20px;
+      margin-bottom: 40px;
+
+
+      @media (max-width: 1100px) {
+         font-size: 12px;
+         padding-left: 17px;
+      }
+
+      @media (max-width: 600px) {
+        margin-bottom: 20px;
+     }
+
+
+      li {
+        margin-bottom: 16px;
+      }
+    }
+
+    .apply {
+      color: #111111;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 20px 32px;
+      border-radius: 7px;
+      background: #EED936;
+      border: 1px solid #EED936;
+      margin-right: 10px;
+      display: inline-flex;
+
+      @media (max-width: 600px) {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        padding: 20px;
+     }
+
+
+      &:hover {
+        background: none;
+        color: #EED936;
+      }
+    }
+  }
+
+  // .careers__why
+  &__why {
+    margin: 0 auto;
+    max-width: 1600px;
+    border-radius: 14px;
+    background: #1A1A1A;
+
+    @media (max-width: 1670px) {
+       margin: 0 35px;
+    }
+
+    @media (max-width: 1300px) {
+      margin: 0 30px;
+    }
+
+    @media (max-width: 900px) {
+      margin: 0 20px;
+   }
+
+   @media (max-width: 600px) {
+    margin: 0;
+    border-radius: 0;
+ }
+
+  }
+  // .careers__why-wrap
+  &__why-wrap {
+    max-width: 1240px;
+    padding: 70px 0 80px;
+    display: flex;
+    justify-content: space-between;
+
+    @media (max-width: 1300px) {
+      padding: 70px 45px !important;
+    }
+
+    @media (max-width: 1200px) {
+      display: block;
+      padding: 45px !important;
+    }
+
+    @media (max-width: 900px) {
+      padding: 40px !important;
+   }
+
+  @media (max-width: 700px) {
+    position: relative;
+    padding-bottom: 132px !important;
+  }
+
+  @media (max-width: 600px) {
+    padding: 50px 20px 132px !important;
+   }
+
+
+
+    h2, .h2{
+      font-size: 32px;
+      font-weight: 700;
+      text-transform: capitalize;
+      margin-bottom: 16px;
+      line-height: normal;
+      max-width: 350px;
+
+      @media (max-width: 1200px) {
+         max-width: none;
+      }
+
+      @media (max-width: 1100px) {
+         font-size: 27px;
+         margin-bottom: 18px;
+      }
+
+      @media (max-width: 600px) {
+        font-size: 25px;
+        margin-bottom: 12px;
+     }
+
+    }
+
+  }
+  // .careers__why-left
+  &__why-left {
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    @media (max-width: 1200px) {
+      width: 100%;
+      max-width: 100%;
+      flex-direction: row;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 600px) {
+      margin-bottom: 30px;
+   }
+
+
+    p {
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 170%;
+      margin-bottom: 20px;
+      color: var(--low-gray-text);
+
+      @media (max-width: 1200px) {
+        max-width: 400px;
+      }
+
+      @media (max-width: 600px) {
+        font-size: 13px;
+     }
+
+    }
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 12px 20px;
+      border-radius: 7px;
+      background: var(--yellow);
+      color: #111111;
+      border: 1px solid var(--yellow);
+
+      @media (max-width: 700px) {
+        position: absolute;
+        bottom: 50px;
+        width: calc(100% - 80px);
+      }
+
+      @media (max-width: 600px) {
+        width: calc(100% - 40px);
+     }
+
+
+
+      &:hover {
+        background: none;
+        color: var(--yellow);
+      }
+    }
+  }
+  // .careers__why-list
+  &__why-list {
+    width: calc(100% - 400px - 138px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px 60px;
+
+    @media (max-width: 1300px) {
+      width: calc(100% - 400px - 90px);
+    }
+
+    @media (max-width: 1200px) {
+      width: 100%;
+      gap: 50px 70px;
+    }
+
+    @media (max-width: 900px) {
+      gap: 50px 56px;
+   }
+
+   @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+    gap: 25px;
+ }
+
+  }
+  // .careers__why-item
+  &__why-item {
+    padding-left: 26px;
+    position: relative;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 150%;
+
+    @media (max-width: 600px) {
+      font-size: 14px;
+   }
+
+
+    .icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: #EED936;
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  // .careers__how
+  &__how {
+    width: 100%;
+    overflow: hidden;
+  }
+  // .careers__how-wrap
+  &__how-wrap {
+    width: 100%;
+    max-width: 1240px;
+    padding: 92px 0 0;
+
+    @media (max-width: 1100px) {
+       padding: 90px 0 0;
+    }
+
+    @media (max-width: 600px) {
+      padding: 70px 0 0;
+   }
+
+  }
+  // .careers__how-top
+  &__how-top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 80px;
+
+    @media (max-width: 1100px) {
+      margin-bottom: 90px;
+   }
+
+   @media (max-width: 900px) {
+    margin-bottom: 50px;
+ }
+
+ @media (max-width: 600px) {
+  display: block;
+  margin-bottom: 40px;
+}
+
+
+    h2, .h2{
+      font-size: 32px;
+      font-weight: 700;
+      line-height: normal;
+
+      @media (max-width: 1100px) {
+         font-size: 27px;
+      }
+
+      @media (max-width: 600px) {
+        font-size: 25px;
+        margin-bottom: 25px;
+     }
+
+    }
+
+    .info {
+      display: flex;
+      align-items: flex-end;
+
+    }
+
+    .num {
+      font-size: 60px;
+      font-weight: 300;
+      line-height: 100%;
+      margin-right: 12px;
+      display: block;
+
+      @media (max-width: 1100px) {
+        font-size: 50px;
+     }
+
+     @media (max-width: 600px) {
+      font-size: 42px;
+      margin-right: 10px;
+   }
+
+    }
+
+    p {
+      max-width: 180px;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 160%;
+      color: var(--low-gray-text);
+
+      @media (max-width: 1100px) {
+        font-size: 12px;
+     }
+
+     @media (max-width: 600px) {
+      font-size: 11px;
+   }
+
+    }
+  }
+  // .careers__how-road
+  &__how-road {
+    width: 100%;
+    display: grid;
+    gap: 85px;
+    grid-template-columns: 1fr 1fr 1fr auto;
+
+    @media (max-width: 1100px) {
+      gap: 42px;
+   }
+
+   @media (max-width: 730px) {
+    grid-template-columns: 1.5fr 1fr;
+    gap: 35px 45px;
+ }
+
+  }
+  // .careers__how-road-item
+  &__how-road-item {
+    position: relative;
+    padding-right: 45px;
+
+    &:nth-child(2) {
+      @media (max-width: 730px) {
+        padding-right: 0;
+
+        .icon {
+          display: none;
+        }
+     }
+    }
+
+    &:nth-child(4) {
+      @media (max-width: 730px) {
+        padding-right: 20px;
+     }
+    }
+
+    .num {
+      width: 50px;
+      height: 50px;
+      background: var(--secondary-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 40px;
+      text-align: center;
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 170%;
+      color: var(--yellow);
+      border-radius: 50%;
+
+      @media (max-width: 900px) {
+        margin-bottom: 20px;
+     }
+    }
+
+    .title {
+      font-size: 22px;
+      font-weight: 400;
+      line-height: normal;
+
+      @media (max-width: 900px) {
+        font-size: 17px;
+     }
+
+     @media (max-width: 730px) {
+      br {
+        display: none;
+      }
+   }
+
+    }
+
+    .icon {
+      position: absolute;
+      top: 20px;
+      right: 0;
+      width: 38px;
+      height: 97px;
+    }
+  }
+}
+
+
+[data-theme='light'] {
+  .careers__hero-text p {
+    color: var(--high-gray-text);
+  }
+
+  .careers__hero-text-actions .stroke-link {
+    border-color: #111111;
+
+    &:hover {
+      color: #EED936;
+      border-color: #EED936;
+    }
+  }
+
+  .careers__values {
+    background: #F5F5F5;
+  }
+
+  .careers__values-wrap > p, .careers__values-item p, .careers__jobs-wrap > p {
+    color: var(--high-gray-text);
+  }
+
+  .careers__values-item .icon {
+    color: #111111;
+  }
+
+  .careers__jobs-item {
+    background: #F5F5F5;
+  }
+
+  .careers__jobs-item.open {
+    background: #F1F1F1;
+  }
+
+  .careers__jobs-item.open .plus {
+    background: #fff;
+    color: #A8A8A8;
+  }
+
+  .careers__jobs-item .plus {
+    background: #fff;
+    color: #A8A8A8;
+  }
+
+  .careers__jobs-item-top:hover .plus {
+    background: #fff;
+    color: #A8A8A8;
+  }
+
+  .careers__jobs-item-top .tag.yellow {
+    color: #111111;
+  }
+
+  .careers__jobs-item-block {
+    background: #fff;
+  }
+
+  .careers__jobs-item-block .label, .careers__jobs-item-text p, .careers__jobs-item-text ul, .careers__jobs-item-text ol, .careers__why-left p, .careers__how-top p{
+    color: var(--high-gray-text);
+  }
+
+
+  .careers__why {
+    background: #F5F5F5;
+  }
+
+  .careers__how-road-item .num {
+    color: #111111;
+  }
+}

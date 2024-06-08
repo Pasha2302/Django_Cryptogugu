@@ -1,0 +1,883 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+
+{% block header %}
+<header class="header">
+  <div class="header-top">
+    <div class="header-top__wrap container">
+      <ul class="header-top__rate">
+        <li class="header-top__rate-item">
+          <span class="header-top__rate-label">BNB:</span>
+          <span class="header-top__rate-value">$304.39</span>
+        </li>
+        <li class="header-top__rate-item">
+          <span class="header-top__rate-label">BTC:</span>
+          <span class="header-top__rate-value">$24 000.45</span>
+        </li>
+        <li class="header-top__rate-item">
+          <span class="header-top__rate-label">ETH:</span>
+          <span class="header-top__rate-value">$12 000.10</span>
+        </li>
+        <li class="header-top__rate-item">
+          <span class="header-top__rate-label">Mooner:</span>
+          <span class="header-top__rate-value">0,1123</span>
+        </li>
+        <li class="header-top__rate-item">
+          <span class="header-top__rate-label">Cryptocurrencies listed:</span>
+          <span class="header-top__rate-value">10 841</span>
+        </li>
+        <li class="header-top__rate-item">
+          <span class="header-top__rate-label">Total Audits:</span>
+          <span class="header-top__rate-value">412</span>
+        </li>
+        <li class="header-top__rate-item">
+          <span class="header-top__rate-label">Total KYCs:</span>
+          <span class="header-top__rate-value">310</span>
+        </li>
+      </ul>
+
+      <div class="header-top__actions">
+        <button class="header__theme">
+          <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-sun"></use></svg>
+        </button>
+        <div class="header__lang">
+          <button class="header__lang-current">
+            <span>En</span>
+            <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bottom"></use></svg>
+          </button>
+          <div class="header__lang-list">
+            <svg class="polygon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sublist-polygon"></use></svg>
+            <a href="#" class="header__lang-list-item active">English <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg></a>
+            <a href="#" class="header__lang-list-item">Русский</a>
+            <a href="#" class="header__lang-list-item">Spanish</a>
+            <a href="#" class="header__lang-list-item">Portugal</a>
+            <a href="#" class="header__lang-list-item">Chinese</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="header-middle">
+    <div class="header-middle__wrap container">
+      <a href="{% url 'index' %}" class="header__logo">
+        <svg class="logo"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use></svg>
+      </a>
+
+      <div class="header-middle__right">
+        <form class="header__search">
+          <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-search"></use></svg>
+          <input id="header-search-input" type="text" placeholder="Try Shiba or address (0x...)">
+          <button class="header__search-reset" type="reset">
+            <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use></svg>
+          </button>
+
+          <div class="header__search-list">
+            <div class="header__search-list-step1">
+              <div class="header__search-list-label">Coins</div>
+              <a href="#" class="header__search-list-item">
+                <img src="{% static 'app/img/eth.svg' %}" alt="">
+                <span class="name">Ethereum</span>
+                <span class="chain">ETH</span>
+              </a>
+              <a href="#" class="header__search-list-item">
+                <img src="{% static 'app/img/eth.svg' %}" alt="">
+                <span class="name">Tether</span>
+                <span class="chain">USDT</span>
+              </a>
+              <a href="#" class="header__search-list-item">
+                <img src="{% static 'app/img/eth.svg' %}" alt="">
+                <span class="name">Ethereum Classic</span>
+                <span class="chain">ETC</span>
+              </a>
+              <a href="#" class="header__search-list-all">View All Coins (100)</a>
+
+              <div class="header__search-list-label">Airdrops</div>
+              <a href="#" class="header__search-list-item">
+                <img src="{% static 'app/img/eth.svg' %}" alt="">
+                <span class="name">Fortune Coin</span>
+              </a>
+              <a href="#" class="header__search-list-item">
+                <img src="{% static 'app/img/eth.svg' %}" alt="">
+                <span class="name">JioCoin</span>
+              </a>
+              <a href="#" class="header__search-list-item">
+                <img src="{% static 'app/img/eth.svg' %}" alt="">
+                <span class="name">NFT Coin</span>
+              </a>
+              <a href="#" class="header__search-list-all">View All Airdrops (62)</a>
+            </div>
+
+            <div class="header__search-list-step2">
+              <button type="button" class="header__search-list-back"><svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-right"></use></svg>back</button>
+              <div class="header__search-list-label">Coins</div>
+              <a href="#" class="header__search-list-item">
+                <img src="{% static 'app/img/eth.svg' %}" alt="">
+                <span class="name">Ethereum</span>
+                <span class="chain">ETH</span>
+              </a>
+              <a href="#" class="header__search-list-item">
+                <img src="{% static 'app/img/eth.svg' %}" alt="">
+                <span class="name">Tether</span>
+                <span class="chain">USDT</span>
+              </a>
+              <a href="#" class="header__search-list-item">
+                <img src="{% static 'app/img/eth.svg' %}" alt="">
+                <span class="name">Ethereum Classic</span>
+                <span class="chain">ETC</span>
+              </a>
+              <a href="#" class="header__search-list-item">
+                <img src="{% static 'app/img/eth.svg' %}" alt="">
+                <span class="name">Ethereum Classic</span>
+                <span class="chain">ETC</span>
+              </a>
+              <a href="#" class="header__search-list-item">
+                <img src="{% static 'app/img/eth.svg' %}" alt="">
+                <span class="name">Ethereum Classic</span>
+                <span class="chain">ETC</span>
+              </a>
+              <a href="#" class="header__search-list-item">
+                <img src="{% static 'app/img/eth.svg' %}" alt="">
+                <span class="name">Ethereum Classic</span>
+                <span class="chain">ETC</span>
+              </a>
+              <a href="#" class="header__search-list-item">
+                <img src="{% static 'app/img/eth.svg' %}" alt="">
+                <span class="name">Ethereum Classic</span>
+                <span class="chain">ETC</span>
+              </a>
+              <a href="#" class="header__search-list-item">
+                <img src="{% static 'app/img/eth.svg' %}" alt="">
+                <span class="name">Ethereum Classic</span>
+                <span class="chain">ETC</span>
+              </a>
+              <a href="#" class="header__search-list-item">
+                <img src="{% static 'app/img/eth.svg' %}" alt="">
+                <span class="name">Ethereum Classic</span>
+                <span class="chain">ETC</span>
+              </a>
+              <a href="#" class="header__search-list-item">
+                <img src="{% static 'app/img/eth.svg' %}" alt="">
+                <span class="name">Ethereum Classic</span>
+                <span class="chain">ETC</span>
+              </a>
+              <a href="#" class="header__search-list-item">
+                <img src="{% static 'app/img/eth.svg' %}" alt="">
+                <span class="name">Ethereum Classic</span>
+                <span class="chain">ETC</span>
+              </a>
+              <a href="#" class="header__search-list-item">
+                <img src="{% static 'app/img/eth.svg' %}" alt="">
+                <span class="name">Ethereum Classic</span>
+                <span class="chain">ETC</span>
+              </a>
+              <a href="#" class="header__search-list-item">
+                <img src="{% static 'app/img/eth.svg' %}" alt="">
+                <span class="name">Ethereum Classic</span>
+                <span class="chain">ETC</span>
+              </a>
+            </div>
+          </div>
+        </form>
+
+        <a href="#" class="btn btn_light">Promote</a>
+        <a href="#" class="btn btn_light">Submit Token</a>
+
+        <button class="header__burger">
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <nav class="header-nav">
+    <div class="header-nav__wrap container">
+      <div class="header__list">
+        <div class="header__list-item"><a href="{% url 'index' %}" class="header__list-link">Coin Ranking</a></div>
+        <div class="header__list-item"><a href="#" class="header__list-link">Promotion</a></div>
+        <div class="header__list-item"><a href="#" class="header__list-link">Audit <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bottom"></use></svg></a></div>
+        <div class="header__list-item"><a href="#" class="header__list-link">KYC</a></div>
+        <div class="header__list-item"><a href="#" class="header__list-link">Jobs</a></div>
+        <div class="header__list-item"><a href="#" class="header__list-link">Memes</a></div>
+        <div class="header__list-item">
+          <a href="#" class="header__list-link">Crypto Casino
+            <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bottom"></use></svg>
+            <svg class="polygon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sublist-polygon"></use></svg>
+          </a>
+          <div class="header__sub-menu">
+            <div class="header__sub-menu-left">
+              <a href="#" class="header__sub-menu-left-link" data-menu="by-country"><span>By country</span> <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-right"></use></svg></a>
+              <a href="#" class="header__sub-menu-left-link" data-menu="by-currency"><span>By currency</span> <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-right"></use></svg></a>
+              <a href="#" class="header__sub-menu-left-link" data-menu="by-games"><span>By games</span> <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-right"></use></svg></a>
+              <a href="#" class="header__sub-menu-left-link" data-menu="reviews"><span>Reviews</span> <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-right"></use></svg></a>
+              <a href="#" class="header__sub-menu-left-link" data-menu="bonuses"><span>Bonuses</span> <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-right"></use></svg></a>
+              <a href="#" class="header__sub-menu-left-link" data-menu="guides"><span>Guides</span> <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-right"></use></svg></a>
+            </div>
+
+            <div class="header__sub-menu-right">
+              <div data-sub-menu="by-country" class="header__sub-menu-right-content" id="by-country">
+                <ul class="header__sub-menu-right-list">
+                  <li><a href="#">Australia</a></li>
+                  <li><a href="#">China</a></li>
+                  <li><a href="#">Canada</a></li>
+                  <li><a href="#">Great Britain</a></li>
+                  <li><a href="#">New Zealand</a></li>
+                  <li><a href="#">USA</a></li>
+                  <li><a href="#">Casino</a></li>
+                  <li><a href="#">Cambodia</a></li>
+                  <li><a href="#">India</a></li>
+                  <li><a href="#">Georgia</a></li>
+                  <li><a href="#">US</a></li>
+                  <li><a href="#">Great Britain</a></li>
+                  <li><a href="#">Zambia</a></li>
+                  <li><a href="#">Japan</a></li>
+                  <li><a href="#">Germany</a></li>
+                  <li class="all"><a href="#">All Countries (120)</a></li>
+                </ul>
+              </div>
+
+
+              <div data-sub-menu="by-currency" class="header__sub-menu-right-content" id="by-currency">
+                <ul class="header__sub-menu-right-list">
+                  <li><a href="#">Bitcoin</a></li>
+                  <li><a href="#">Ethereum</a></li>
+                  <li><a href="#">BSC casino</a></li>
+                  <li><a href="#">Tether casino</a></li>
+                  <li><a href="#">Cardano casino</a></li>
+                  <li><a href="#">Ripple casino</a></li>
+                  <li><a href="#">Dogecoin casino</a></li>
+                  <li><a href="#">Litecoin casino</a></li>
+                  <li><a href="#">Bitcoin cash casino</a></li>
+                  <li><a href="#">Tron casino</a></li>
+                  <li><a href="#">Monero casino</a></li>
+                  <li><a href="#">Eos casino</a></li>
+                  <li><a href="#">Zcash casino</a></li>
+                  <li><a href="#">Dash casino</a></li>
+                  <li><a href="#">Altcoin casino</a></li>
+                  <li><a href="#">Solana casino</a></li>
+                  <li><a href="#">USD Coin casino</a></li>
+                  <li><a href="#">Shiba inu casino </a></li>
+                  <li><a href="#">Avalanche casino</a></li>
+                  <li><a href="#">Polkadot casino</a></li>
+                  <li><a href="#">Binance USD casino</a></li>
+                  <li><a href="#">Polygon casino</a></li>
+                </ul>
+              </div>
+
+              <div data-sub-menu="by-games" class="header__sub-menu-right-content" id="by-games">
+                <div class="header__sub-menu-right-content-by-games">
+                  <div class="header__sub-menu-by-games">
+                    <a href="#" data-menu="Crash" class="header__sub-menu-by-games-link"><span>Crash</span> <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-right"></use></svg></a>
+                    <a href="#" data-menu="Plinko" class="header__sub-menu-by-games-link"><span>Plinko</span> <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-right"></use></svg></a>
+                    <a href="#" data-menu="Jackpots" class="header__sub-menu-by-games-link"><span>Jackpots</span> <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-right"></use></svg></a>
+                    <a href="#" data-menu="Keno" class="header__sub-menu-by-games-link"><span>Keno</span> <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-right"></use></svg></a>
+                    <a href="#" data-menu="Poker" class="header__sub-menu-by-games-link"><span>Poker</span> <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-right"></use></svg></a>
+                    <a href="#" data-menu="Slots" class="header__sub-menu-by-games-link"><span>Slots</span> <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-right"></use></svg></a>
+                    <a href="#" data-menu="Blackjack" class="header__sub-menu-by-games-link"><span>Blackjack</span> <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-right"></use></svg></a>
+                    <a href="#" data-menu="Lottery" class="header__sub-menu-by-games-link"><span>Lottery</span> <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-right"></use></svg></a>
+                    <a href="#" data-menu="Dice" class="header__sub-menu-by-games-link"><span>Dice</span> <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-right"></use></svg></a>
+                    <a href="#" data-menu="Roulette" class="header__sub-menu-by-games-link"><span>Roulette</span> <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-right"></use></svg></a>
+                    <a href="#" data-menu="Bingo" class="header__sub-menu-by-games-link"><span>Bingo</span> <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-right"></use></svg></a>
+                    <a href="#" data-menu="Baccarat" class="header__sub-menu-by-games-link"><span>Baccarat</span> <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-right"></use></svg></a>
+                    <a href="#" data-menu="Live-Dealer" class="header__sub-menu-by-games-link"><span>Live Dealer</span> <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-right"></use></svg></a>
+                    <a href="#" data-menu="Teen-Patti" class="header__sub-menu-by-games-link"><span>Teen Patti</span> <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-right"></use></svg></a>
+                  </div>
+
+
+                  <div class="header__sub-menu-by-games-right" id="Crash">
+                    <ul class="header__sub-menu-right-list">
+                      <li><a href="#">Bitcoin poker</a></li>
+                      <li><a href="#">Ethereum poker</a></li>
+                    </ul>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div data-sub-menu="reviews" class="header__sub-menu-right-content" id="reviews">
+                <ul class="header__sub-menu-right-list">
+                  <li><a href="#">BC.Game Casino</a></li>
+                  <li><a href="#">Stake Casino</a></li>
+                  <li><a href="#">Cloudbet</a></li>
+                  <li><a href="#">Rocketpot</a></li>
+                  <li><a href="#">Bets.io</a></li>
+                  <li><a href="#">Bitsler</a></li>
+                  <li><a href="#">Crashino</a></li>
+                  <li><a href="#">JustBit</a></li>
+                  <li><a href="#">Metaspins</a></li>
+                  <li><a href="#">True Flip</a></li>
+                  <li><a href="#">Bitcoin.com games</a></li>
+                  <li><a href="#">BitStarz</a></li>
+                  <li><a href="#">King Billy</a></li>
+                  <li><a href="#">mBit</a></li>
+                  <li><a href="#">Rollbit</a></li>
+                  <li><a href="#">EarnBet</a></li>
+                  <li><a href="#">Thunderpick</a></li>
+                  <li><a href="#">Bodog</a></li>
+                  <li><a href="#">Bao Casino</a></li>
+                  <li><a href="#">Fortune Jack</a></li>
+                  <li><a href="#">Primedice</a></li>
+                  <li><a href="#">Betfury</a></li>
+                  <li><a href="#">DuckDice</a></li>
+                  <li><a href="#">Roobet</a></li>
+                  <li><a href="#">Bitcasino</a></li>
+                  <li><a href="#">BitcoinCasino.io</a></li>
+                  <li><a href="#">1xSlots</a></li>
+                  <li><a href="#">7Bit Casino</a></li>
+                  <li><a href="#">Wink</a></li>
+                  <li><a href="#">CryptoWild</a></li>
+                  <li><a href="#">ZetCasino</a></li>
+                  <li><a href="#">Crypto Games</a></li>
+                  <li><a href="#">Betcoin</a></li>
+                  <li><a href="#">1xBit</a></li>
+                  <li><a href="#">Bspin Casino</a></li>
+                  <li><a href="#">Nitrogen Sports</a></li>
+                  <li><a href="#">Crypto Thrills</a></li>
+                  <li><a href="#">Edgeless Casino</a></li>
+                  <li class="all"><a href="#">All reviews (80)</a></li>
+                </ul>
+              </div>
+
+              <div data-sub-menu="bonuses" class="header__sub-menu-right-content" id="bonuses">
+                <ul class="header__sub-menu-right-list">
+                  <li><a href="#">No deposit bonus</a></li>
+                  <li><a href="#">Welcome bonus</a></li>
+                  <li><a href="#">Faucet bonus</a></li>
+                  <li><a href="#">Free spins</a></li>
+                  <li><a href="#">Deposit bonus</a></li>
+                  <li><a href="#">Wager free bonuses</a></li>
+                  <li><a href="#">Promo codes</a></li>
+                </ul>
+              </div>
+
+
+              <div data-sub-menu="guides" class="header__sub-menu-right-content" id="guides">
+                <div class="header__sub-menu-right-list-guides">
+                  <a href="#" class="header__guides-item">
+                    <img src="{% static 'app/img/article.jpg' %}" alt="" class="header__guides-item-image">
+                    <span>Formula 1 Betting with Bitcoin: Ultimate Guide</span>
+                  </a>
+                  <a href="#" class="header__guides-item">
+                    <img src="{% static 'app/img/article.jpg' %}" alt="" class="header__guides-item-image">
+                    <span>Formula 1 Betting with Bitcoin: Ultimate Guide</span>
+                  </a>
+                  <a href="#" class="header__guides-item">
+                    <img src="{% static 'app/img/article.jpg' %}" alt="" class="header__guides-item-image">
+                    <span>Formula 1 Betting with Bitcoin: Ultimate Guide</span>
+                  </a>
+                  <a href="#" class="header__guides-item">
+                    <img src="{% static 'app/img/article.jpg' %}" alt="" class="header__guides-item-image">
+                    <span>Formula 1 Betting with Bitcoin: Ultimate Guide</span>
+                  </a>
+                  <a href="#" class="header__guides-item">
+                    <img src="{% static 'app/img/article.jpg' %}" alt="" class="header__guides-item-image">
+                    <span>Formula 1 Betting with Bitcoin: Ultimate Guide</span>
+                  </a>
+                  <a href="#" class="header__guides-item">
+                    <img src="{% static 'app/img/article.jpg' %}" alt="" class="header__guides-item-image">
+                    <span>Formula 1 Betting with Bitcoin: Ultimate Guide</span>
+                  </a>
+                  <a href="#" class="header__guides-item">
+                    <img src="{% static 'app/img/article.jpg' %}" alt="" class="header__guides-item-image">
+                    <span>Formula 1 Betting with Bitcoin: Ultimate Guide</span>
+                  </a>
+                  <a href="#" class="header__guides-item">
+                    <img src="{% static 'app/img/article.jpg' %}" alt="" class="header__guides-item-image">
+                    <span>Formula 1 Betting with Bitcoin: Ultimate Guide</span>
+                  </a>
+                  <a href="#" class="header__guides-item">
+                    <img src="{% static 'app/img/article.jpg' %}" alt="" class="header__guides-item-image">
+                    <span>Formula 1 Betting with Bitcoin: Ultimate Guide</span>
+                  </a>
+                  <a href="#" class="header__guides-item">
+                    <img src="{% static 'app/img/article.jpg' %}" alt="" class="header__guides-item-image">
+                    <span>Formula 1 Betting with Bitcoin: Ultimate Guide</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="header__list-item"><a href="#" class="header__list-link">Coinmooner Token</a></div>
+        <div class="header__list-item"><a href="#" class="header__list-link">Tools <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bottom"></use></svg></a></div>
+        <div class="header__list-item header__list-item_sub-small">
+          <a href="#" class="header__list-link">ICO
+            <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bottom"></use></svg>
+            <svg class="polygon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sublist-polygon"></use></svg>
+          </a>
+
+          <div class="header__sub-menu header__sub-menu_little">
+            <ul class="header__sub-menu-right-list">
+              <li><a href="#">Upcoming ICO</a></li>
+              <li><a href="#">Ended ICO</a></li>
+              <li><a href="#">Active ICO</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="header__list-item"><a href="#" class="header__list-link">Airdrops</a></div>
+        <div class="header__list-item">
+          <a href="#" class="header__list-link">Blog
+          <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bottom"></use></svg>
+          <svg class="polygon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sublist-polygon"></use></svg>
+          </a>
+          <div class="header__sub-menu header__sub-menu_small">
+            <div class="header__sub-menu-left">
+              <a href="#" class="header__sub-menu-left-link" data-menu="Fees"><span>Fees</span> <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-right"></use></svg></a>
+              <a href="#" class="header__sub-menu-left-link" data-menu=""><span>Exchange Reviews</span></a>
+              <a href="#" class="header__sub-menu-left-link" data-menu="Guides"><span>Guides</span> <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-right"></use></svg></a>
+              <a href="#" class="header__sub-menu-left-link" data-menu=""><span>Trending Robots</span></a>
+            </div>
+
+            <div class="header__sub-menu-right">
+              <div data-sub-menu="Guides" class="header__sub-menu-right-content" id="Guides">
+                <ul class="header__sub-menu-right-list">
+                  <li><a href="#">Wallets</a></li>
+                  <li><a href="#">Mining</a></li>
+                  <li><a href="#">Coins</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="header__list-item"><a href="#" class="header__list-link">Crypto Brokers <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bottom"></use></svg></a></div>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="mobile-menu">
+    <div class="mobile-menu__overlay"></div>
+    <div class="mobile-menu__wrap">
+      <div class="mobile-menu__content">
+        <ul class="mobile-menu__list">
+          <li class="mobile-menu__list-item">
+            <a href="#" class="mobile-menu__list-link">Coin Ranking</a>
+          </li>
+          <li class="mobile-menu__list-item">
+            <a href="#" class="mobile-menu__list-link">Promotion</a>
+          </li>
+          <li class="mobile-menu__list-item">
+            <a href="#" class="mobile-menu__list-link mobile-menu__link-sub">Audit <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bottom"></use></svg></a>
+          </li>
+          <li class="mobile-menu__list-item">
+            <a href="#" class="mobile-menu__list-link">KYC</a>
+          </li>
+          <li class="mobile-menu__list-item">
+            <a href="#" class="mobile-menu__list-link mobile-menu__link-sub">Crypto Casino <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bottom"></use></svg></a>
+
+            <ul class="mobile-menu__sublist">
+              <li class="mobile-menu__sublist-item">
+                <a href="#" class="mobile-menu__sublist-link mobile-menu__link-sub">By country <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bottom"></use></svg></a>
+
+                <ul class="mobile-menu__sublist2">
+                  <li class="mobile-menu__sublist2-item">
+                    <a href="#" class="mobile-menu__sublist2-link">Australia</a>
+                  </li>
+                  <li class="mobile-menu__sublist2-item">
+                    <a href="#" class="mobile-menu__sublist2-link">Canada</a>
+                  </li>
+                  <li class="mobile-menu__sublist2-item">
+                    <a href="#" class="mobile-menu__sublist2-link">New Zealand</a>
+                  </li>
+                  <li class="mobile-menu__sublist2-item">
+                    <a href="#" class="mobile-menu__sublist2-link">Casino</a>
+                  </li>
+                  <li class="mobile-menu__sublist2-item">
+                    <a href="#" class="mobile-menu__sublist2-link">India</a>
+                  </li>
+                  <li class="mobile-menu__sublist2-item">
+                    <a href="#" class="mobile-menu__sublist2-link">US</a>
+                  </li>
+                  <li class="mobile-menu__sublist2-item">
+                    <a href="#" class="mobile-menu__sublist2-link">Zambia</a>
+                  </li>
+                  <li class="mobile-menu__sublist2-item">
+                    <a href="#" class="mobile-menu__sublist2-link">Germany</a>
+                  </li>
+                  <li class="mobile-menu__sublist2-item">
+                    <a href="#" class="mobile-menu__sublist2-link">China</a>
+                  </li>
+                  <li class="mobile-menu__sublist2-item">
+                    <a href="#" class="mobile-menu__sublist2-link">Great Britain</a>
+                  </li>
+                  <li class="mobile-menu__sublist2-item">
+                    <a href="#" class="mobile-menu__sublist2-link">USA</a>
+                  </li>
+                  <li class="mobile-menu__sublist2-item">
+                    <a href="#" class="mobile-menu__sublist2-link">Cambodia</a>
+                  </li>
+                  <li class="mobile-menu__sublist2-item">
+                    <a href="#" class="mobile-menu__sublist2-link">Georgia</a>
+                  </li>
+                  <li class="mobile-menu__sublist2-item">
+                    <a href="#" class="mobile-menu__sublist2-link">Great Britain</a>
+                  </li>
+                  <li class="mobile-menu__sublist2-item">
+                    <a href="#" class="mobile-menu__sublist2-link">Japan</a>
+                  </li>
+                  <li class="mobile-menu__sublist2-item">
+                    <a href="#" class="mobile-menu__sublist2-link all">All Countries (120)</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="mobile-menu__sublist-item">
+                <a href="#" class="mobile-menu__sublist-link mobile-menu__link-sub">By currency <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bottom"></use></svg></a>
+              </li>
+              <li class="mobile-menu__sublist-item">
+                <a href="#" class="mobile-menu__sublist-link mobile-menu__link-sub">By games <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bottom"></use></svg></a>
+              </li>
+              <li class="mobile-menu__sublist-item">
+                <a href="#" class="mobile-menu__sublist-link mobile-menu__link-sub">Reviews <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bottom"></use></svg></a>
+              </li>
+              <li class="mobile-menu__sublist-item">
+                <a href="#" class="mobile-menu__sublist-link mobile-menu__link-sub">Bonuses <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bottom"></use></svg></a>
+              </li>
+              <li class="mobile-menu__sublist-item">
+                <a href="#" class="mobile-menu__sublist-link mobile-menu__link-sub">Guides <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bottom"></use></svg></a>
+
+                <div class="mobile-menu__sublist2-guides">
+                  <a href="#" class="header__guides-item">
+                    <img src="{% static 'app/img/article.jpg' %}" alt="" class="header__guides-item-image">
+                    <span>Formula 1 Betting with Bitcoin: Ultimate Guide</span>
+                  </a>
+                  <a href="#" class="header__guides-item">
+                    <img src="{% static 'app/img/article.jpg' %}" alt="" class="header__guides-item-image">
+                    <span>Formula 1 Betting with Bitcoin: Ultimate Guide</span>
+                  </a>
+                  <a href="#" class="header__guides-item">
+                    <img src="{% static 'app/img/article.jpg' %}" alt="" class="header__guides-item-image">
+                    <span>Formula 1 Betting with Bitcoin: Ultimate Guide</span>
+                  </a>
+                  <a href="#" class="header__guides-item">
+                    <img src="{% static 'app/img/article.jpg' %}" alt="" class="header__guides-item-image">
+                    <span>Formula 1 Betting with Bitcoin: Ultimate Guide</span>
+                  </a>
+                  <a href="#" class="header__guides-item">
+                    <img src="{% static 'app/img/article.jpg' %}" alt="" class="header__guides-item-image">
+                    <span>Formula 1 Betting with Bitcoin: Ultimate Guide</span>
+                  </a>
+                  <a href="#" class="header__guides-item">
+                    <img src="{% static 'app/img/article.jpg' %}" alt="" class="header__guides-item-image">
+                    <span>Formula 1 Betting with Bitcoin: Ultimate Guide</span>
+                  </a>
+                  <a href="#" class="header__guides-item">
+                    <img src="{% static 'app/img/article.jpg' %}" alt="" class="header__guides-item-image">
+                    <span>Formula 1 Betting with Bitcoin: Ultimate Guide</span>
+                  </a>
+                  <a href="#" class="header__guides-item">
+                    <img src="{% static 'app/img/article.jpg' %}" alt="" class="header__guides-item-image">
+                    <span>Formula 1 Betting with Bitcoin: Ultimate Guide</span>
+                  </a>
+                  <a href="#" class="header__guides-item">
+                    <img src="{% static 'app/img/article.jpg' %}" alt="" class="header__guides-item-image">
+                    <span>Formula 1 Betting with Bitcoin: Ultimate Guide</span>
+                  </a>
+                  <a href="#" class="header__guides-item">
+                    <img src="{% static 'app/img/article.jpg' %}" alt="" class="header__guides-item-image">
+                    <span>Formula 1 Betting with Bitcoin: Ultimate Guide</span>
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li class="mobile-menu__list-item">
+            <a href="#" class="mobile-menu__list-link">Coinmooner Token</a>
+          </li>
+          <li class="mobile-menu__list-item">
+            <a href="#" class="mobile-menu__list-link mobile-menu__link-sub">Tools <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bottom"></use></svg></a>
+          </li>
+          <li class="mobile-menu__list-item">
+            <a href="#" class="mobile-menu__list-link mobile-menu__link-sub">ICO <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bottom"></use></svg></a>
+          </li>
+          <li class="mobile-menu__list-item">
+            <a href="#" class="mobile-menu__list-link">Airdrops</a>
+          </li>
+          <li class="mobile-menu__list-item">
+            <a href="#" class="mobile-menu__list-link mobile-menu__link-sub">Blog <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bottom"></use></svg></a>
+          </li>
+          <li class="mobile-menu__list-item">
+            <a href="#" class="mobile-menu__list-link mobile-menu__link-sub">Crypto Brokers <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bottom"></use></svg></a>
+          </li>
+        </ul>
+
+        <div class="mobile-menu__bottom">
+          <a href="#" class="btn btn_light">Promote</a>
+          <a href="#" class="btn btn_light">Submit Token</a>
+          <button class="header__theme header__theme-mob"><img src="{% static 'app/img/night-mode.svg' %}" alt=""></button>
+          <div class="header__lang">
+            <button class="header__lang-current">
+              <span>En</span>
+              <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bottom"></use></svg>
+            </button>
+            <div class="header__lang-list">
+              <svg class="polygon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sublist-polygon"></use></svg>
+              <a href="#" class="header__lang-list-item active">English <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg></a>
+              <a href="#" class="header__lang-list-item">Русский</a>
+              <a href="#" class="header__lang-list-item">Spanish</a>
+              <a href="#" class="header__lang-list-item">Portugal</a>
+              <a href="#" class="header__lang-list-item">Chinese</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+{% endblock %}
+
+
+{% block content %}
+<main class="main">
+  <section class="airdrop">
+    <div class="airdrop__wrap container">
+      <span class="h1">Ongoing Airdrops</span>
+      <p>Want to see your airdrop here? <a href="#">Add Airdrop</a></p>
+      <form action="#" class="ico__search">
+        <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-search"></use></svg>
+        <input type="text" placeholder="Search Airdrops">
+        <button>Search</button>
+      </form>
+
+      <div class="airdrop__nav">
+        <div class="airdrop__nav-orders">Airdrops listed: <span>1752</span></div>
+        <div class="show-rows-filter">
+          <button class="show-rows-filter__current">Show rows <span>10 <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bottom"></use></svg></span></button>
+          <div class="trending-coins__filter-sublist">
+            <svg class="polygon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sublist-polygon"></use></svg>
+            <button class="trending-coins__filter-sublist-item active">10 <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg></button>
+            <button class="trending-coins__filter-sublist-item">20 <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg></button>
+            <button class="trending-coins__filter-sublist-item">50 <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg></button>
+            <button class="trending-coins__filter-sublist-item">100 <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="airdrops-table">
+        <table>
+          <colgroup>
+            <col style="width:600px;min-width:auto;max-width:600px">
+            <col style="width:auto;min-width:auto;max-width:auto">
+            <col style="width:auto;min-width:auto;max-width:auto">
+            <col style="width:auto;min-width:auto;max-width:auto">
+          </colgroup>
+
+          <thead>
+            <tr>
+              <th>
+                <div class="">
+                  <button>
+                    Name
+                    <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bott"></use></svg>
+                  </button>
+                </div>
+              </th>
+
+              <th>
+                <div class="">
+                  <button>
+                    Status
+                    <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bott"></use></svg>
+                  </button>
+                </div>
+              </th>
+
+              <th>
+                <div class="">
+                  <button>
+                    End Date
+                    <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bott"></use></svg>
+                  </button>
+                </div>
+              </th>
+
+              <th>
+                <div class="">
+                  <button>
+                    Reward
+                    <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bott"></use></svg>
+                  </button>
+                </div>
+              </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>
+                <div class="airdrops-table__name">
+                  <a href="#">
+                    <img src="{% static 'app/img/ico2.png' %}" alt="" class="logo">
+                  </a>
+                  <div class="text">
+                    <a href="#" class="name">GoodDollar</a>
+                    <p>GoodDollar is a non-profit organization on a mission to leverage new blockchain technologies to deliver a scalable, sustainable model to deliver basic income. GoodDollar has built a wallet that enables any human with an internet connection to sign up and claim a small daily income in G$ coins.</p>
+                  </div>
+                </div>
+              </td>
+
+
+              <td>
+                <div class="airdrops-table__status">
+                  <span class="active">Active</span>
+                </div>
+              </td>
+
+              <td>
+                <div class="airdrops-table__date">
+                  <span>2023 - 06 - 12</span>
+                </div>
+              </td>
+
+              <td>
+                <div class="airdrops-table__reward">
+                  <span>1 000 000</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="airdrops-table__name">
+                  <a href="#">
+                    <img src="{% static 'app/img/ico1.png' %}" alt="" class="logo">
+                  </a>
+                  <div class="text">
+                    <a href="#" class="name">Terraswap</a>
+                    <p>Terraswap is an open-source software and fully decentralized protocol for automated liquidity provision on Terra for users and DeFi applications. Terraswap will empower developers, liquidity providers, and traders to participate in a financial marketplace that is open and accessible to all.</p>
+                  </div>
+                </div>
+              </td>
+
+
+              <td>
+                <div class="airdrops-table__status">
+                  <span class="none">N/A</span>
+                </div>
+              </td>
+
+              <td>
+                <div class="airdrops-table__date">
+                  <span>2023 - 06 - 12</span>
+                </div>
+              </td>
+
+              <td>
+                <div class="airdrops-table__reward">
+                  <span>150 000 000</span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <button class="coin-table__nav-more">Show More</button>
+
+        <div class="coin-table__nav-pagination">
+          <button class="coin-table__nav-pagination-button"><svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrowLeft"></use></svg></button>
+          <ul class="coin-table__nav-pagination-list">
+            <li class="active"><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">...</a></li>
+            <li><a href="#">120</a></li>
+          </ul>
+          <button class="coin-table__nav-pagination-button"><svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrowRight"></use></svg></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="subscribe">
+    <div class="subscribe__wrap container">
+      <div class="subscribe__form-wrap">
+        <div class="subscribe__form-wrap-container">
+          <div class="subscribe__text">
+            <span class="h2">Subscribe to our newsletter</span>
+            <p>Get the best high potential coins right into your inbox</p>
+          </div>
+
+          <div class="subscribe__form">
+            <div class="subscribe__form-top">
+              <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-mail"></use></svg>
+              <input type="text" placeholder="Your e-mail...">
+              <button type="submit">Subscribe</button>
+            </div>
+
+            <div class="subscribe__form-check">
+              <label for="" class="checkbox">
+                <input type="checkbox">
+                <span class="check"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg></span>
+              </label>
+              <p>Feel free to unsubscribe anytime. Check our <a href="#">Terms of use</a> and <a href="#">Privacy Policy</a> here.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+
+  document.querySelectorAll('a[href^="#"].article-contents__list-link').forEach(link => {
+  link.addEventListener('click', function(e) {
+      e.preventDefault();
+      let href = this.getAttribute('href');
+      const scrollTarget = document.querySelector(href);
+      // const topOffset = scrollTarget.offsetHeight;
+      const topOffset = 0;
+      const elementPosition = scrollTarget.getBoundingClientRect().top;
+      const offsetPosition = elementPosition - topOffset;
+
+      window.scrollBy({
+          top: offsetPosition - 40,
+          behavior: 'smooth'
+      });
+  });
+  });
+
+  items = document.querySelectorAll('.article-content [data-id]');
+
+  window.addEventListener('scroll', () => {
+  let scrollDistance = window.scrollY;
+    items.forEach((el, i) => {
+      if (el.offsetTop - 50 <= scrollDistance) {
+        document.querySelectorAll('.article-contents__list-link').forEach((el) => {
+          if (el.parentElement.classList.contains('active')) {
+            el.parentElement.classList.remove('active');
+          }
+        });
+        try {
+          document.querySelectorAll('.article-contents__list-link').forEach(item => {
+            if (el.getAttribute('id') == item.getAttribute('href').substring(1)) {
+              item.parentElement.classList.add('active')
+            }
+          });
+        } catch (error) {
+        };
+      }
+    });
+  });
+</script>
+
+<script>
+  var mobileListItemCurrent = document.querySelector('.blog-navigation-mobile__list-item-current');
+  if (mobileListItemCurrent) {
+    mobileListItemCurrent.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.querySelector('.blog-navigation-mobile').classList.toggle('open');
+    });
+  }
+
+  document.querySelectorAll('.blog-navigation-mobile__list-link .arrow').forEach(item => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      item.parentElement.parentElement.classList.toggle('open');
+    })
+  });
+</script>
+{% endblock %}

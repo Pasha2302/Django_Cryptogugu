@@ -1,0 +1,917 @@
+.support-sidebar {
+  background: #1A1A1A;
+  border-radius: 14px;
+  padding: 30px 25px 25px;
+
+  @media (max-width: 1100px) {
+    padding: 25px 20px 20px;
+  }
+
+  @media (max-width: 1020px) {
+    padding: 20px;
+    position: relative;
+  }
+
+  @media (max-width: 600px) {
+    margin-top: 40px;
+ }
+
+  .title {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 140%;
+    margin-bottom: 20px;
+
+    @media (max-width: 1100px) {
+      font-size: 18px;
+    }
+
+    @media (max-width: 1020px) {
+      max-width: 276px;
+      margin-bottom: 15px;
+    }
+  }
+
+  .info {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 140%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+    @media (max-width: 1020px) {
+      font-size: 13px;
+      margin-bottom: 0;
+    }
+
+    span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      display: block;
+      margin-right: 7px;
+    }
+
+    &.online {
+      span {
+        background: #1DBA40;
+      }
+    }
+
+    &.offline {
+      span {
+        background: var(--red);
+      }
+    }
+  }
+
+
+  a {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(85.57deg, #1F90E1 2.23%, #2BB2FF 118%);
+    border-radius: 7px;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 20px;
+    color: #fff;
+
+    @media (max-width: 1100px) {
+      font-size: 12px;
+    }
+
+    @media (max-width: 1020px) {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: auto;
+      padding: 5px 16px;
+      z-index: 3;
+    }
+
+    @media (max-width: 600px) {
+      position: static;
+      width: 100%;
+      transform: none;
+      margin-top: 20px;
+   }
+
+    .icon {
+      width: 18px;
+      height: 18px;
+      margin-right: 10px;
+
+      @media (max-width: 1100px) {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+
+}
+
+
+.add-coin {
+  width: 100%;
+
+  // .add-coin__steps
+  &__steps {
+    width: 100%;
+    margin-bottom: 15px;
+    background: #1A1A1A;
+    border-radius: 14px;
+    padding: 16px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (max-width: 600px) {
+      background: none !important;
+      padding: 0;
+      margin-bottom: 50px;
+   }
+  }
+
+  // .add-coin__steps-item
+  &__steps-item {
+    display: flex;
+    flex-direction: column;
+    flex-direction: column;
+    align-items: center;
+
+    .num {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--high-gray-text);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 16px;
+      text-align: center;
+
+      .icon {
+        display: none;
+      }
+    }
+
+    .label {
+      font-weight: 500;
+      font-size: 10px;
+      line-height: 14px;
+      text-align: center;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--high-gray-text);
+    }
+
+    &.active {
+      .num {
+        color: #111111;
+        background: #fff;
+      }
+      .label {
+        color: #fff;
+      }
+    }
+
+    &.done {
+      .num {
+        color: #111111;
+        background: var(--green-accent);
+        font-size: 0;
+
+        .icon {
+          display: block;
+        }
+      }
+      .label {
+        color: var(--green-accent);
+      }
+    }
+  }
+
+  .hr {
+    flex-grow: 1;
+    margin: 0 32px;
+    border-top: 1px solid #282827;
+
+    &.active {
+      border-color: var(--green-accent);
+    }
+  }
+
+  // .add-coin__info
+  &__info {
+    width: 100%;
+    background: #1A1A1A;
+    border-radius: 14px;
+    margin-bottom: 15px;
+    padding: 30px 30px 52px;
+
+    @media (max-width: 1100px) {
+      padding: 25px 25px 48px;
+    }
+
+    @media (max-width: 600px) {
+       background: none !important;
+       padding: 0;
+       margin-bottom: 73px;
+    }
+  }
+
+  // .add-coin__title
+  &__title {
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 31px;
+    margin-bottom: 24px;
+
+    @media (max-width: 1100px) {
+      font-size: 20px;
+      line-height: 27px;
+    }
+
+    @media (max-width: 500px) {
+      font-size: 18px;
+      margin-bottom: 20px;
+   }
+  }
+
+  // .add-coin__subtitle
+  &__subtitle {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    margin-bottom: 24px;
+    margin-top: -12px;
+
+    @media (max-width: 1100px) {
+      font-size: 15px;
+      line-height: 20px;
+    }
+
+    @media (max-width: 500px) {
+       font-size: 13px;
+       line-height: 17px;
+       margin-bottom: 16px;
+    }
+  }
+
+  // .add-coin__grid
+  &__grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 22px;
+
+    @media (max-width: 1100px) {
+      gap: 20px 14px;
+    }
+
+    @media (max-width: 700px) {
+       grid-template-columns: 1fr;
+       gap: 20px;
+    }
+  }
+
+  .mob-hide {
+    @media (max-width: 700px) {
+      display: none;
+   }
+  }
+
+  // .add-coin__field
+  &__field {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+
+    label {
+      display: block;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 19px;
+      letter-spacing: 0.02em;
+      margin-bottom: 8px;
+
+      span {
+        color: var(--red);
+      }
+
+      .opt {
+        color: var(--high-gray-text);
+      }
+    }
+
+    &>textarea {
+      width: 100%;
+      height: 150px;
+      background: #222222;
+      border: 1px solid #313130;
+      border-radius: 7px;
+      padding: 18px 24px;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 19px;
+      color: var(--main-text);
+      resize: none;
+
+      &::placeholder {
+        color: var(--high-gray-text);
+      }
+
+      &:hover {
+        border: 1px solid #41413F;
+      }
+
+      &:focus {
+        border: 1px solid #F3DE38;
+      }
+    }
+
+    &>input {
+      width: 100%;
+      min-width: calc(100% - 15px);
+      text-align: left;
+      height: 55px;
+      background: #222222;
+      border: 1px solid #313130;
+      border-radius: 7px;
+      padding: 10px 24px;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 19px;
+      color: var(--main-text);
+
+      &::placeholder {
+        color: var(--high-gray-text);
+      }
+
+      &:hover {
+        border: 1px solid #41413F;
+      }
+
+      &:focus {
+        border: 1px solid #F3DE38;
+      }
+    }
+
+    .link {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 16px;
+      text-decoration-line: underline;
+      color: var(--yellow);
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  // .add-coin__field-add
+  &__field-add {
+    background: #232320;
+    border-radius: 7px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+
+    .label {
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 19px;
+      color: var(--yellow);
+      margin-bottom: 2px;
+    }
+
+    p {
+      font-weight: 500;
+      font-size: 11px;
+      line-height: 15px;
+      text-align: center;
+    }
+
+    &:hover {
+      background: #2C2C28;
+    }
+  }
+
+  // .add-coin__contacts
+  &__contacts {
+    background: #1A1A1A;
+    border-radius: 14px;
+    margin-bottom: 15px;
+    padding: 30px;
+
+    @media (max-width: 1100px) {
+      padding: 25px;
+    }
+
+    @media (max-width: 600px) {
+      background: none !important;
+      padding: 0;
+      margin-bottom: 50px;
+   }
+  }
+
+  // .add-coin__presale
+  &__presale {
+    background: #1A1A1A;
+    border-radius: 14px;
+    margin-bottom: 15px;
+    padding: 30px;
+
+    @media (max-width: 1100px) {
+      padding: 25px;
+    }
+
+    @media (max-width: 600px) {
+      background: none !important;
+      padding: 0;
+      margin-bottom: 40px;
+   }
+  }
+
+  // .add-coin__field-row
+  &__field-row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-top: 13px;
+    padding-bottom: 6px;
+
+    @media (max-width: 700px) {
+      padding-bottom: 0;
+   }
+  }
+
+  .radio-check {
+    position: relative;
+    color: var(--main-text);
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+    letter-spacing: 0.02em;
+
+    @media (max-width: 700px) {
+      margin-bottom: 0;
+   }
+
+    input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .radio {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border: 1px solid #6C6C67;
+      border-radius: 50%;
+      margin-right: 7px;
+    }
+
+    span {
+      color: var(--main-text);
+    }
+
+    input:checked ~ .radio {
+      border: 1px solid var(--yellow);
+
+      &::before {
+        content: "";
+        display: block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: var(--yellow);
+      }
+    }
+  }
+
+  // .add-coin__action
+  &__action {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 700px) {
+      display: block;
+   }
+  }
+
+  // .add-coin__prev
+  &__prev {
+    padding: 5px 30px;
+    height: 60px;
+    background: #232320;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 20px;
+
+    @media (max-width: 700px) {
+      width: 100%;
+      margin-bottom: 15px;
+   }
+
+    .arrow {
+      width: 20px;
+      height: 20px;
+      margin-right: 6px;
+      margin-top: 1px;
+      transform: rotate(180deg);
+    }
+
+    &:hover {
+      background: #EED936;
+      color: #111111;
+    }
+  }
+
+  // .add-coin__next
+  &__next {
+    padding: 5px 30px;
+    height: 60px;
+    background: #EED936;
+    border: 1px solid #EED936;
+    border-radius: 7px;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 20px;
+    color: #111111;
+
+    @media (max-width: 700px) {
+      width: 100%;
+   }
+
+    .arrow {
+      width: 20px;
+      height: 20px;
+      margin-left: 6px;
+      margin-top: 1px;
+    }
+
+    &:hover {
+      background: none;
+      color: #EED936;
+    }
+	}
+
+  // .add-coin__field-image
+  &__field-image {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    height: 100%;
+
+    &>span {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 19px;
+      text-align: center;
+      letter-spacing: 0.02em;
+      margin: 0 12px 19px;
+      align-self: flex-end;
+    }
+  }
+  // .add-coin__field
+
+  &__field {
+    &-w {
+      width: 100%;
+    }
+  }
+
+  .file-input {
+    position: relative;
+    margin-bottom: 0;
+    cursor: pointer;
+
+    input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .file {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 55px;
+      background: var(--yellow);
+      border-radius: 7px;
+      padding: 5px 16px;
+      font-weight: 700;
+      font-size: 13px;
+      line-height: 18px;
+      color: #111111;
+      cursor: pointer;
+
+      .icon {
+        width: 25px;
+        height: 25px;
+        margin-right: 6px;
+      }
+    }
+  }
+
+  // .add-coin__project-info
+  &__project-info {
+    background: #1A1A1A;
+    border-radius: 14px;
+    padding: 30px;
+    margin-bottom: 15px;
+
+    @media (max-width: 1100px) {
+      padding: 25px;
+
+      .add-coin__grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .add-coin__field {
+        textarea {
+          height: 90px;
+        }
+      }
+    }
+
+    @media (max-width: 600px) {
+      background: none !important;
+      padding: 0;
+      margin-bottom: 40px;
+   }
+  }
+
+  // .add-coin__socials
+  &__socials {
+    background: #1A1A1A;
+    border-radius: 14px;
+    padding: 30px;
+    margin-bottom: 15px;
+
+    @media (max-width: 1100px) {
+      padding: 25px;
+
+      .add-coin__grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      background: none !important;
+      padding: 0;
+      margin-bottom: 40px;
+   }
+
+    input {
+      padding-left: 46px;
+      background-repeat: no-repeat;
+      background-size: 18px;
+      background-position: center left 18px;
+
+      &.telegram {
+        background-image: url(../img/telegram.svg);
+      }
+      &.reddit {
+        background-image: url(../img/reddit.svg);
+      }
+      &.twitter {
+        background-image: url(../img/twitter.svg);
+      }
+      &.gecko {
+        background-image: url(../img/geckcoin.png);
+      }
+      &.discord {
+        background-image: url(../img/discord.svg);
+      }
+      &.market {
+        background-image: url(../img/market.png);
+      }
+      &.website {
+        background-image: url(../img/web.svg);
+      }
+      &.github {
+        background-image: url(../img/github.svg);
+      }
+      &.youtube {
+        background-image: url(../img/youtube.svg);
+      }
+      &.tiktok {
+        background-image: url(../img/tiktok.svg);
+      }
+      &.medium {
+        background-image: url(../img/medium.svg);
+      }
+      &.instagram {
+        background-image: url(../img/instagram.svg);
+      }
+
+    }
+  }
+
+  // .add-coin__label
+  &__label {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 19px;
+    letter-spacing: 0.02em;
+    margin-bottom: 8px;
+    margin-top: 24px;
+  }
+
+  // .add-coin__more-soc
+  &__more-soc {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    button {
+      padding: 10px;
+      background: #232320;
+      border-radius: 7px;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 0.02em;
+      margin-right: 8px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        background: #23232090;
+      }
+
+      img {
+        margin-right: 8px;
+      }
+    }
+  }
+}
+
+
+[data-theme='light'] {
+  .support-sidebar {
+    background: #FFFFFF;
+    box-shadow: 0px 29px 52px -4px rgba(0, 0, 0, 0.05);
+  }
+
+  .add-coin__steps {
+    background: #FFFFFF;
+    box-shadow: 0px 29px 52px -4px rgba(0, 0, 0, 0.01);
+  }
+
+  .add-coin__steps-item .num {
+    background: var(--secondary-bg);
+    color: var(--low-gray-text);
+  }
+
+  .add-coin__steps-item .label {
+    color: var(--low-gray-text);
+  }
+
+  .add-coin__steps-item.active .num {
+    background-color: var(--green-accent);
+    color: #fff;
+  }
+
+  .add-coin__steps-item.active .label {
+    color: var(--green-accent);
+  }
+
+  .add-coin__steps-item.done .num {
+    background-color: var(--green-accent);
+    color: #fff;
+  }
+
+  .add-coin__steps-item.done .label {
+    color: var(--green-accent);
+  }
+
+  .add-coin__info, .add-coin__contacts, .add-coin__presale, .add-coin__project-info, .add-coin__socials {
+    background: #FFFFFF;
+    box-shadow: 0px 29px 52px -4px rgba(0, 0, 0, 0.01);
+  }
+
+  .add-coin__field > input, .add-coin__field > textarea {
+    background-color: var(--main-bg);
+    border: 1px solid var(--secondary-bg);
+
+    &::placeholder {
+      color: #A8A8A8;
+    }
+
+    &:hover {
+      border: 1px solid #CECECA;
+    }
+
+    &:focus {
+      border: 1px solid #DBC308;
+    }
+  }
+
+  .add-coin__field .link {
+    color: #DBC307;
+  }
+
+  .add-coin__field-add {
+    background: var(--main-bg);
+
+    &:hover {
+      background: #F7F7F7;
+    }
+  }
+
+  .add-coin__field-add .label {
+    color: #DBC307;
+  }
+
+  .add-coin__field-add p {
+    color: var(--high-gray-text);
+  }
+
+  .add-coin__prev {
+    background: var(--secondary-bg);
+
+    &:hover {
+      background: var(--yellow);
+      color: #111111;
+    }
+  }
+
+  .add-coin__next {
+    background: var(--yellow);
+    border-color: var(--yellow);
+
+    &:hover {
+      background: none;
+    }
+  }
+
+  .add-coin__field label .opt {
+    color: #6C6C67;
+  }
+
+  .add-coin__socials input.website {
+    background-image: url(../img/web-black.svg);
+  }
+
+  .add-coin__socials input.github {
+    background-image: url(../img/github-black.svg);
+  }
+
+  .add-coin__more-soc button {
+    background: var(--main-bg);
+    border: 1px solid var(--secondary-bg);
+
+    &:hover {
+      background: #f8f8f86b;
+    }
+  }
+}

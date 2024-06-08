@@ -1,0 +1,37 @@
+<!doctype html>
+{% load static %}
+{% load static %}
+{% load static %}
+{% load static %}
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{% block title %} Home {% endblock %}</title>
+    <link href="{% static 'app/css/my_style.css' %}" rel="stylesheet">
+
+    {% block link %}{% endblock %}
+
+  </head>
+
+  <body>
+    <h1>Hello World!</h1>
+
+    {% block content %}{% endblock %}
+
+    <footer class="container">
+      <p>&copy; Company 2017-2018</p>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <script src="{% static 'app/js/my_script.js' %}"></script>
+
+  </body>
+</html>

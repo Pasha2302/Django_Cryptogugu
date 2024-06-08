@@ -1,0 +1,1037 @@
+{% extends "app/base.html" %}
+
+
+{% block link %}
+<link rel="next" href="{{ nex_page }}" />
+<link rel="prev" href="{{ prev_page }}" />
+<link rel="canonical" href="{{ current_uri }}" />
+{% endblock %}
+
+
+{% block content %}
+{% load static %}
+
+<title>{% block title %}{{ page_title }}{% endblock %}</title>
+
+<main class="main">
+  <section class="reclams-banner">
+    <div class="reclams-banner__wrap container">
+      <div class="reclams-banner__top">
+        <a href="#" class="reclams-banner__item"><img src="{% static 'app/img/rec.jpg' %}" alt=""></a>
+        <a href="#" class="reclams-banner__item"><img src="{% static 'app/img/rec.jpg' %}" alt=""></a>
+      </div>
+
+      <div class="reclams-banner__slider swiper">
+        <div class="swiper-wrapper">
+          <a href="#" class="swiper-slide"><img src="{% static 'app/img/rec.jpg' %}" alt=""></a>
+          <a href="#" class="swiper-slide"><img src="{% static 'app/img/rec.jpg' %}" alt=""></a>
+          <a href="#" class="swiper-slide"><img src="{% static 'app/img/rec.jpg' %}" alt=""></a>
+          <a href="#" class="swiper-slide"><img src="{% static 'app/img/rec.jpg' %}" alt=""></a>
+          <a href="#" class="swiper-slide"><img src="{% static 'app/img/rec.jpg' %}" alt=""></a>
+          <a href="#" class="swiper-slide"><img src="{% static 'app/img/rec.jpg' %}" alt=""></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tops-section">
+    <div class="tops-section__wrap container">
+      <div class="tops-section__slider swiper">
+        <div class="swiper-wrapper">
+          <div class="tops-section__block swiper-slide">
+            <div class="tops-section__block-top">
+              <div class="label">Trending</div>
+              <a href="#" class="more">More</a>
+            </div>
+
+            <div class="tops-section__block-list">
+                <a href="#" class="tops-section__block-list-item">
+                  <div class="left">
+                    <img src="{% static 'app/img/icon1.png' %}" alt="">
+                    <div class="name">Fetch.ai</div>
+                    <div class="chain">FET</div>
+                  </div>
+                  <div class="cost up"><svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-up"></use></svg> +5.93%</div>
+                </a>
+                <a href="#" class="tops-section__block-list-item">
+                  <div class="left">
+                    <img src="{% static 'app/img/icon2.png' %}" alt="">
+                    <div class="name">Render Token</div>
+                    <div class="chain">RNDR</div>
+                  </div>
+                  <div class="cost down"><svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-up"></use></svg> +5.93%</div>
+                </a>
+                <a href="#" class="tops-section__block-list-item">
+                  <div class="left">
+                    <img src="{% static 'app/img/icon3.png' %}" alt="">
+                    <div class="name">Terra Classic</div>
+                    <div class="chain">LUNC</div>
+                  </div>
+                  <div class="cost down"><svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-up"></use></svg> +5.93%</div>
+                </a>
+                <a href="#" class="tops-section__block-list-item">
+                  <div class="left">
+                    <img src="{% static 'app/img/icon4.png' %}" alt="">
+                    <div class="name">VAIOT</div>
+                    <div class="chain">VAI</div>
+                  </div>
+                  <div class="cost up"><svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-up"></use></svg> +5.93%</div>
+                </a>
+                <a href="#" class="tops-section__block-list-item">
+                  <div class="left">
+                    <img src="{% static 'app/img/icon5.png' %}" alt="">
+                    <div class="name">Blur</div>
+                    <div class="chain">BLUR</div>
+                  </div>
+                  <div class="cost up"><svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-up"></use></svg> +5.93%</div>
+                </a>
+            </div>
+          </div>
+
+          <div class="tops-section__block swiper-slide">
+            <div class="tops-section__block-top">
+              <div class="label">Most Viewed</div>
+              <a href="#" class="more">More</a>
+            </div>
+
+            <div class="tops-section__block-list">
+                <a href="#" class="tops-section__block-list-item">
+                  <div class="left">
+                    <img src="{% static 'app/img/icon6.png' %}" alt="">
+                    <div class="name">FloraChain</div>
+                    <div class="chain">FYT</div>
+                  </div>
+                  <div class="cost">$0.008079</div>
+                </a>
+                <a href="#" class="tops-section__block-list-item">
+                  <div class="left">
+                    <img src="{% static 'app/img/icon7.png' %}" alt="">
+                    <div class="name">Wrapped TAO</div>
+                    <div class="chain">WTAO</div>
+                  </div>
+                  <div class="cost">$87.46</div>
+                </a>
+                <a href="#" class="tops-section__block-list-item">
+                  <div class="left">
+                    <img src="{% static 'app/img/icon8.png' %}" alt="">
+                    <div class="name">Novatoken</div>
+                    <div class="chain">NVT</div>
+                  </div>
+                  <div class="cost">$0.00002256</div>
+                </a>
+                <a href="#" class="tops-section__block-list-item">
+                  <div class="left">
+                    <img src="{% static 'app/img/icon9.png' %}" alt="">
+                    <div class="name">SHARBI</div>
+                    <div class="chain">SHARBI</div>
+                  </div>
+                  <div class="cost">$0.008079</div>
+                </a>
+                <a href="#" class="tops-section__block-list-item">
+                  <div class="left">
+                    <img src="{% static 'app/img/icon10.png' %}" alt="">
+                    <div class="name">FERMA SOSEDI</div>
+                    <div class="chain">FERMA</div>
+                  </div>
+                  <div class="cost">$87.46</div>
+                </a>
+            </div>
+          </div>
+
+          <div class="tops-section__block swiper-slide">
+            <div class="tops-section__block-top">
+              <div class="label">Top Gainers</div>
+              <a href="#" class="more">More</a>
+            </div>
+
+            <div class="tops-section__block-list">
+                <a href="#" class="tops-section__block-list-item">
+                  <div class="left">
+                    <img src="{% static 'app/img/icon11.png' %}" alt="">
+                    <div class="name">FloraChain</div>
+                    <div class="chain">FYT</div>
+                  </div>
+                  <div class="cost">$0.0000008191</div>
+                </a>
+                <a href="#" class="tops-section__block-list-item">
+                  <div class="left">
+                    <img src="{% static 'app/img/icon12.png' %}" alt="">
+                    <div class="name">Wrapped TAO</div>
+                    <div class="chain">WTAO</div>
+                  </div>
+                  <div class="cost">$87.46</div>
+                </a>
+                <a href="#" class="tops-section__block-list-item">
+                  <div class="left">
+                    <img src="{% static 'app/img/icon13.png' %}" alt="">
+                    <div class="name">Novatoken</div>
+                    <div class="chain">NVT</div>
+                  </div>
+                  <div class="cost">$0.00002256</div>
+                </a>
+                <a href="#" class="tops-section__block-list-item">
+                  <div class="left">
+                    <img src="{% static 'app/img/icon14.png' %}" alt="">
+                    <div class="name">SHARBI</div>
+                    <div class="chain">SHARBI</div>
+                  </div>
+                  <div class="cost">$0.008079</div>
+                </a>
+                <a href="#" class="tops-section__block-list-item">
+                  <div class="left">
+                    <img src="{% static 'app/img/icon15.png' %}" alt="">
+                    <div class="name">FERMA SOSEDI</div>
+                    <div class="chain">FERMA</div>
+                  </div>
+                  <div class="cost">$87.46</div>
+                </a>
+            </div>
+          </div>
+
+        </div>
+        <div class="tops-section__pagination"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="promoted-coins">
+    <div class="promoted-coins__wrap container">
+      <div class="promoted-coins__top">
+        <span class="h2">Promoted Coins</span>
+        <a href="#" class="promoted-coins__you">
+          Promote your coin
+          <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-right"></use></svg>
+        </a>
+      </div>
+
+      <div class="coin-table">
+        <table class="">
+          <colgroup>
+            <col style="width:auto;min-width:auto;max-width:auto">
+            <col style="width:auto;min-width:auto;max-width:auto">
+            <col style="width:auto;min-width:auto;max-width:auto">
+            <col style="width:auto;min-width:auto;max-width:auto">
+            <col style="width:auto;min-width:auto;max-width:auto">
+            <col style="width:auto;min-width:auto;max-width:auto">
+            <col style="width:auto;min-width:auto;max-width:auto">
+            <col style="width:auto;min-width:auto;max-width:auto">
+            <col style="width:auto;min-width:auto;max-width:auto">
+            <col style="width:auto;min-width:67px;max-width:auto">
+          </colgroup>
+
+          <thead>
+            <tr>
+              <th>
+                <div class="">
+                  <span>#</span>
+                </div>
+              </th>
+
+              <th>
+                <div class="">
+                  <span>Name</span>
+                </div>
+              </th>
+
+              <th>
+                <div class="">
+                  <span>Chain</span>
+                </div>
+              </th>
+
+              <th>
+                <div class="">
+                  <button>
+                    Market Cap
+                    <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bott"></use></svg>
+                  </button>
+                </div>
+              </th>
+
+              <th>
+                <div class="">
+                  <button>
+                    Price
+                    <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bott"></use></svg>
+                  </button>
+                </div>
+              </th>
+
+              <th>
+                <div class="">
+                  <button>
+                    Volume
+                    <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bott"></use></svg>
+                  </button>
+                </div>
+              </th>
+
+              <th>
+                <div class="">
+                  <button>
+                    24h
+                    <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bott"></use></svg>
+                  </button>
+                </div>
+              </th>
+
+              <th>
+                <div class="">
+                  <button>
+                    Launch Date
+                    <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bott"></use></svg>
+                  </button>
+                </div>
+              </th>
+
+              <th>
+                <div class="">
+                  <button>
+                    Votes
+                    <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bott"></use></svg>
+                  </button>
+                </div>
+              </th>
+
+              <th>
+                <div class="">
+                  <button>
+                    Votes 24
+                    <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bott"></use></svg>
+                  </button>
+                </div>
+              </th>
+
+              <th>
+                <div class="">
+                  <span>Vote</span>
+                </div>
+              </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>
+                <span class="coin-table__num">1</span>
+              </td>
+
+              <td>
+                <div class="coin-table__name">
+                  <span class="coin-table__num">1</span>
+                  <a href="#" class="coin-table__name-left">
+                    <img src="{% static 'app/img/Image1.png' %}" alt="">
+                    <div class="coin-table__name-info">
+                      <span class="name">Meta Masters Guild</span>
+                      <span class="label">Cheap Master Prod.</span>
+                    </div>
+                  </a>
+
+                  <div class="coin-table__name-tags">
+                    <a href="#" class="coin-table__name-tag green">KYC</a>
+                  </div>
+                </div>
+              </td>
+
+              <td>
+                <div class="coin-table__chain">
+                  <img src="{% static 'app/img/eth.svg' %}" alt="">
+                  <span>ETH</span>
+                </div>
+              </td>
+
+              <td>
+                <div class="coin-table__cap">
+                  $1,584.53
+                </div>
+              </td>
+
+
+              <td>
+                <div class="coin-table__price">
+                  $1,584.53
+                </div>
+              </td>
+
+              <td>
+                <div class="coin-table__volume">
+                  <span class="value">$26,721,855,845</span>
+                  <span class="label">1,157,275 BTC</span>
+                </div>
+              </td>
+
+
+              <td>
+                <div class="coin-table__24h">
+                  <span class="cost down">
+                    <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-up"></use></svg>
+                    5.93%</span>
+                </div>
+              </td>
+
+              <td>
+                <div class="coin-table__date">
+                  <span>In 2 months</span>
+                </div>
+              </td>
+
+              <td>
+                <div class="coin-table__votes">
+                  <span>1, 302, 000</span>
+                </div>
+              </td>
+
+              <td>
+                <div class="coin-table__votes24h">
+                  <span class="cost up">
+                    <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-up"></use></svg>
+                    1, 300, 941%</span>
+                </div>
+              </td>
+
+              <td>
+                <div class="coin-table__vote">
+                  <button class="btn btn_light btn_light-check"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg> Vote</button>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <span class="coin-table__num">2</span>
+              </td>
+
+              <td>
+                <div class="coin-table__name">
+                  <span class="coin-table__num">2</span>
+                  <a href="#" class="coin-table__name-left">
+                    <img src="{% static 'app/img/Image2.png' %}" alt="">
+                    <div class="coin-table__name-info">
+                      <span class="name">FIght Out</span>
+                      <span class="label">Cheap Master Prod.</span>
+                    </div>
+                  </a>
+
+                  <div class="coin-table__name-tags">
+                    <a href="#" class="coin-table__name-tag green">KYC</a>
+                    <a href="#" class="coin-table__name-tag violet">Audited</a>
+                  </div>
+                </div>
+              </td>
+
+              <td>
+                <div class="coin-table__chain">
+                  <img src="{% static 'app/img/eth.svg' %}" alt="">
+                  <span>BSC</span>
+                </div>
+              </td>
+
+              <td>
+                <div class="coin-table__cap">
+                  <div class="cap-presale"><svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-loading"></use></svg>Presale</div>
+                </div>
+              </td>
+
+
+              <td>
+                <div class="coin-table__price">
+                  <span class="none">—</span>
+                </div>
+              </td>
+
+              <td>
+                <div class="coin-table__volume">
+                  <span class="none">—</span>
+                </div>
+              </td>
+
+
+              <td>
+                <div class="coin-table__24h">
+                  <span class="none">—</span>
+                </div>
+              </td>
+
+              <td>
+                <div class="coin-table__date">
+                  <span>In 2 months</span>
+                </div>
+              </td>
+
+              <td>
+                <div class="coin-table__votes">
+                  <span>1, 302, 000</span>
+                </div>
+              </td>
+
+              <td>
+                <div class="coin-table__votes24h">
+                  <span class="cost down">
+                    <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-up"></use></svg>
+                    132, 053%</span>
+                </div>
+              </td>
+
+              <td>
+                <div class="coin-table__vote">
+                  <button class="btn btn_light btn_light-check"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg> Vote</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="trending-coins">
+    <div class="trending-coins__wrap container">
+      <span class="h2">Trending</span>
+
+      <div class="trending-coins__filters">
+        <div class="trending-coins__filters-top">
+          <button class="open-filters">
+            <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-filter"></use></svg>
+            Filter
+            <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bottom"></use></svg>
+          </button>
+
+          <div class="show-rows-filter show-rows-filter1">
+            <button class="show-rows-filter__current">Show rows <span>{{ rows_number }}<svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bottom"></use></svg></span></button>
+            <div class="trending-coins__filter-sublist">
+              <svg class="polygon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sublist-polygon"></use></svg>
+              {% for select_number in select_number_lines %}
+                <button class="trending-coins__filter-sublist-item {% if select_number == rows_number %}active{% endif %}">
+                  {{ select_number }} <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg>
+                </button>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <div class="trending-coins__filters-items">
+          <button class="trending-coins__filter-item">
+            <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-fire"></use></svg>
+            Today`s Hot
+          </button>
+          <button class="trending-coins__filter-item">All Time Best</button>
+          <button class="trending-coins__filter-item">GemPad</button>
+          <button class="trending-coins__filter-item">New</button>
+          <button class="trending-coins__filter-item">Presale</button>
+          <button class="trending-coins__filter-item">Doxxed</button>
+          <button class="trending-coins__filter-item">Audited</button>
+          <div class="trending-coins__filter-item-sub">
+            <button class="trending-coins__filter-item trending-coins__filter-item_sub">
+              Chain <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bottom"></use></svg>
+            </button>
+            <svg class="polygon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sublist-polygon"></use></svg>
+
+            <div class="trending-coins__filter-sublist">
+              <button class="trending-coins__filter-sublist-item active">Ethereum <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg></button>
+              <button class="trending-coins__filter-sublist-item">WAX <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg></button>
+              <button class="trending-coins__filter-sublist-item">SOLANA <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg></button>
+              <button class="trending-coins__filter-sublist-item">Binance Smart Chain <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg></button>
+              <button class="trending-coins__filter-sublist-item">Tron <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg></button>
+            </div>
+          </div>
+          <button class="trending-coins__filter-item-reset"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use></svg> Reset Filters</button>
+        </div>
+      </div>
+
+      <div class="coin-table">
+        <table class="">
+          <colgroup>
+            <col style="width:auto;min-width:auto;max-width:auto">
+            <col style="width:auto;min-width:auto;max-width:auto">
+            <col style="width:auto;min-width:auto;max-width:auto">
+            <col style="width:auto;min-width:auto;max-width:auto">
+            <col style="width:auto;min-width:auto;max-width:auto">
+            <col style="width:auto;min-width:auto;max-width:auto">
+            <col style="width:auto;min-width:auto;max-width:auto">
+            <col style="width:auto;min-width:auto;max-width:auto">
+            <col style="width:auto;min-width:auto;max-width:auto">
+            <col style="width:auto;min-width:67px;max-width:auto">
+          </colgroup>
+
+          <thead>
+            <tr>
+              <th>
+                <div class="">
+                  <span>#</span>
+                </div>
+              </th>
+
+              <th>
+                <div class="">
+                  <span>Name</span>
+                </div>
+              </th>
+
+              <th>
+                <div class="">
+                  <span>Chain</span>
+                </div>
+              </th>
+
+              <th>
+                <div class="">
+                  <button>
+                    Market Cap
+                    <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bott"></use></svg>
+                  </button>
+                </div>
+              </th>
+
+              <th>
+                <div class="">
+                  <button>
+                    Price
+                    <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bott"></use></svg>
+                  </button>
+                </div>
+              </th>
+
+              <th>
+                <div class="">
+                  <button>
+                    Volume
+                    <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bott"></use></svg>
+                  </button>
+                </div>
+              </th>
+
+              <th>
+                <div class="">
+                  <button>
+                    24h
+                    <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bott"></use></svg>
+                  </button>
+                </div>
+              </th>
+
+              <th>
+                <div class="">
+                  <button>
+                    Launch Date
+                    <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bott"></use></svg>
+                  </button>
+                </div>
+              </th>
+
+              <th>
+                <div class="">
+                  <button>
+                    Votes
+                    <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bott"></use></svg>
+                  </button>
+                </div>
+              </th>
+
+              <th>
+                <div class="">
+                  <button>
+                    Votes 24
+                    <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bott"></use></svg>
+                  </button>
+                </div>
+              </th>
+
+              <th>
+                <div class="">
+                  <span>Vote</span>
+                </div>
+              </th>
+            </tr>
+          </thead>
+
+          <tbody>
+          {% for data_coin in page_obj.object_list %}
+            <tr>
+              <td>
+                <span class="coin-table__num">{{ data_coin.coin_table__num }}</span>
+              </td>
+
+              <td>
+                <div class="coin-table__name">
+                  <span class="coin-table__num">{{ data_coin.coin_table__num }}</span>
+                  <a href="#" class="coin-table__name-left">
+                    <img src="{% static 'app/img/Image3.png' %}" alt="">
+                    <div class="coin-table__name-info">
+                      <span class="name">Meta Masters Guild</span>
+                      <span class="label">Cheap Master Prod.</span>
+                    </div>
+                  </a>
+
+                  <div class="coin-table__name-tags">
+                    <a href="#" class="coin-table__name-tag green">KYC</a>
+                  </div>
+                </div>
+              </td>
+
+              <td>
+                <div class="coin-table__chain">
+                  <img src="{% static 'app/img/eth.svg' %}" alt="">
+                  <span>ETH</span>
+                </div>
+              </td>
+
+              <td>
+                <div class="coin-table__cap">
+                  $1,584.53
+                </div>
+              </td>
+
+
+              <td>
+                <div class="coin-table__price">
+                  $1,584.53
+                </div>
+              </td>
+
+              <td>
+                <div class="coin-table__volume">
+                  <span class="value">$26,721,855,845</span>
+                  <span class="label">1,157,275 BTC</span>
+                </div>
+              </td>
+
+
+              <td>
+                <div class="coin-table__24h">
+                  <span class="cost down">
+                    <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-up"></use></svg>
+                    5.93%</span>
+                </div>
+              </td>
+
+              <td>
+                <div class="coin-table__date">
+                  <span>In 2 months</span>
+                </div>
+              </td>
+
+              <td>
+                <div class="coin-table__votes">
+                  <span>1, 302, 000</span>
+                </div>
+              </td>
+
+              <td>
+                <div class="coin-table__votes24h">
+                  <span class="cost up">
+                    <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-up"></use></svg>
+                    1, 300, 941%</span>
+                </div>
+              </td>
+
+              <td>
+                <div class="coin-table__vote">
+                  <button class="btn btn_light btn_light-check"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg> Vote</button>
+                </div>
+              </td>
+            </tr>
+          {% endfor %}
+
+          </tbody>
+        </table>
+      </div>
+
+      <div class="coin-table__nav">
+        <div class="coin-table__nav-top">
+          <div class="coin-table__nav-info">
+            Showing 1 - 10  out 545
+            <p>Page:  {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</p>
+            <p>Page Range:  {{ page_obj.paginator.page_range }} .</p>
+            <p>Current Page:  {{ page_obj.number }} .</p>
+            <p>Current Page + 3:  {{ page_obj.number|add:'3' }} .</p>
+            <p>Page obj coins:  {{ page_obj }} .</p>
+            <p>page_number:  {{ page_number }} .</p>
+          </div>
+
+          <button class="coin-table__nav-more">Show More</button>
+
+          <div class="show-rows-filter show-rows-filter2">
+            <button class="show-rows-filter__current">Show rows <span>{{ rows_number }} <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bottom"></use></svg></span></button>
+            <div class="trending-coins__filter-sublist">
+              <svg class="polygon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sublist-polygon"></use></svg>
+              {% for select_number in select_number_lines %}
+                <button class="trending-coins__filter-sublist-item {% if select_number == rows_number %}active{% endif %}">
+                  {{ select_number }} <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg>
+                </button>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <div class="coin-table__nav-pagination">
+          <button class="coin-table__nav-pagination-button"><svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrowLeft"></use></svg></button>
+          <ul class="coin-table__nav-pagination-list">
+
+            {% for page in pagination %}
+                {% if page == '...' %}
+                  <li><a href="#">{{ page }}</a></li>
+                {% elif page == page_number %}
+                  <li class="active"><a href="#">{{ page }}</a></li>
+
+                {% else %}
+                  {% if page == 1 %}
+                    <li><a href="{% url 'index' %}">{{ page }}</a></li>
+                  {% else %}
+                    <li><a href="?page={{ page }}">{{ page }}</a></li>
+                  {% endif %}
+                {% endif %}
+            {% endfor %}
+
+          </ul>
+          <button class="coin-table__nav-pagination-button"><svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrowRight"></use></svg></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="blog-slider">
+    <div class="blog-slider__wrap container">
+      <div class="blog-slider__swiper swiper">
+        <div class="swiper-wrapper">
+          <div class="blog-slider__item swiper-slide">
+            <a href="#" class="blog-slider__item-link">
+              <img src="{% static 'app/img/article.jpg' %}" alt="" class="blog-slider__item-image">
+            </a>
+            <div class="blog-slider__item-date">Published April 27, 2022</div>
+            <a href="#" class="blog-slider__item-title">The Future of Cryptocurrency: 5 Predictions for 2023</a>
+            <div class="blog-slider__item-tags">
+              <a href="#" class="blog-slider__item-tag">Price predictions</a>
+              <a href="#" class="blog-slider__item-tag">NFT</a>
+            </div>
+
+            <div class="blog-slider__item-author">
+              <a href="#"><img src="{% static 'app/img/author.png' %}" alt=""></a>
+              <div class="info">
+                <div class="label">Author</div>
+                <a href="#" class="name">Konstantins Zabello</a>
+              </div>
+            </div>
+          </div>
+          <div class="blog-slider__item swiper-slide">
+            <a href="#" class="blog-slider__item-link">
+              <img src="{% static 'app/img/article.jpg' %}" alt="" class="blog-slider__item-image">
+            </a>
+            <div class="blog-slider__item-date">Published April 27, 2022</div>
+            <a href="#" class="blog-slider__item-title">The Future of Cryptocurrency: 5 Predictions for 2023</a>
+            <div class="blog-slider__item-tags">
+              <a href="#" class="blog-slider__item-tag">Price predictions</a>
+              <a href="#" class="blog-slider__item-tag">NFT</a>
+            </div>
+
+            <div class="blog-slider__item-author">
+              <a href="#"><img src="{% static 'app/img/author.png' %}" alt=""></a>
+              <div class="info">
+                <div class="label">Author</div>
+                <a href="#" class="name">Konstantins Zabello</a>
+              </div>
+            </div>
+          </div>
+          <div class="blog-slider__item swiper-slide">
+            <a href="#" class="blog-slider__item-link">
+              <img src="{% static 'app/img/article.jpg' %}" alt="" class="blog-slider__item-image">
+            </a>
+            <div class="blog-slider__item-date">Published April 27, 2022</div>
+            <a href="#" class="blog-slider__item-title">The Future of Cryptocurrency: 5 Predictions for 2023</a>
+            <div class="blog-slider__item-tags">
+              <a href="#" class="blog-slider__item-tag">Price predictions</a>
+              <a href="#" class="blog-slider__item-tag">NFT</a>
+            </div>
+
+            <div class="blog-slider__item-author">
+              <a href="#"><img src="{% static 'app/img/author.png' %}" alt=""></a>
+              <div class="info">
+                <div class="label">Author</div>
+                <a href="#" class="name">Konstantins Zabello</a>
+              </div>
+            </div>
+          </div>
+          <div class="blog-slider__item swiper-slide">
+            <a href="#" class="blog-slider__item-link">
+              <img src="{% static 'app/img/article.jpg' %}" alt="" class="blog-slider__item-image">
+            </a>
+            <div class="blog-slider__item-date">Published April 27, 2022</div>
+            <a href="#" class="blog-slider__item-title">The Future of Cryptocurrency: 5 Predictions for 2023</a>
+            <div class="blog-slider__item-tags">
+              <a href="#" class="blog-slider__item-tag">Price predictions</a>
+              <a href="#" class="blog-slider__item-tag">NFT</a>
+            </div>
+
+            <div class="blog-slider__item-author">
+              <a href="#"><img src="{% static 'app/img/author.png' %}" alt=""></a>
+              <div class="info">
+                <div class="label">Author</div>
+                <a href="#" class="name">Konstantins Zabello</a>
+              </div>
+            </div>
+          </div>
+          <div class="blog-slider__item swiper-slide">
+            <a href="#" class="blog-slider__item-link">
+              <img src="{% static 'app/img/article.jpg' %}" alt="" class="blog-slider__item-image">
+            </a>
+            <div class="blog-slider__item-date">Published April 27, 2022</div>
+            <a href="#" class="blog-slider__item-title">The Future of Cryptocurrency: 5 Predictions for 2023</a>
+            <div class="blog-slider__item-tags">
+              <a href="#" class="blog-slider__item-tag">Price predictions</a>
+              <a href="#" class="blog-slider__item-tag">NFT</a>
+            </div>
+
+            <div class="blog-slider__item-author">
+              <a href="#"><img src="{% static 'app/img/author.png' %}" alt=""></a>
+              <div class="info">
+                <div class="label">Author</div>
+                <a href="#" class="name">Konstantins Zabello</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <button class="blog-slider__button blog-slider__button_prev"><svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrowLeft"></use></svg></button>
+        <button class="blog-slider__button blog-slider__button_next"><svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrowRight"></use></svg></button>
+
+        <div class="blog-slider__pagination"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="partners-slider">
+    <div class="partners-slider__wrap container">
+      <span class="h2">Our Partners</span>
+      <div class="partners-slider__swiper swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="{% static 'app/img/rt.png' %}" width="54" alt=""></div>
+          <div class="swiper-slide"><img src="{% static 'app/img/bogged.png' %}" width="49" alt=""></div>
+          <div class="swiper-slide"><img src="{% static 'app/img/arken.png' %}" width="131" alt=""></div>
+          <div class="swiper-slide"><img src="{% static 'app/img/gempad.png' %}" width="129" alt=""></div>
+          <div class="swiper-slide"><img src="{% static 'app/img/staysafu.png' %}" width="62" alt=""></div>
+          <div class="swiper-slide"><img src="{% static 'app/img/bscheck.png' %}" width="133" alt=""></div>
+          <div class="swiper-slide"><img src="{% static 'app/img/mobula.png' %}" width="134" alt=""></div>
+          <div class="swiper-slide"><img src="{% static 'app/img/moonscan.png' %}" width="74" alt=""></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="partners-slider">
+    <div class="partners-slider__wrap container">
+      <span class="h2">Trusted By</span>
+      <div class="partners-slider__swiper partners-slider__swiper_reverse swiper" dir="rtl">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="{% static 'app/img/nbx.png' %}" width="68" alt=""></div>
+          <div class="swiper-slide"><img src="{% static 'app/img/coinGecko.png' %}" width="146" alt=""></div>
+          <div class="swiper-slide"><img src="{% static 'app/img/dapp.png' %}" width="127" alt=""></div>
+          <div class="swiper-slide"><img src="{% static 'app/img/coinCodex.png' %}" width="128" alt=""></div>
+          <div class="swiper-slide"><img src="{% static 'app/img/prodHunt.png' %}" width="160" alt=""></div>
+          <div class="swiper-slide"><img src="{% static 'app/img/fintechtools.png' %}" width="141" alt=""></div>
+          <div class="swiper-slide"><img src="{% static 'app/img/immerse.png' %}" width="117" alt=""></div>
+          <div class="swiper-slide"><img src="{% static 'app/img/coinMarketCap.png' %}" width="135" alt=""></div>
+          <div class="swiper-slide"><img src="{% static 'app/img/lciw.png' %}" width="164" alt=""></div>
+          <div class="swiper-slide"><img src="{% static 'app/img/dappradar.png' %}" width="146" alt=""></div>
+          <div class="swiper-slide"><img src="{% static 'app/img/blockspot.png' %}" width="147" alt=""></div>
+          <div class="swiper-slide"><img src="{% static 'app/img/dappbay.png' %}" width="125" alt=""></div>
+          <div class="swiper-slide"><img src="{% static 'app/img/bsc.png' %}" width="153" alt=""></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="media-slider">
+    <div class="media-slider__wrap container">
+      <span class="h2">Media Presence</span>
+      <div class="media-slider__swiper swiper">
+        <div class="swiper-wrapper">
+          <div class="media-slider__item swiper-slide">
+            <img src="{% static 'app/img/article.jpg' %}" alt="" class="media-slider__item-image">
+            <div class="media-slider__item-date">Published April 27, 2022 <span>|</span> 7 min read</div>
+            <a href="#" class="media-slider__item-title">Guide on Crypto Liquidity Provider 2022</a>
+            <a href="#" class="media-slider__item-link">Read More</a>
+          </div>
+          <div class="media-slider__item swiper-slide">
+            <img src="{% static 'app/img/article.jpg' %}" alt="" class="media-slider__item-image">
+            <div class="media-slider__item-date">Published April 27, 2022 <span>|</span> 7 min read</div>
+            <a href="#" class="media-slider__item-title">BlockFi vs. Defi vs. TradFi: Differences and Similarities</a>
+            <a href="#" class="media-slider__item-link">Read More</a>
+          </div>
+          <div class="media-slider__item swiper-slide">
+            <img src="{% static 'app/img/article.jpg' %}" alt="" class="media-slider__item-image">
+            <div class="media-slider__item-date">Published April 27, 2022 <span>|</span> 7 min read</div>
+            <a href="#" class="media-slider__item-title">BlockFi vs. Defi vs. TradFi: Differences and Similarities</a>
+            <a href="#" class="media-slider__item-link">Read More</a>
+          </div>
+        </div>
+
+        <button class="media-slider__button media-slider__button_prev"><svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrowLeft"></use></svg></button>
+        <button class="media-slider__button media-slider__button_next"><svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrowRight"></use></svg></button>
+
+        <div class="media-slider__pagination"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="most-popular">
+    <div class="most-popular__wrap container">
+      <img src="{% static 'app/img/most-popular.svg' %}" alt="">
+      <div class="most-popular__text">
+        <h2>CoinMooner - The most popular new cryptocurrency listing and ranking website</h2>
+        <p>Coinmooner is a well-known and respected brand within the cryptocurrency world. We are the most popular cryptocurrency listing and ranking website. New token owners always look for opportunities to list their projects on our website. That ensures that the information on our platform is always accessible and up to date. <br> <br>
+          Most of the cryptocurrencies are listed on CoinMooner even before they are listed on CoinMarketCap & CoinGecko.
+        </p>
+      </div>
+
+      <div class="most-popular__text">
+        <h3>Find DeFi tokens that will generate huge profits</h3>
+        <p>CoinMooner became a platform that makes cryptocurrencies more accessible to the public and provides entertaining features, developments, crypto-related news, tutorials, and other valuable materials. One of the main goals is to stay relevant and keep up with the rapid growth of crypto. <br> <br>
+          To follow our ideology, we developed state-of-the-art mechanisms and features that allow our visitors to analyze the tokens. Our visitors can use various rankings, filtering options, token contract audits, charts, trading history, and many other valuable options. All of this combined brings consistent results!</p>
+      </div>
+
+      <div class="most-popular__text">
+        <h3>How does CoinMooner work, and how to list a project?</h3>
+        <p>All new cryptocurrency projects can be submitted using the "Submit Token" form. Once the project is submitted, it will be checked by our support staff. If everything is correct, the project will be listed under the "NEW" tab on the main page, and the project's community can start voting. Votes are an essential part of the overall success of the project. The more votes a project gets, the higher its ranking is and, thus, the more exposure and engagement it gets. <br> <br>
+          We monitor new projects every day without exceptions. Our competent support is monitoring new information and updates daily - 24/7.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="subscribe">
+    <div class="subscribe__wrap container">
+      <div class="subscribe__form-wrap">
+        <div class="subscribe__form-wrap-container">
+          <div class="subscribe__text">
+            <span class="h2">Subscribe to our newsletter</span>
+            <p>Get the best high potential coins right into your inbox</p>
+          </div>
+
+          <div class="subscribe__form">
+            <div class="subscribe__form-top">
+              <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-mail"></use></svg>
+              <input type="text" placeholder="Your e-mail...">
+              <button type="submit">Subscribe</button>
+            </div>
+
+            <div class="subscribe__form-check">
+              <label for="" class="checkbox">
+                <input type="checkbox">
+                <span class="check"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg></span>
+              </label>
+              <p>Feel free to unsubscribe anytime. Check our <a href="#">Terms of use</a> and <a href="#">Privacy Policy</a> here.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+<script src="{% static 'app/js/jq/jquery-3.7.1.min.js' %}"></script>
+<script>var csrf_token = "{{ csrf_token }}";</script>
+<script type="module" src="{% static 'app/js/index_control.js' %}"></script>
+{% endblock %}
