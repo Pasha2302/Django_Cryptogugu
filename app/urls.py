@@ -1,4 +1,3 @@
-# chat/urls.py
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -14,6 +13,8 @@ urlpatterns = [
 
     path("airdrops/", views.airdrops, name="airdrops"),
     path("promote/", views.promote, name="promote"),
+
+    path("clear-settings/", views.clear_settings, name="clear_settings"),
 
     # path('accounts/profile/', views.profile_view, name='profile'),
     # path("slots/<slug:slug_slot>", views.one_slot, name="one_slot"),

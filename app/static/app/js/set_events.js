@@ -128,16 +128,12 @@ var setBannerBlockRecapcha = () => {
 
 
 var getUserId = () => {
-
-  if (!document.cookie.includes('userId=')) {
-    fetch('get-user-id/')
-      .then(response => response.json())
-      .then(data => {
-        document.cookie = `userId=${data.user_id}; path=/`;
-      })
-      .catch(error => console.error('Error fetching unique ID:', error));
-  }
-
+  fetch('get-user-id/')
+    .then(response => response.json())
+    .then(data => {
+      document.cookie = `userId=${data.user_id}; path=/`;
+    })
+    .catch(error => console.error('Error fetching unique ID:', error));
 }
 
 

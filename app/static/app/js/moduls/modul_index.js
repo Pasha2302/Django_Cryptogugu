@@ -11,9 +11,9 @@ var setObserverTrendingCoins = () => {
   const callback = function(mutationsList, observer) {
       for(let mutation of mutationsList) {
           if (mutation.type === 'childList') {
-              console.log('\nИзменение в дочерних элементах:');
-              console.log('mutation:', mutation);
-              console.log('observer:', observer);
+              // console.log('\nИзменение в дочерних элементах:');
+              // console.log('mutation:', mutation);
+              // console.log('observer:', observer);
               // setShowRowsNumber();
               // setNextBackPages();
               document.querySelector('.open-filters').scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -40,8 +40,8 @@ var setEventTrendingCoins = (listSearchElements, dropdownManager) => {
       for (var searchObj of listSearchElements) {
         var trigger = document.querySelector(searchObj.triggerSelector);
         if ( composedPath.includes(trigger) ) {
-          console.log("\nElement Event Trending Coins: ", _event.target);
-          console.log("\nComposed Path: ", composedPath);
+          // console.log("\nElement Event Trending Coins: ", _event.target);
+          // console.log("\nComposed Path: ", composedPath);
           document.querySelector(searchObj.targetSelector).classList.toggle(searchObj.className);
           dropdownManager.closeOnClickOutside(searchObj.targetSelector, searchObj.className);
         }
@@ -94,7 +94,7 @@ var requestServer = (_url, _method, query_data = null) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-        console.log("\ncontent-type", response.headers.get("content-type"));
+        // console.log("\ncontent-type", response.headers.get("content-type"));
         return response.json();
       })
       .then((data) => {
@@ -130,12 +130,34 @@ var setOpenAndCloseFilters = () => {
 };
 
 
+var loadCoins = (data) => {
+  var urlParams = new URLSearchParams(window.location.search);  // Получаем текущий номер страницы из URL
+  var currentPage = parseInt(urlParams.get('page')) || 1;
+  data['currentPage'] = currentPage;
+  data['per_page'] = document.querySelector('.show-rows-filter__current span').textContent;
+
+  requestServer(
+    "set-settings-user/",
+    "POST",
+    data
+  ).then((data) => {
+      // var targetBlock = document.querySelector('.trending-coins');
+      // console.log('\n[setShowRowsNumber] data ', data)
+      var targetBlock = document.querySelector('.trending-coins .coin-table tbody');
+      var targetBlockPagination = document.querySelector('.coin-table__nav-pagination');
+      targetBlock.innerHTML = data.html;
+      targetBlockPagination.innerHTML = data.pagination;
+      setNextBackPages();
+    });
+}
+
+
 function setShowRowsNumber() {
   var showRowsBlocks = document.querySelectorAll('.show-rows-filter__current');
 
   for (var elm of showRowsBlocks) {
     var parentBlock = elm.parentNode;
-    console.log('\nParent Block:', parentBlock)
+    // console.log('\nParent Block:', parentBlock)
 
     parentBlock.querySelectorAll('.trending-coins__filter-sublist-item').forEach(function(item) {
       item.addEventListener('click', function() {
@@ -157,19 +179,8 @@ function setShowRowsNumber() {
           
           // Закрываем выпадающее меню (если это требуется)
           this.closest('.show-rows-filter').classList.remove('open');
-          
-          var urlParams = new URLSearchParams(window.location.search);  // Получаем текущий номер страницы из URL
-          var currentPage = parseInt(urlParams.get('page')) || 1;
+          loadCoins( {} );
 
-          requestServer(
-            "set-settings-user/",
-            "POST",
-            { per_page: rowsNumber, currentPage }
-          ).then((data) => {
-              // var targetBlock = document.querySelector('.trending-coins');
-              var targetBlock = document.querySelector('.trending-coins .coin-table tbody');
-              targetBlock.innerHTML = data.html;
-            });
       });
 
     });
@@ -207,31 +218,118 @@ function setNextBackPages() {
 
 function setShowMore() {
   var showMoreButton = document.querySelector('.coin-table__nav-more');
-  var navPaginationList = document.querySelector('.coin-table__nav-pagination-list');
-  var currentPage = parseInt(navPaginationList.querySelector('li.active a').textContent);
-  var pageNumbers = navPaginationList.querySelectorAll('a');
-  var endPageNumber = Number(pageNumbers[pageNumbers.length - 1].textContent);
-
-  var morePage = 0;
+  var clickCounter = 1;
 
   showMoreButton.addEventListener('click', function(_event) {
-    console.log('\nShow More Button Event:', _event);
-    if (currentPage < endPageNumber) {
-      if (morePage === 0) morePage = (currentPage + 1)
-      else morePage += 1
+    var navPaginationList = document.querySelector('.coin-table__nav-pagination-list');
+    var pageNumbers = navPaginationList.querySelectorAll('a');
+    var endPageNumber = Number(pageNumbers[pageNumbers.length - 1].textContent);
+    var morePage = parseInt(navPaginationList.querySelector('li.active a').textContent) + clickCounter;
+    // console.log('\nShow More Button Event:', _event);
+    
+    console.log(`\nMore Page: ${morePage} // End Page: ${endPageNumber}`);
+    if (morePage <= endPageNumber) {
+      var per_page = document.querySelector('.show-rows-filter__current span').textContent;
+      requestServer(
+        "show-more/",
+        "POST",
+        { morePage, per_page }
+      ).then((data) => {
+          // console.log('\nShow More Button Data:', data);
+          var targetBlock = document.querySelector('.trending-coins .coin-table tbody');
+          targetBlock.innerHTML += data.coins_html;
+          clickCounter += 1;
+        });
     }
 
-    requestServer(
-      "show-more/",
-      "POST",
-      { morePage }
-    ).then((data) => {
-        console.log('\nShow More Button Data:', data);
-        var targetBlock = document.querySelector('.trending-coins .coin-table tbody');
-        targetBlock.innerHTML += data.coins_html;
-      });
-
   })
+
+}
+
+
+var setEventResetFilters = () => {
+  var resetFiltersButton = document.querySelector('button.trending-coins__filter-item-reset');
+  var buttonsElms = document.querySelectorAll('button.trending-coins__filter-item');
+  var filteredButtons = Array.from(buttonsElms).filter(button => !button.classList.contains('trending-coins__filter-item_sub'));
+  
+  var sublist = document.querySelector('.trending-coins__filter-item-sub');
+  var buttonChain = sublist.querySelector('.trending-coins__filter-item.trending-coins__filter-item_sub');
+  var subItemsButton = sublist.querySelectorAll('button.trending-coins__filter-sublist-item');
+
+  resetFiltersButton.addEventListener('click', (_event) => {
+    buttonChain.firstChild.nodeValue = ' Chain ';
+
+    var filter_item = [];
+    filteredButtons.forEach( (elm) => {
+      elm.classList.remove('active');
+      if (elm.dataset.info === 'all_time_best') elm.classList.add('active');
+      
+      filter_item.push( {data_info: elm.dataset.info, active: elm.classList.contains('active')} )
+    });
+
+    subItemsButton.forEach( (elm) => {
+      elm.classList.remove('active');
+    });
+
+    filter_item.push( {data_info: 'item_sub_symbol', active: 'None'} )
+    loadCoins( {filter_item} );
+
+  });
+}
+
+
+var setEventTrendingCoinsFilterItemSublist = () => {
+  var sublist = document.querySelector('.trending-coins__filter-item-sub');
+  var buttonChain = sublist.querySelector('.trending-coins__filter-item.trending-coins__filter-item_sub');
+
+  var subItemsButton = sublist.querySelectorAll('button.trending-coins__filter-sublist-item');
+
+  for (var button of subItemsButton) {
+    button.addEventListener('click', (_event) => {
+      var elmEvent = _event.target;
+      var info = elmEvent.dataset.info;
+      buttonChain.firstChild.nodeValue = `Chain: ${elmEvent.textContent}`;
+
+      subItemsButton.forEach( (elm) => elm.classList.remove('active'));
+      elmEvent.classList.add('active');
+
+      loadCoins( {filter_item: [ {data_info: 'item_sub_symbol', active: info} ]} );
+    })
+  }
+}
+
+
+
+var setEventTrendingCoinsFilterItem = () => {
+  var buttonsElms = document.querySelectorAll('button.trending-coins__filter-item');
+  var filteredButtons = Array.from(buttonsElms).filter(button => !button.classList.contains('trending-coins__filter-item_sub'));
+
+  for (var button of filteredButtons) {
+    button.addEventListener('click', (_event) => {
+      var elmEvent = _event.target;
+      var info = elmEvent.dataset.info;
+      
+      if (info === 'all_time_best') {
+        document.querySelector('button.trending-coins__filter-item[data-info="today_hot"]').classList.remove('active');
+        if (elmEvent.classList.contains('active')) return;
+      }
+
+      if (info === 'today_hot') {
+        document.querySelector('button.trending-coins__filter-item[data-info="all_time_best"]').classList.remove('active');
+        if (elmEvent.classList.contains('active')) return;
+      };
+
+      elmEvent.classList.toggle('active');
+
+      var filter_item = [];
+      filteredButtons.forEach( (elm) => {
+        filter_item.push( {data_info: elm.dataset.info, active: elm.classList.contains('active')} )
+      })
+
+      loadCoins( {filter_item} );
+
+    })
+  }
 
 }
 
@@ -244,4 +342,9 @@ export {
   setShowRowsNumber,
 
   setShowMore,
+
+  setEventTrendingCoinsFilterItem,
+  setEventTrendingCoinsFilterItemSublist,
+  setEventResetFilters,
+
 };

@@ -1,22 +1,67 @@
-import uuid
+import json
 from itertools import chain
 from django.core.paginator import Paginator
 from django.http import HttpRequest
 
-from app.data_coins import get_data_coins
-from app.models import UserSettings
+from app.controllers_views.controllers_settings_user import SettingsManager
+from app.models import Coin
+from django.utils import timezone
+from datetime import timedelta
+from django.utils.translation import gettext as _
+
+
+class FilterCoin:
+    def __init__(self, settings: SettingsManager):
+        self.__data_coins = Coin.objects.all()
+
+        if settings.user_settings_obj:
+            if settings.user_settings_obj.all_time_best:
+                self.__data_coins = Coin.objects.order_by('-votes')
+            elif settings.user_settings_obj.today_hot:
+                self.__data_coins = Coin.objects.order_by('-votes24h')
+
+            if settings.user_settings_obj.presale:
+                self.__data_coins = self.__data_coins.filter(market_cap_presale=True)
+
+            if settings.user_settings_obj.audited:
+                self.__data_coins = self.__data_coins.filter(tags__contains=["Audited"])
+
+            if settings.user_settings_obj.doxxed:
+                self.__data_coins = self.__data_coins.filter(tags__contains=["Doxxed"])
+
+            if settings.user_settings_obj.new:
+                twelve_hours_ago = timezone.now() - timedelta(hours=12)
+                self.__data_coins = self.__data_coins.filter(created_at__gte=twelve_hours_ago)
+
+            if settings.user_settings_obj.item_sub_symbol and settings.user_settings_obj.item_sub_symbol != 'None':
+                self.__data_coins = self.__data_coins.filter(chain=settings.user_settings_obj.item_sub_symbol.upper())
+
+            # self.print_time_since_creation()
+
+    def get_coins(self):
+        return self.__data_coins
+
+    def print_time_since_creation(self):
+        for coin in self.__data_coins:
+            time_since_creation = timezone.now() - coin.created_at
+            print(f"\n\n{coin.name} was created {time_since_creation} ago")
+
 
 
 class IndexContextManager:
-    def __init__(self, request: HttpRequest, current_page=None):
-        self.__user_id_str = request.COOKIES.get('userId')
+    def __init__(self, request: HttpRequest):
+        self.settings = SettingsManager(request)
+        self.customer_data = self.settings.customer_data
+
         self.current_uri = request.build_absolute_uri()
         self.base_url = self.__get_base_url()
-        self.__data_coins = get_data_coins(count_data=1000)
-        self.__per_page = abs(self.__get_per_page())
+
+        self.__data_coins = FilterCoin(self.settings).get_coins()
+        self.__per_page = self.settings.per_page
         self.__paginator = Paginator(self.__data_coins, self.__per_page)
 
-        if current_page is not None: self.__page_number = current_page
+        if self.customer_data.get('currentPage') is not None: self.__page_number = self.customer_data['currentPage']
+        elif self.customer_data.get('morePage') is not None: self.__page_number = self.customer_data['morePage']
         else: self.__page_number = self.__get_page_number(request)
 
         if self.__page_number > self.__paginator.num_pages:
@@ -26,21 +71,24 @@ class IndexContextManager:
         self.nex_page = self.base_url + f"/?page={self.__page_number + 1}"
         self.prev_page = self.__get_prev_page()
 
+        self.__page_obj = self.__get_page_obj()
         self.__context = {
             'menu_items': [
-                {'name': 'Coin Ranking', 'url': 'index'},
-                {'name': 'Airdrops', 'url': 'airdrops'},
-                {'name': 'Promotion', 'url': '#'},
-                {'name': 'Games', 'url': '#'},
-                {'name': 'Free Signals', 'url': '#'},
-                {'name': 'About Us', 'url': '#'},
+                {'name': _('Coin Ranking'), 'url': 'index'},
+                {'name': _('Airdrops'), 'url': 'airdrops'},
+                {'name': _('Promotion'), 'url': '#'},
+                {'name': _('Games'), 'url': '#'},
+                {'name': _('Free Signals'), 'url': '#'},
+                {'name': _('About Us'), 'url': '#'},
             ],
 
             'select_number_lines': [10, 20, 50, 100, ],
 
             'rows_number': self.__per_page,
-            'page_obj': self.__get_page_obj(),
+            'page_obj': self.__page_obj,
             'paginator': self.__paginator,
+            'page_start_index': (self.__page_obj.number - 1) * self.__page_obj.paginator.per_page,
+
             'page_number': self.__page_number,
             'pagination': self.__calculate_pagination(),
             'page_title': self.__get_page_title(),
@@ -48,6 +96,8 @@ class IndexContextManager:
             'nex_page': self.nex_page,
             'prev_page': self.prev_page,
             'current_uri': self.current_uri if self.__page_number > 1 else self.base_url,
+
+            'filter_item': self.settings.get_filter_item(),
         }
 
     def get_context(self) -> dict:
@@ -66,17 +116,6 @@ class IndexContextManager:
         if request.POST.get('page'):
             page_number = abs(int(request.POST.get('page')))
         return page_number
-
-    def __get_per_page(self):
-        per_page = 10
-        if self.__user_id_str is not None:
-            try:
-                user_id = uuid.UUID(self.__user_id_str)
-                user_settings = UserSettings.objects.get(user_id=user_id)
-                per_page = user_settings.per_page
-            except UserSettings.DoesNotExist:
-                print('\nПользователь Не Найден в Базе!')
-        return per_page
 
     def __get_prev_page(self):
         return self.base_url + f"/?page={self.__page_number - 1}" if self.__page_number > 2 else self.base_url

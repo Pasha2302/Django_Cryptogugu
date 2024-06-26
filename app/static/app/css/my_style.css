@@ -1,5 +1,5 @@
 
-
-h1 {
-    background: #000000;
+/* Подсветка кнопки при нажатии */
+.coin-table thead button.active {
+    color: var(--yellow);
 }

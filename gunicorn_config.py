@@ -31,10 +31,10 @@ max_requests_jitter = 50
 # workers = multiprocessing.cpu_count() * 2 + 1
 
 # Настройка логирования:
-loglevel = 'debug' # Увеличить уровень логирования:
-errorlog = './gunicorn-error.log'
-accesslog = './gunicorn-access.log'
-access_log_format = '%(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"'
+# loglevel = 'debug' # Увеличить уровень логирования:
+# errorlog = './gunicorn-error.log'
+# accesslog = './gunicorn-access.log'
+# access_log_format = '%(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"'
 
 
 # Запуск асинхронного Uvicorn:

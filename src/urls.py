@@ -1,13 +1,17 @@
+# cryptogugu/src/urls.py
 from django.conf import settings
 from django.conf.urls.static import static
-
-from django.contrib import admin
+from django.conf.urls.i18n import i18n_patterns
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path("", include("app.urls")),
+    path('i18n/', include('django.conf.urls.i18n')),  # Включаем стандартные URL для изменения языка
 ]
+
+urlpatterns += i18n_patterns(
+    path("", include("app.urls")),  # Включаем приложение 'app'
+    # Добавьте другие включения и пути по необходимости
+)
 
 
 if settings.DEBUG:

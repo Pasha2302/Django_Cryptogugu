@@ -1,7 +1,12 @@
 {% extends "app/base.html" %}
 
+{% load i18n %}
+{% load static %}
+
 
 {% block link %}
+<link rel="stylesheet" href="{% static 'app/css/my_style.css' %}">
+
 <link rel="next" href="{{ nex_page }}" />
 <link rel="prev" href="{{ prev_page }}" />
 <link rel="canonical" href="{{ current_uri }}" />
@@ -9,7 +14,6 @@
 
 
 {% block content %}
-{% load static %}
 
 <title>{% block title %}{{ page_title }}{% endblock %}</title>
 
@@ -510,30 +514,40 @@
         </div>
 
         <div class="trending-coins__filters-items">
-          <button class="trending-coins__filter-item">
-            <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-fire"></use></svg>
-            Today`s Hot
-          </button>
-          <button class="trending-coins__filter-item">All Time Best</button>
-          <button class="trending-coins__filter-item">GemPad</button>
-          <button class="trending-coins__filter-item">New</button>
-          <button class="trending-coins__filter-item">Presale</button>
-          <button class="trending-coins__filter-item">Doxxed</button>
-          <button class="trending-coins__filter-item">Audited</button>
+
+          {% for item in filter_item.item %}
+            {% if item.data_info == 'today_hot' %}
+              <button class="trending-coins__filter-item {% if item.active %}active{% endif %}" data-info="today_hot">
+                <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-fire"></use></svg>
+                Today`s Hot
+              </button>
+            {% else %}
+              <button class="trending-coins__filter-item {% if item.active %}active{% endif %}" data-info="{{ item.data_info }}">
+                {{ item.title }}
+              </button>
+            {% endif %}
+          {% endfor %}
+
           <div class="trending-coins__filter-item-sub">
             <button class="trending-coins__filter-item trending-coins__filter-item_sub">
-              Chain <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bottom"></use></svg>
+              {{ filter_item.chain_button_title }} <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bottom"></use></svg>
             </button>
             <svg class="polygon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sublist-polygon"></use></svg>
 
             <div class="trending-coins__filter-sublist">
-              <button class="trending-coins__filter-sublist-item active">Ethereum <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg></button>
-              <button class="trending-coins__filter-sublist-item">WAX <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg></button>
-              <button class="trending-coins__filter-sublist-item">SOLANA <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg></button>
-              <button class="trending-coins__filter-sublist-item">Binance Smart Chain <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg></button>
-              <button class="trending-coins__filter-sublist-item">Tron <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg></button>
+              {% for item_sub in filter_item.item_sub %}
+                <button class="trending-coins__filter-sublist-item {% if item_sub.active %}active{% endif %}" data-info="{{ item_sub.symbol }}">
+                  {{ item_sub.title }}
+                  <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg>
+                </button>
+              {% endfor %}
+<!--              <button class="trending-coins__filter-sublist-item">WAX <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg></button>-->
+<!--              <button class="trending-coins__filter-sublist-item">SOLANA <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg></button>-->
+<!--              <button class="trending-coins__filter-sublist-item">Binance Smart Chain <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg></button>-->
+<!--              <button class="trending-coins__filter-sublist-item">Tron <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg></button>-->
             </div>
           </div>
+
           <button class="trending-coins__filter-item-reset"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use></svg> Reset Filters</button>
         </div>
       </div>
@@ -584,7 +598,7 @@
 
               <th>
                 <div class="">
-                  <button>
+                  <button id="trending-price">
                     Price
                     <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bott"></use></svg>
                   </button>
@@ -645,94 +659,9 @@
           </thead>
 
           <tbody>
-          {% for data_coin in page_obj.object_list %}
-            <tr>
-              <td>
-                <span class="coin-table__num">{{ data_coin.coin_table__num }}</span>
-              </td>
-
-              <td>
-                <div class="coin-table__name">
-                  <span class="coin-table__num">{{ data_coin.coin_table__num }}</span>
-                  <a href="#" class="coin-table__name-left">
-                    <img src="{% static 'app/img/Image3.png' %}" alt="">
-                    <div class="coin-table__name-info">
-                      <span class="name">Meta Masters Guild</span>
-                      <span class="label">Cheap Master Prod.</span>
-                    </div>
-                  </a>
-
-                  <div class="coin-table__name-tags">
-                    <a href="#" class="coin-table__name-tag green">KYC</a>
-                  </div>
-                </div>
-              </td>
-
-              <td>
-                <div class="coin-table__chain">
-                  <img src="{% static 'app/img/eth.svg' %}" alt="">
-                  <span>ETH</span>
-                </div>
-              </td>
-
-              <td>
-                <div class="coin-table__cap">
-                  $1,584.53
-                </div>
-              </td>
-
-
-              <td>
-                <div class="coin-table__price">
-                  $1,584.53
-                </div>
-              </td>
-
-              <td>
-                <div class="coin-table__volume">
-                  <span class="value">$26,721,855,845</span>
-                  <span class="label">1,157,275 BTC</span>
-                </div>
-              </td>
-
-
-              <td>
-                <div class="coin-table__24h">
-                  <span class="cost down">
-                    <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-up"></use></svg>
-                    5.93%</span>
-                </div>
-              </td>
-
-              <td>
-                <div class="coin-table__date">
-                  <span>In 2 months</span>
-                </div>
-              </td>
-
-              <td>
-                <div class="coin-table__votes">
-                  <span>1, 302, 000</span>
-                </div>
-              </td>
-
-              <td>
-                <div class="coin-table__votes24h">
-                  <span class="cost up">
-                    <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-up"></use></svg>
-                    1, 300, 941%</span>
-                </div>
-              </td>
-
-              <td>
-                <div class="coin-table__vote">
-                  <button class="btn btn_light btn_light-check"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg> Vote</button>
-                </div>
-              </td>
-            </tr>
-          {% endfor %}
-
+            {% include 'app/components_html/coins_trending_component.html' %}
           </tbody>
+
         </table>
       </div>
 
@@ -764,27 +693,9 @@
         </div>
 
         <div class="coin-table__nav-pagination">
-          <button class="coin-table__nav-pagination-button"><svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrowLeft"></use></svg></button>
-          <ul class="coin-table__nav-pagination-list">
-
-            {% for page in pagination %}
-                {% if page == '...' %}
-                  <li><a href="#">{{ page }}</a></li>
-                {% elif page == page_number %}
-                  <li class="active"><a href="#">{{ page }}</a></li>
-
-                {% else %}
-                  {% if page == 1 %}
-                    <li><a href="{% url 'index' %}">{{ page }}</a></li>
-                  {% else %}
-                    <li><a href="?page={{ page }}">{{ page }}</a></li>
-                  {% endif %}
-                {% endif %}
-            {% endfor %}
-
-          </ul>
-          <button class="coin-table__nav-pagination-button"><svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrowRight"></use></svg></button>
+          {% include 'app/components_html/pagination_component.html' %}
         </div>
+
       </div>
     </div>
   </section>
