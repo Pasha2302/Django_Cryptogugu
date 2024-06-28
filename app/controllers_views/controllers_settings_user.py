@@ -12,9 +12,9 @@ def clear_data():
 
 def save_user(user=None):
     user_id = uuid.uuid4() if user is None else user
-    data_id, created = UserSettings.objects.get_or_create(user_id=user_id)
-    data = {'user_id': str(data_id.user_id)}
-    print(f"\n{data_id=}\n{created=}")
+    user_settings_obj = UserSettings.objects.get_or_create_default_settings(user_id)
+    data = {'user_id': str(user_settings_obj.user_id)}
+    print(f"\n{data=}")
     return data
 
 
@@ -27,7 +27,9 @@ class SettingsManager:
         if self.user_id_str is not None and self.user_id_str != 'null':
             print(f"{self.user_id_str=}")
             self.user_id = uuid.UUID(self.user_id_str)
-            self.user_settings_obj = UserSettings.objects.get(user_id=self.user_id)
+            self.user_settings_obj, _ = UserSettings.objects.get_or_create(user_id=self.user_id)
+        else:
+            self.user_settings_obj = UserSettings.objects.get_or_create_default_settings(user_id=None)
 
         if request.method == 'POST':
             self.customer_data = json.loads(request.body).get('data')
@@ -38,56 +40,54 @@ class SettingsManager:
 
 
     def get_filter_item(self):
-        if self.user_settings_obj is not None:
-            filter_item = {
-                'item': [
-                    {'data_info': 'today_hot', 'active': self.user_settings_obj.today_hot, 'title': 'Today`s Hot'},
-                    {'data_info': 'all_time_best', 'active': self.user_settings_obj.all_time_best, 'title': 'All Time Best'},
+        filter_item = {
+            'item': [
+                {'data_info': 'today_hot', 'active': self.user_settings_obj.today_hot, 'title': 'Today`s Hot'},
+                {'data_info': 'all_time_best', 'active': self.user_settings_obj.all_time_best, 'title': 'All Time Best'},
 
-                    {'data_info': 'gem_pad', 'active': self.user_settings_obj.gem_pad, 'title': 'GemPad'},
-                    {'data_info': 'new', 'active': self.user_settings_obj.new, 'title': 'New'},
-                    {'data_info': 'presale', 'active': self.user_settings_obj.presale, 'title': 'Presale'},
-                    {'data_info': 'doxxed', 'active': self.user_settings_obj.doxxed, 'title': 'Doxxed'},
-                    {'data_info': 'audited', 'active': self.user_settings_obj.audited, 'title': 'Audited'},
-                ],
-                # ['BSC', 'SOL', 'ETH', 'MATIC', 'TRON', 'BASE', 'TON', 'CRONOS', 'HARMONY', 'ETHEREUMFAIR', 'PULSECHAIN', 'ARBITRUM']
-                'item_sub': [
-                    {'active': False, 'title': 'Ethereum', 'symbol': 'eth'},
-                    {'active': False, 'title': 'WAX', 'symbol': 'wax'},
-                    {'active': False, 'title': 'SOLANA', 'symbol': 'sol'},
-                    {'active': False, 'title': 'Binance Smart Chain', 'symbol': 'bsc'},
-                    {'active': False, 'title': 'Tron', 'symbol': 'tron'},
-                ],
-                'chain_button_title': 'Chain',
+                {'data_info': 'gem_pad', 'active': self.user_settings_obj.gem_pad, 'title': 'GemPad'},
+                {'data_info': 'new', 'active': self.user_settings_obj.new, 'title': 'New'},
+                {'data_info': 'presale', 'active': self.user_settings_obj.presale, 'title': 'Presale'},
+                {'data_info': 'doxxed', 'active': self.user_settings_obj.doxxed, 'title': 'Doxxed'},
+                {'data_info': 'audited', 'active': self.user_settings_obj.audited, 'title': 'Audited'},
+            ],
+            # ['BSC', 'SOL', 'ETH', 'MATIC', 'TRON', 'BASE', 'TON', 'CRONOS', 'HARMONY', 'ETHEREUMFAIR', 'PULSECHAIN', 'ARBITRUM']
+            'item_sub': [
+                {'active': False, 'title': 'Ethereum', 'symbol': 'eth'},
+                {'active': False, 'title': 'WAX', 'symbol': 'wax'},
+                {'active': False, 'title': 'SOLANA', 'symbol': 'sol'},
+                {'active': False, 'title': 'Binance Smart Chain', 'symbol': 'bsc'},
+                {'active': False, 'title': 'Tron', 'symbol': 'tron'},
+            ],
+            'chain_button_title': 'Chain',
 
-            }
+            'head_filter': [
+                {'active': False, 'title': 'Market Cap', 'symbol': 'market_cap', 'sort': 'ASC'},
+                {'active': False, 'title': 'Price', 'symbol': 'price', 'sort': 'ASC'},
+                {'active': False, 'title': 'Volume', 'symbol': 'volume_usd', 'sort': 'ASC'},
+                {'active': False, 'title': '24h', 'symbol': 'price_change_24h', 'sort': 'ASC'},
+                {'active': False, 'title': 'Launch Date', 'symbol': 'launch_date', 'sort': 'ASC'},
+                {'active': False, 'title': 'Votes', 'symbol': 'votes', 'sort': 'ASC'},
+                {'active': False, 'title': 'Votes 24', 'symbol': 'votes24h', 'sort': 'ASC'},
+            ],
+        }
 
-            for item_sub in filter_item['item_sub']:
-                if item_sub['symbol'] == str(self.user_settings_obj.item_sub_symbol):
-                    item_sub['active'] = True
-                    filter_item['chain_button_title'] = f"Chain: {item_sub['title']}"
-        else:
-            filter_item = {
-                'item': [
-                    {'data_info': 'today_hot', 'active': False, 'title': 'Today`s Hot'},
-                    {'data_info': 'all_time_best', 'active': True, 'title': 'All Time Best'},
+        for item_sub in filter_item['item_sub']:
+            if item_sub['symbol'] == str(self.user_settings_obj.item_sub_symbol):
+                item_sub['active'] = True
+                filter_item['chain_button_title'] = f"Chain: {item_sub['title']}"
+                break
 
-                    {'data_info': 'gem_pad', 'active': False, 'title': 'GemPad'},
-                    {'data_info': 'new', 'active': False, 'title': 'New'},
-                    {'data_info': 'presale', 'active': False, 'title': 'Presale'},
-                    {'data_info': 'doxxed', 'active': False, 'title': 'Doxxed'},
-                    {'data_info': 'audited', 'active': False, 'title': 'Audited'},
-                ],
-                'item_sub': [
-                    {'active': False, 'title': 'Ethereum', 'symbol': 'eth'},
-                    {'active': False, 'title': 'WAX', 'symbol': 'wax'},
-                    {'active': False, 'title': 'SOLANA', 'symbol': 'sol'},
-                    {'active': False, 'title': 'Binance Smart Chain', 'symbol': 'bsc'},
-                    {'active': False, 'title': 'Tron', 'symbol': 'tron'},
-                ],
-                'chain_button_title': 'Chain',
+        data_head_filter = self.user_settings_obj.head_filter
+        if data_head_filter:
+            args = data_head_filter.split(',')
+            for head_filter in filter_item['head_filter']:
+                symbol, sort = args[0], args[1]
+                if head_filter['symbol'] == symbol:
+                    head_filter['active'] = True
+                    head_filter['sort'] = sort
+                    break
 
-            }
         return filter_item
 
 
@@ -104,19 +104,19 @@ class SettingsManager:
     def __save_settings(self):
         per_page = self.customer_data['per_page']
         filter_item_list = self.customer_data.get('filter_item')
-        if self.user_settings_obj is not None:
-            try:
-                self.user_settings_obj.per_page = per_page
-                if filter_item_list:
-                    for filter_item in filter_item_list:
-                        data_info = filter_item['data_info']
-                        if hasattr(self.user_settings_obj, data_info):  # Проверяем, что атрибут существует
-                            setattr(self.user_settings_obj, data_info, filter_item['active'])
-                        else:
-                            print(f"[method = 'POST'] Атрибут '{data_info}' не найден в модели UserSettings!")
 
-                self.user_settings_obj.save()
-                print(f"\nUser Settings Obj: {vars(self.user_settings_obj)}")
-            except UserSettings.DoesNotExist as err:
-                print(err)
-                print("[method = 'POST'] Пользователь не найден в базе!")
+        try:
+            self.user_settings_obj.per_page = per_page
+            if filter_item_list:
+                for filter_item in filter_item_list:
+                    data_info = filter_item['data_info']
+                    if hasattr(self.user_settings_obj, data_info):  # Проверяем, что атрибут существует
+                        setattr(self.user_settings_obj, data_info, filter_item['active'])
+                    else:
+                        print(f"[method = 'POST'] Атрибут '{data_info}' не найден в модели UserSettings!")
+
+            self.user_settings_obj.save()
+            print(f"\nUser Settings Obj: {vars(self.user_settings_obj)}")
+        except UserSettings.DoesNotExist as err:
+            print(err)
+            print("[method = 'POST'] Пользователь не найден в базе!")

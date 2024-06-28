@@ -14,9 +14,7 @@ def clear_settings(request: HttpRequest):
 
 
 def get_user_id(request: HttpRequest):
-    user_id = None
-    if request.COOKIES.get('userId'):
-        user_id = request.COOKIES.get('userId')
+    user_id = request.COOKIES.get('userId')
     data = save_user(user=user_id)
     return JsonResponse(data, status=200)
 

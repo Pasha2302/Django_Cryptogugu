@@ -255,6 +255,7 @@ var setEventResetFilters = () => {
   var sublist = document.querySelector('.trending-coins__filter-item-sub');
   var buttonChain = sublist.querySelector('.trending-coins__filter-item.trending-coins__filter-item_sub');
   var subItemsButton = sublist.querySelectorAll('button.trending-coins__filter-sublist-item');
+  var buttonsHead = document.querySelectorAll(".coin-table thead button");
 
   resetFiltersButton.addEventListener('click', (_event) => {
     buttonChain.firstChild.nodeValue = ' Chain ';
@@ -271,7 +272,12 @@ var setEventResetFilters = () => {
       elm.classList.remove('active');
     });
 
+    buttonsHead.forEach( (elm) => {
+      elm.classList.remove('active');
+    });
+
     filter_item.push( {data_info: 'item_sub_symbol', active: 'None'} )
+    filter_item.push( {data_info: 'head_filter', active: 'None,ASC'} )
     loadCoins( {filter_item} );
 
   });
@@ -299,13 +305,13 @@ var setEventTrendingCoinsFilterItemSublist = () => {
 }
 
 
-
 var setEventTrendingCoinsFilterItem = () => {
   var buttonsElms = document.querySelectorAll('button.trending-coins__filter-item');
   var filteredButtons = Array.from(buttonsElms).filter(button => !button.classList.contains('trending-coins__filter-item_sub'));
 
   for (var button of filteredButtons) {
     button.addEventListener('click', (_event) => {
+      var filter_item = [];
       var elmEvent = _event.target;
       var info = elmEvent.dataset.info;
       
@@ -319,9 +325,31 @@ var setEventTrendingCoinsFilterItem = () => {
         if (elmEvent.classList.contains('active')) return;
       };
 
+      if (['all_time_best', 'today_hot'].includes(info)) {
+        var buttonsFilterHead = document.querySelectorAll(".coin-table thead button");
+
+        buttonsFilterHead.forEach( (elm) => {
+          var svg = elm.querySelector("svg use");
+          svg.setAttribute("xlink:href", "#icon-arrow-bott");
+          elm.classList.remove('active');
+
+          if (info === 'all_time_best' && elm.dataset.info === 'votes') {
+            svg.setAttribute("xlink:href", "#icon-arrow-up");
+            elm.classList.add('active');
+            filter_item.push( {data_info: 'head_filter', active: `${elm.dataset.info},DESC`} )
+          }
+          else if (info === 'today_hot' && elm.dataset.info === 'votes24h') {
+            svg.setAttribute("xlink:href", "#icon-arrow-up");
+            elm.classList.add('active');
+            filter_item.push( {data_info: 'head_filter', active: `${elm.dataset.info},DESC`} )
+          };
+
+        });
+      }
+
       elmEvent.classList.toggle('active');
 
-      var filter_item = [];
+      
       filteredButtons.forEach( (elm) => {
         filter_item.push( {data_info: elm.dataset.info, active: elm.classList.contains('active')} )
       })
@@ -331,6 +359,51 @@ var setEventTrendingCoinsFilterItem = () => {
     })
   }
 
+}
+
+
+var setEventTrendingCoinsFilterTableHead = () => {
+  var buttonsHead = document.querySelectorAll(".coin-table thead button");
+  var buttonsElms = document.querySelectorAll('button.trending-coins__filter-item');
+  var filteredButtons = Array.from(buttonsElms).filter(button => !button.classList.contains('trending-coins__filter-item_sub'));
+
+  buttonsHead.forEach((button) => {
+    button.addEventListener("click", function () {
+      var filter_item = [];
+      // Переключение стрелки
+      document.querySelector('button.trending-coins__filter-item[data-info="today_hot"]').classList.remove('active');
+      document.querySelector('button.trending-coins__filter-item[data-info="all_time_best"]').classList.remove('active');
+      var svg = this.querySelector("svg use");
+      var currentHref = svg.getAttribute("xlink:href");
+      var info = this.dataset.info;
+
+      buttonsHead.forEach((btn) => {
+        btn.classList.remove("active");
+        btn.querySelector("svg use").setAttribute("xlink:href", "#icon-arrow-bott");
+      });
+
+      if (currentHref === "#icon-arrow-bott") {
+        svg.setAttribute("xlink:href", "#icon-arrow-up");
+        info += ',DESC'
+      } else {
+        svg.setAttribute("xlink:href", "#icon-arrow-bott");
+        info += ',ASC'
+      }
+
+      this.classList.add("active");
+      
+      filteredButtons.forEach( (elm) => {
+        if (['all_time_best', 'today_hot'].includes(elm.dataset.info)) {
+          elm.classList.remove("active");
+        }
+        filter_item.push( {data_info: elm.dataset.info, active: elm.classList.contains('active')} );
+      });
+
+      filter_item.push( {data_info: 'head_filter', active: info} );
+
+      loadCoins( {filter_item} );
+    });
+  });
 }
 
 
@@ -346,5 +419,6 @@ export {
   setEventTrendingCoinsFilterItem,
   setEventTrendingCoinsFilterItemSublist,
   setEventResetFilters,
+  setEventTrendingCoinsFilterTableHead,
 
 };

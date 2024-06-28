@@ -541,10 +541,6 @@
                   <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg>
                 </button>
               {% endfor %}
-<!--              <button class="trending-coins__filter-sublist-item">WAX <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg></button>-->
-<!--              <button class="trending-coins__filter-sublist-item">SOLANA <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg></button>-->
-<!--              <button class="trending-coins__filter-sublist-item">Binance Smart Chain <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg></button>-->
-<!--              <button class="trending-coins__filter-sublist-item">Tron <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg></button>-->
             </div>
           </div>
 
@@ -568,94 +564,7 @@
           </colgroup>
 
           <thead>
-            <tr>
-              <th>
-                <div class="">
-                  <span>#</span>
-                </div>
-              </th>
-
-              <th>
-                <div class="">
-                  <span>Name</span>
-                </div>
-              </th>
-
-              <th>
-                <div class="">
-                  <span>Chain</span>
-                </div>
-              </th>
-
-              <th>
-                <div class="">
-                  <button>
-                    Market Cap
-                    <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bott"></use></svg>
-                  </button>
-                </div>
-              </th>
-
-              <th>
-                <div class="">
-                  <button id="trending-price">
-                    Price
-                    <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bott"></use></svg>
-                  </button>
-                </div>
-              </th>
-
-              <th>
-                <div class="">
-                  <button>
-                    Volume
-                    <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bott"></use></svg>
-                  </button>
-                </div>
-              </th>
-
-              <th>
-                <div class="">
-                  <button>
-                    24h
-                    <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bott"></use></svg>
-                  </button>
-                </div>
-              </th>
-
-              <th>
-                <div class="">
-                  <button>
-                    Launch Date
-                    <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bott"></use></svg>
-                  </button>
-                </div>
-              </th>
-
-              <th>
-                <div class="">
-                  <button>
-                    Votes
-                    <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bott"></use></svg>
-                  </button>
-                </div>
-              </th>
-
-              <th>
-                <div class="">
-                  <button>
-                    Votes 24
-                    <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bott"></use></svg>
-                  </button>
-                </div>
-              </th>
-
-              <th>
-                <div class="">
-                  <span>Vote</span>
-                </div>
-              </th>
-            </tr>
+            {% include 'app/components_html/head_filter_coins_trending_component.html' %}
           </thead>
 
           <tbody>

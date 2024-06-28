@@ -1,0 +1,28 @@
+{% load static %}
+
+
+
+<button class="coin-table__nav-pagination-button"><svg class="arrow">
+    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrowLeft"></use>
+  </svg></button>
+<ul class="coin-table__nav-pagination-list">
+
+  {% for page in pagination %}
+  {% if page == '...' %}
+  <li><a href="#">{{ page }}</a></li>
+  {% elif page == page_number %}
+  <li class="active"><a href="#">{{ page }}</a></li>
+
+  {% else %}
+  {% if page == 1 %}
+  <li><a href="{% url 'index' %}">{{ page }}</a></li>
+  {% else %}
+  <li><a href="?page={{ page }}">{{ page }}</a></li>
+  {% endif %}
+  {% endif %}
+  {% endfor %}
+
+</ul>
+<button class="coin-table__nav-pagination-button"><svg class="arrow">
+    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrowRight"></use>
+  </svg></button>

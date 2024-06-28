@@ -1,0 +1,44 @@
+{% load static %}
+
+<tr>
+  <th>
+    <div class="">
+      <span>#</span>
+    </div>
+  </th>
+
+  <th>
+    <div class="">
+      <span>Name</span>
+    </div>
+  </th>
+
+  <th>
+    <div class="">
+      <span>Chain</span>
+    </div>
+  </th>
+
+  {% for head_filter in filter_item.head_filter %}
+    <th>
+      <div class="">
+        <button class="{% if head_filter.active %}active{% endif %}" data-info="{{ head_filter.symbol }}">
+          {{ head_filter.title }}
+          <svg class="arrow">
+            {% if head_filter.sort == "ASC" %}
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bott"></use>
+            {% else %}
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-up"></use>
+            {% endif %}
+          </svg>
+        </button>
+      </div>
+    </th>
+  {% endfor %}
+
+  <th>
+    <div class="">
+      <span>Vote</span>
+    </div>
+  </th>
+</tr>

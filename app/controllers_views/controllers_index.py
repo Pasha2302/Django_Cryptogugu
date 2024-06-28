@@ -8,6 +8,7 @@ from app.models import Coin
 from django.utils import timezone
 from datetime import timedelta
 from django.utils.translation import gettext as _
+from decimal import Decimal
 
 
 class FilterCoin:
@@ -17,6 +18,7 @@ class FilterCoin:
         if settings.user_settings_obj:
             if settings.user_settings_obj.all_time_best:
                 self.__data_coins = Coin.objects.order_by('-votes')
+
             elif settings.user_settings_obj.today_hot:
                 self.__data_coins = Coin.objects.order_by('-votes24h')
 
@@ -36,7 +38,30 @@ class FilterCoin:
             if settings.user_settings_obj.item_sub_symbol and settings.user_settings_obj.item_sub_symbol != 'None':
                 self.__data_coins = self.__data_coins.filter(chain=settings.user_settings_obj.item_sub_symbol.upper())
 
+            if settings.user_settings_obj.head_filter:
+                symbol, sort = settings.user_settings_obj.head_filter.split(',')
+                if symbol != 'None':
+                    self.__head_filter_coins(symbol, sort)
             # self.print_time_since_creation()
+
+
+    def __head_filter_coins(self, symbol: str, sort: str):
+        print(f"\n__head_filter_coins: {symbol=}  /  {sort=}")
+        if sort == "DESC": self.__data_coins = self.__data_coins.order_by(f'-{symbol}')
+        else: self.__data_coins = self.__data_coins.order_by(symbol)
+
+        if symbol == 'market_cap':
+            original_coins = list(self.__data_coins)
+            coins_market_cap = [coin for coin in original_coins if coin.market_cap is not None]
+            coins_market_cap_none = [coin for coin in original_coins if coin.market_cap is None and not coin.market_cap_presale]
+            coins_market_cap_presale = [coin for coin in original_coins if coin.market_cap_presale]
+            self.__data_coins = coins_market_cap + coins_market_cap_presale + coins_market_cap_none
+
+        elif symbol == 'price':
+            original_coins = list(self.__data_coins)
+            coins_price = [coin for coin in original_coins if coin.price is not None]
+            coins_price_none = [coin for coin in original_coins if coin.price is None ]
+            self.__data_coins = coins_price + coins_price_none
 
     def get_coins(self):
         return self.__data_coins
