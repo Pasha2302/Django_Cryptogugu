@@ -15,6 +15,7 @@ urlpatterns = [
     path("promote/", views.promote, name="promote"),
 
     path("clear-settings/", views.clear_settings, name="clear_settings"),
+    path("header-search-component/", views.get_header_search_component, name="header_search_component"),
 
     # path('accounts/profile/', views.profile_view, name='profile'),
     # path("slots/<slug:slug_slot>", views.one_slot, name="one_slot"),

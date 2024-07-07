@@ -1,0 +1,583 @@
+[
+    {
+        "name": "EPICBEANS",
+        "path_coin_img": "img/airdrop/a2179-72x72.webp",
+        "status": "Active",
+        "end_date": "2027-11-11",
+        "reward": "10000000 EBT"
+    },
+    {
+        "name": "0xVidia",
+        "path_coin_img": "img/airdrop/0xVidia-72x72.webp",
+        "status": "Active",
+        "end_date": "2024-10-30",
+        "reward": "250 0XVD"
+    },
+    {
+        "name": "CRYPSI",
+        "path_coin_img": "img/airdrop/crypsi_icon-1-72x72.png",
+        "status": "Active",
+        "end_date": "2024-09-18",
+        "reward": "21 CRYPSI per ac"
+    },
+    {
+        "name": "ALEIT",
+        "path_coin_img": "img/airdrop/a2352-72x72.webp",
+        "status": "Active",
+        "end_date": "2024-08-25",
+        "reward": "500"
+    },
+    {
+        "name": "Dwinity",
+        "path_coin_img": "img/airdrop/TI7uizfY_400x400-1.jpg",
+        "status": "Active",
+        "end_date": "2024-08-15",
+        "reward": "2,700,000 DWIN"
+    },
+    {
+        "name": "Cryptopia",
+        "path_coin_img": "img/airdrop/images-72x72.png",
+        "status": "Active",
+        "end_date": "2024-08-12",
+        "reward": "25,000,000 $TOS"
+    },
+    {
+        "name": "GRAM x Iskra",
+        "path_coin_img": "img/airdrop/GRAM-Ecosystem-72x72.jpeg",
+        "status": "Active",
+        "end_date": "2024-08-10",
+        "reward": "30 Million GRAM"
+    },
+    {
+        "name": "Betarena",
+        "path_coin_img": "img/airdrop/Betarena-72x72.jpeg",
+        "status": "Active",
+        "end_date": "2024-08-07",
+        "reward": "$10,000"
+    },
+    {
+        "name": "Beekcoin",
+        "path_coin_img": "img/airdrop/a2406-72x72.webp",
+        "status": "Active",
+        "end_date": "2024-08-03",
+        "reward": "4,507,000,000,000"
+    },
+    {
+        "name": "Alita Gold",
+        "path_coin_img": "img/airdrop/Alita-72x72.webp",
+        "status": "Active",
+        "end_date": "2024-08-01",
+        "reward": "10 Billion Alita tokens"
+    },
+    {
+        "name": "MASSIVE AI",
+        "path_coin_img": "img/airdrop/a2391-72x72.webp",
+        "status": "Active",
+        "end_date": "2024-07-31",
+        "reward": "1% of the total supply allocated for Pilot phase"
+    },
+    {
+        "name": "IoTeX",
+        "path_coin_img": "img/airdrop/IoTeX-72x72.jpeg",
+        "status": "Active",
+        "end_date": "2024-07-31",
+        "reward": "5 DePIN Tokens"
+    },
+    {
+        "name": "DogePreneur",
+        "path_coin_img": "img/airdrop/y1ubHgwNPnbbXnnqyAXhhdVrFeDfKxG1EURA7SmR-72x72.png",
+        "status": "Active",
+        "end_date": "2024-07-22",
+        "reward": "$100000 in DOGEP"
+    },
+    {
+        "name": "Nexo",
+        "path_coin_img": "img/airdrop/Nexo-logo-72x72.png",
+        "status": "Active",
+        "end_date": "2024-07-07",
+        "reward": "10,000,000 NEXO"
+    },
+    {
+        "name": "Forcefi.io",
+        "path_coin_img": "img/airdrop/Forcefi-72x72.jpeg",
+        "status": "Active",
+        "end_date": "2024-07-07",
+        "reward": "$4,750+ in prizes"
+    },
+    {
+        "name": "Financing Social",
+        "path_coin_img": "img/airdrop/SOIS-72x72.jpeg",
+        "status": "Active",
+        "end_date": "2024-07-07",
+        "reward": "10,000,000 SOIS"
+    },
+    {
+        "name": "Primex",
+        "path_coin_img": "img/airdrop/Primex-logo-72x72.jpg",
+        "status": "N/A",
+        "end_date": "2024-07-03",
+        "reward": ""
+    },
+    {
+        "name": "BONDEX",
+        "path_coin_img": "img/airdrop/a2137-1-72x72.webp",
+        "status": "N/A",
+        "end_date": "2024-07-01",
+        "reward": "100 BNDX"
+    },
+    {
+        "name": "Walletika",
+        "path_coin_img": "img/airdrop/8qFRaPseJvwwksYjd780hVU0Fecr48qabssE3yqD-72x72.png",
+        "status": "N/A",
+        "end_date": "2024-07-01",
+        "reward": "300,000 WLTK"
+    },
+    {
+        "name": "QuantCheck",
+        "path_coin_img": "img/airdrop/QuantCheck-72x72.jpeg",
+        "status": "N/A",
+        "end_date": "2024-06-30",
+        "reward": "1,000,000 QTK"
+    },
+    {
+        "name": "Elowyn",
+        "path_coin_img": "img/airdrop/5DUPdH4S_400x400-72x72.jpg",
+        "status": "N/A",
+        "end_date": "2024-06-30",
+        "reward": "$5,000 worth of EWA"
+    },
+    {
+        "name": "Blum",
+        "path_coin_img": "img/airdrop/Blum-72x72.jpeg",
+        "status": "N/A",
+        "end_date": "2024-06-23",
+        "reward": "10,000 USDT"
+    },
+    {
+        "name": "InterCellar",
+        "path_coin_img": "img/airdrop/InterCellar-72x72.jpeg",
+        "status": "N/A",
+        "end_date": "2024-06-20",
+        "reward": "1,000,000 CELLAR"
+    },
+    {
+        "name": "LayerZero",
+        "path_coin_img": "img/airdrop/LayerZero-logo-1-72x72.jpg",
+        "status": "N/A",
+        "end_date": "2024-06-20",
+        "reward": "8.5% of ZRO supply"
+    },
+    {
+        "name": "Inter Finance Network",
+        "path_coin_img": "img/airdrop/a2423-72x72.webp",
+        "status": "N/A",
+        "end_date": "2024-06-16",
+        "reward": "500,000,000 IFNET"
+    },
+    {
+        "name": "Drift",
+        "path_coin_img": "img/airdrop/hoUWKNkKJ9NUcXDyVO0HnF0FV3Z5qkJBNl3Tv9At-72x72.jpg",
+        "status": "N/A",
+        "end_date": "2024-06-16",
+        "reward": "$100M DRIFT tokens"
+    },
+    {
+        "name": "CAGA Crypto",
+        "path_coin_img": "img/airdrop/nShJf0Y_400x400-72x72.jpg",
+        "status": "N/A",
+        "end_date": "2024-06-12",
+        "reward": "1,000,000,000 CAGA"
+    },
+    {
+        "name": "Quji Coin",
+        "path_coin_img": "img/airdrop/QUJI-COIN-72x72.jpeg",
+        "status": "N/A",
+        "end_date": "2024-06-11",
+        "reward": "10 Million QUJI"
+    },
+    {
+        "name": "Dreamworlds",
+        "path_coin_img": "img/airdrop/b5b05d22ca594787c420b6c0dedd5e9b-72x72.jpg",
+        "status": "N/A",
+        "end_date": "2024-06-10",
+        "reward": "5,000,000 DMD"
+    },
+    {
+        "name": "Based China",
+        "path_coin_img": "img/airdrop/a2443-72x72.webp",
+        "status": "N/A",
+        "end_date": "2024-06-09",
+        "reward": "100,000 Tokens"
+    },
+    {
+        "name": "Haven1",
+        "path_coin_img": "img/airdrop/MC3NUqnwuwUoPWavMEYTbVbfNKZqoL04xXx1awp8-72x72.jpg",
+        "status": "N/A",
+        "end_date": "2024-06-01",
+        "reward": ""
+    },
+    {
+        "name": "LopeCoin",
+        "path_coin_img": "img/airdrop/2Ru9MtJFkIVntM28LnUfkFmYbZ1imjTeSwgiDlEc-72x72.png",
+        "status": "N/A",
+        "end_date": "2024-06-01",
+        "reward": "$50,000 in LOPE tokens"
+    },
+    {
+        "name": "FitReward Token",
+        "path_coin_img": "img/airdrop/a2338-72x72.webp",
+        "status": "N/A",
+        "end_date": "2024-06-01",
+        "reward": "1,907,500 FR Tokens"
+    },
+    {
+        "name": "Rewardo Token",
+        "path_coin_img": "img/airdrop/q1PMnwU__400x400-72x72.jpg",
+        "status": "N/A",
+        "end_date": "2024-05-31",
+        "reward": "1,000,000"
+    },
+    {
+        "name": "Naviga (NAG)",
+        "path_coin_img": "img/airdrop/a2363-72x72.webp",
+        "status": "N/A",
+        "end_date": "2024-05-31",
+        "reward": "20,000,000 NAG Tokens & 15,000 USDT"
+    },
+    {
+        "name": "Revolving Games",
+        "path_coin_img": "img/airdrop/iTe8aax2_400x400-72x72.jpg",
+        "status": "N/A",
+        "end_date": "2024-05-31",
+        "reward": ""
+    },
+    {
+        "name": "blokAI",
+        "path_coin_img": "img/airdrop/a2408-72x72.webp",
+        "status": "N/A",
+        "end_date": "2024-05-31",
+        "reward": "Various"
+    },
+    {
+        "name": "Agora",
+        "path_coin_img": "img/airdrop/0uU1cno5_400x400-72x72.png",
+        "status": "N/A",
+        "end_date": "2024-05-29",
+        "reward": "60 AGO"
+    },
+    {
+        "name": "OnChainBets",
+        "path_coin_img": "img/airdrop/unnamed-1-72x72.png",
+        "status": "N/A",
+        "end_date": "2024-05-27",
+        "reward": "5,000 $UBET"
+    },
+    {
+        "name": "KLEEKAI INU",
+        "path_coin_img": "img/airdrop/fsYIKXQ3j08FsTYhphgAdA5ZxCSR5FL0NfvZIb43-72x72.png",
+        "status": "N/A",
+        "end_date": "2024-05-25",
+        "reward": "20 TRILLION tokens"
+    },
+    {
+        "name": "Monkey Coin",
+        "path_coin_img": "img/airdrop/a2307-72x72.webp",
+        "status": "N/A",
+        "end_date": "2024-05-25",
+        "reward": "1 Trillion $ MONKEY"
+    },
+    {
+        "name": "Muttley Mutt",
+        "path_coin_img": "img/airdrop/a2389-72x72.webp",
+        "status": "N/A",
+        "end_date": "2024-05-24",
+        "reward": "1000"
+    },
+    {
+        "name": "Bybit x Kamino",
+        "path_coin_img": "img/airdrop/Bybit-72x72.jpeg",
+        "status": "N/A",
+        "end_date": "2024-05-23",
+        "reward": "3,750,000 $KMNO"
+    },
+    {
+        "name": "Oracle Meme – Giveaway USDT",
+        "path_coin_img": "img/airdrop/3f8482ede8fff73ce4ecafd321fe31b1-72x72.webp",
+        "status": "N/A",
+        "end_date": "2024-05-20",
+        "reward": "1000 USDT"
+    },
+    {
+        "name": "Amphor.io",
+        "path_coin_img": "img/airdrop/b6c1bc90324870fa749945e4f15d48ab-72x72.jpg",
+        "status": "N/A",
+        "end_date": "2024-05-14",
+        "reward": ""
+    },
+    {
+        "name": "Pink Elements",
+        "path_coin_img": "img/airdrop/Pink-Elements-72x72.jpeg",
+        "status": "N/A",
+        "end_date": "2024-05-12",
+        "reward": "$100,000"
+    },
+    {
+        "name": "Iskra",
+        "path_coin_img": "img/airdrop/iskra-72x72.jpeg",
+        "status": "N/A",
+        "end_date": "2024-05-11",
+        "reward": "10,000,000"
+    },
+    {
+        "name": "Mode",
+        "path_coin_img": "img/airdrop/mode-logo-72x72.jpg",
+        "status": "N/A",
+        "end_date": "2024-05-05",
+        "reward": "550,000,000"
+    },
+    {
+        "name": "Oridron",
+        "path_coin_img": "img/airdrop/a2380-72x72.webp",
+        "status": "N/A",
+        "end_date": "2024-05-02",
+        "reward": "1000"
+    },
+    {
+        "name": "BitGet Wallet",
+        "path_coin_img": "img/airdrop/w2k0AIgI13C7x6lrPxcYZDA0yhzYJ3VLwzD1tS6V-72x72.png",
+        "status": "N/A",
+        "end_date": "2024-04-28",
+        "reward": "50 BWB"
+    },
+    {
+        "name": "UniRouter",
+        "path_coin_img": "img/airdrop/AMvqXAmQ1CZ35epjfyRkczkeSzxNFI1QVf5xIJse-72x72.jpg",
+        "status": "N/A",
+        "end_date": "2024-04-22",
+        "reward": "1,000,000 URO and 800 USDT"
+    },
+    {
+        "name": "Momoai",
+        "path_coin_img": "img/airdrop/5uVqYtz9_400x400-1-72x72.jpg",
+        "status": "N/A",
+        "end_date": "2024-04-01",
+        "reward": "100"
+    },
+    {
+        "name": "Mini Pepe",
+        "path_coin_img": "img/airdrop/a1505-72x72.webp",
+        "status": "N/A",
+        "end_date": "2023-06-30",
+        "reward": "10,000,000"
+    },
+    {
+        "name": "AIT Token",
+        "path_coin_img": "img/airdrop/a1472-72x72.webp",
+        "status": "N/A",
+        "end_date": "2023-04-20",
+        "reward": "100,000 $AIT"
+    },
+    {
+        "name": "HAMSTER (HAM)",
+        "path_coin_img": "img/airdrop/a1453-72x72.webp",
+        "status": "N/A",
+        "end_date": "2023-03-21",
+        "reward": "100k Cubs"
+    },
+    {
+        "name": "Web3 Coin",
+        "path_coin_img": "img/airdrop/a918-72x72.webp",
+        "status": "N/A",
+        "end_date": "2022-05-01",
+        "reward": "10000 $Web3Coin"
+    },
+    {
+        "name": "Bonk!",
+        "path_coin_img": "img/airdrop/Bonk1111-72x72.jpeg",
+        "status": "Active",
+        "end_date": "",
+        "reward": "~$ 122,000"
+    },
+    {
+        "name": "Unite",
+        "path_coin_img": "img/airdrop/Unite-72x72.webp",
+        "status": "Active",
+        "end_date": "",
+        "reward": "10,000,000 $UNITE"
+    },
+    {
+        "name": "PixelTap by Pixelverse",
+        "path_coin_img": "img/airdrop/PixelTap-72x72.jpeg",
+        "status": "Active",
+        "end_date": "",
+        "reward": "% of Total Supply"
+    },
+    {
+        "name": "ZAP",
+        "path_coin_img": "img/airdrop/ZAP-on-Blast-72x72.jpeg",
+        "status": "Active",
+        "end_date": "",
+        "reward": "$500K+"
+    },
+    {
+        "name": "Cookie",
+        "path_coin_img": "img/airdrop/cookie-airdrop-guide-72x72.jpg",
+        "status": "Active",
+        "end_date": "",
+        "reward": ""
+    },
+    {
+        "name": "Hamster Kombat",
+        "path_coin_img": "img/airdrop/hamster-coin-1-72x72.webp",
+        "status": "Active",
+        "end_date": "",
+        "reward": ""
+    },
+    {
+        "name": "Jupiter",
+        "path_coin_img": "img/airdrop/Jupiter1111-72x72.webp",
+        "status": "Active",
+        "end_date": "",
+        "reward": "1.35 Billion JUP"
+    },
+    {
+        "name": "Tonk",
+        "path_coin_img": "img/airdrop/Tonk-72x72.webp",
+        "status": "Active",
+        "end_date": "",
+        "reward": ""
+    },
+    {
+        "name": "OXOA Network",
+        "path_coin_img": "img/airdrop/OXOA-72x72.webp",
+        "status": "Active",
+        "end_date": "",
+        "reward": ""
+    },
+    {
+        "name": "GAMEE",
+        "path_coin_img": "img/airdrop/GAMEE-72x72.webp",
+        "status": "Active",
+        "end_date": "",
+        "reward": ""
+    },
+    {
+        "name": "Astra Nova",
+        "path_coin_img": "img/airdrop/a2444-72x72.webp",
+        "status": "Active",
+        "end_date": "",
+        "reward": ""
+    },
+    {
+        "name": "Myshell",
+        "path_coin_img": "img/airdrop/unnamed-72x72.png",
+        "status": "Active",
+        "end_date": "",
+        "reward": ""
+    },
+    {
+        "name": "Zkpass",
+        "path_coin_img": "img/airdrop/download-13-72x72.png",
+        "status": "Active",
+        "end_date": "",
+        "reward": ""
+    },
+    {
+        "name": "Ouinex",
+        "path_coin_img": "img/airdrop/ed433f53a1eaa6937692991f717e0959-72x72.jpg",
+        "status": "Active",
+        "end_date": "",
+        "reward": ""
+    },
+    {
+        "name": "Tari",
+        "path_coin_img": "img/airdrop/Tari-logo-72x72.jpg",
+        "status": "Active",
+        "end_date": "",
+        "reward": ""
+    },
+    {
+        "name": "Oasis AI",
+        "path_coin_img": "img/airdrop/Oasis-AI-72x72.jpeg",
+        "status": "Active",
+        "end_date": "",
+        "reward": ""
+    },
+    {
+        "name": "Bluefin",
+        "path_coin_img": "img/airdrop/Bluefin-logo-72x72.jpg",
+        "status": "Active",
+        "end_date": "",
+        "reward": ""
+    },
+    {
+        "name": "Baby Bonk Inu",
+        "path_coin_img": "img/airdrop/BABY-BONK-INU-72x72.jpeg",
+        "status": "Active",
+        "end_date": "",
+        "reward": "1 Trillion BABYBONK"
+    },
+    {
+        "name": "Param Gaming",
+        "path_coin_img": "img/airdrop/rn5bxqbU_400x400-72x72.jpg",
+        "status": "Active",
+        "end_date": "",
+        "reward": ""
+    },
+    {
+        "name": "D8X",
+        "path_coin_img": "img/airdrop/D-BApySe_400x400-72x72.jpg",
+        "status": "Active",
+        "end_date": "",
+        "reward": "n/a"
+    },
+    {
+        "name": "Blackwing",
+        "path_coin_img": "img/airdrop/Blackwing-logo-72x72.jpg",
+        "status": "Active",
+        "end_date": "",
+        "reward": ""
+    },
+    {
+        "name": "Nexis Network",
+        "path_coin_img": "img/airdrop/Nexis-Network-logo-72x72.jpg",
+        "status": "Active",
+        "end_date": "",
+        "reward": ""
+    },
+    {
+        "name": "Bitop Exchange",
+        "path_coin_img": "img/airdrop/Bitop-Exchange-2-72x72.jpeg",
+        "status": "Active",
+        "end_date": "",
+        "reward": "up to 298 USDT"
+    },
+    {
+        "name": "Cylum Finance",
+        "path_coin_img": "img/airdrop/Cylum111-72x72.jpeg",
+        "status": "Active",
+        "end_date": "",
+        "reward": "10,000,000 $CYM +"
+    },
+    {
+        "name": "Attarius Network",
+        "path_coin_img": "img/airdrop/Attarius-Network-72x72.jpeg",
+        "status": "Active",
+        "end_date": "",
+        "reward": "1,000,000 ATRS"
+    },
+    {
+        "name": "PrimeXBT",
+        "path_coin_img": "img/airdrop/PrimeXBT-72x72.png",
+        "status": "Active",
+        "end_date": "",
+        "reward": "up to $7,000"
+    },
+    {
+        "name": "Lyra",
+        "path_coin_img": "img/airdrop/EtmBWkuG_400x400-72x72.jpg",
+        "status": "Active",
+        "end_date": "",
+        "reward": "n/a"
+    }
+]

@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-26 03:12+0300\n"
+"POT-Creation-Date: 2024-06-28 09:26+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,26 +18,114 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
-#: app/controllers_views/controllers_index.py:79
+
+#: app/controllers_views/controllers_index.py:102
 msgid "Coin Ranking"
 msgstr "Рейтинг монет"
 
-#: app/controllers_views/controllers_index.py:80
+#: app/controllers_views/controllers_index.py:103
 msgid "Airdrops"
-msgstr "Эйрдропы"
+msgstr "Airdrops"
 
-#: app/controllers_views/controllers_index.py:81
+#: app/controllers_views/controllers_index.py:104
 msgid "Promotion"
 msgstr "Продвижение"
 
-#: app/controllers_views/controllers_index.py:82
+#: app/controllers_views/controllers_index.py:105
 msgid "Games"
 msgstr "Игры"
 
-#: app/controllers_views/controllers_index.py:83
+#: app/controllers_views/controllers_index.py:106
 msgid "Free Signals"
 msgstr "Бесплатные сигналы"
 
-#: app/controllers_views/controllers_index.py:84
+#: app/controllers_views/controllers_index.py:107
 msgid "About Us"
 msgstr "О нас"
+
+#: app/templates/app/index.html:802
+msgid "CoinMooner - The most popular new cryptocurrency listing and ranking website"
+msgstr "CoinMooner - самый популярный сайт для листинга и ранжирования новых криптовалют"
+
+#: app/templates/app/index.html:804
+msgid ""
+"\n"
+"                Coinmooner is a well-known and respected brand within the "
+"cryptocurrency world. We are the most popular cryptocurrency listing and "
+"ranking website. New token owners always look for opportunities to list "
+"their projects on our website. That ensures that the information on our "
+"platform is always accessible and up to date. <br><br>\n"
+"                Most of the cryptocurrencies are listed on CoinMooner even "
+"before they are listed on CoinMarketCap & CoinGecko.\n"
+"                "
+msgstr ""
+"\n"
+"                Coinmooner - это известный и уважаемый бренд в мире криптовалют. "
+"Мы самый популярный сайт для листинга и ранжирования криптовалют. Новые владельцы токенов всегда ищут "
+"возможности разместить свои проекты на нашем сайте. Это гарантирует, что информация на нашей "
+"платформе всегда доступна и актуальна. <br><br>\n"
+"                Большинство криптовалют размещаются на CoinMooner еще до того, как они "
+"появятся на CoinMarketCap и CoinGecko.\n"
+"                "
+
+#: app/templates/app/index.html:812
+msgid "Find DeFi tokens that will generate huge profits"
+msgstr "Найдите DeFi токены, которые принесут огромные прибыли"
+
+#: app/templates/app/index.html:813
+msgid ""
+"\n"
+"                CoinMooner became a platform that makes cryptocurrencies "
+"more accessible to the public and provides entertaining features, "
+"developments, crypto-related news, tutorials, and other valuable materials. "
+"One of the main goals is to stay relevant and keep up with the rapid growth "
+"of crypto. <br> <br>\n"
+"                To follow our ideology, we developed state-of-the-art "
+"mechanisms and features that allow our visitors to analyze the tokens. Our "
+"visitors can use various rankings, filtering options, token contract audits, "
+"charts, trading history, and many other valuable options. All of this "
+"combined brings consistent results!\n"
+"                "
+msgstr ""
+"\n"
+"                CoinMooner стал платформой, которая делает криптовалюты "
+"более доступными для публики и предоставляет развлекательные функции, "
+"разработки, новости о криптовалютах, учебные пособия и другие ценные материалы. "
+"Одна из основных целей - оставаться актуальными и успевать за быстрым ростом "
+"криптоиндустрии. <br> <br>\n"
+"                В соответствии с нашей идеологией мы разработали передовые "
+"механизмы и функции, которые позволяют нашим посетителям анализировать токены. "
+"Наши посетители могут использовать различные рейтинги, опции фильтрации, "
+"аудиты контрактов токенов, графики, историю торгов и многие другие ценные опции. "
+"Все это в совокупности приносит стабильные результаты!\n"
+"                "
+
+#: app/templates/app/index.html:821
+msgid "How does CoinMooner work, and how to list a project?"
+msgstr "Как работает CoinMooner и как добавить проект?"
+
+#: app/templates/app/index.html:822
+msgid ""
+"\n"
+"                All new cryptocurrency projects can be submitted using the "
+"\"Submit Token\" form. Once the project is submitted, it will be checked by "
+"our support staff. If everything is correct, the project will be listed "
+"under the \"NEW\" tab on the main page, and the project's community can "
+"start voting. Votes are an essential part of the overall success of the "
+"project. The more votes a project gets, the higher its ranking is and, thus, "
+"the more exposure and engagement it gets. <br> <br>\n"
+"                We monitor new projects every day without exceptions. Our "
+"competent support is monitoring new information and updates daily - 24/7.\n"
+"                "
+msgstr ""
+"\n"
+"                Все новые проекты криптовалют могут быть отправлены с помощью "
+"формы \"Submit Token\". После отправки проекта он будет проверен нашей службой поддержки. "
+"Если все верно, проект будет размещен на вкладке \"NEW\" на главной странице, и сообщество проекта "
+"сможет начать голосование. Голоса являются важной частью общего успеха проекта. "
+"Чем больше голосов получает проект, тем выше его рейтинг и, следовательно, "
+"большее количество внимания и вовлеченности он получает. <br> <br>\n"
+"                Мы отслеживаем новые проекты каждый день без исключений. Наша "
+"компетентная поддержка отслеживает новую информацию и обновления ежедневно - 24/7.\n"
+"                "
+

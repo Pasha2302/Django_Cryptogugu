@@ -1,0 +1,31 @@
+{% load static %}
+
+
+  <div class="header__search-list-step1">
+    <div class="header__search-list-label">Coins</div>
+
+    {% for coin in coins %}
+      <a href="#" class="header__search-list-item js-coins" style="{% if forloop.counter > 5 %}display: none;{% endif %}">
+        <img src="{% static coin.img_path %}" alt="">
+        <span class="name">{{ coin.name }}</span>
+        <span class="chain">{{ coin.symbol }}</span>
+      </a>
+    {% endfor %}
+    <a href="#" class="header__search-list-all js-coins">View All Coins ({{ count_coins }})</a>
+
+    <div class="header__search-list-label">Airdrops</div>
+    {% for airdrop in airdrops %}
+      <a href="#" class="header__search-list-item js-airdrops" style="{% if forloop.counter > 5 %}display: none;{% endif %}">
+        <img src="{% static airdrop.img_path %}" alt="">
+        <span class="name">{{ airdrop.name }}</span>
+      </a>
+    {% endfor %}
+    <a href="#" class="header__search-list-all js-airdrops">View All Airdrops ({{ count_airdrops }})</a>
+  </div>
+
+  <div class="header__search-list-step2">
+    <button type="button" class="header__search-list-back"><svg class="arrow">
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-right"></use>
+      </svg>back</button>
+    <div class="header__search-list-label">None</div>
+  </div>

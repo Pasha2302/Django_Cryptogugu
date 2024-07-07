@@ -1,5 +1,5 @@
 "use strict"
-let dropdownManagerInstance;
+var dropdownManagerInstance;
 
 
 var createDropdownManager = () => {
@@ -23,7 +23,7 @@ var createDropdownManager = () => {
       var id_element = `id_${targetSelector}`
       closeOnClickOutsideElements = closeOnClickOutsideElements.filter( (obj) => obj.id_element !== id_element);
       closeOnClickOutsideElements.push({ id_element, targetElement, className });
-      console.log('\nClose On Click Outside Elements: ', closeOnClickOutsideElements)
+      // console.log('\nClose On Click Outside Elements: ', closeOnClickOutsideElements)
     }
   };
 

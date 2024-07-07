@@ -336,62 +336,36 @@
           </li>
         </ul>
 
-<!--        <div class="header-top__actions">-->
-<!--          <button class="header__theme">-->
-<!--            <svg class="icon light"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-sun"></use></svg>-->
-<!--            <svg class="icon dark"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-moon"></use></svg>-->
-<!--          </button>-->
-<!--          <div class="header__lang">-->
-<!--            <button class="header__lang-current">-->
-<!--              <span>En</span>-->
-<!--              <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bottom"></use></svg>-->
-<!--            </button>-->
-<!--            <div class="header__lang-list">-->
-<!--              <svg class="polygon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sublist-polygon"></use></svg>-->
-<!--              <a href="#" class="header__lang-list-item active">English <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg></a>-->
-<!--              <a href="#" class="header__lang-list-item">Русский</a>-->
-<!--              <a href="#" class="header__lang-list-item">Spanish</a>-->
-<!--              <a href="#" class="header__lang-list-item">Portugal</a>-->
-<!--              <a href="#" class="header__lang-list-item">Chinese</a>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-
-
-        <form id="language-form" action="{% url 'set_language' %}" method="post" style="display:none;">
-          {% csrf_token %}
-          <input type="hidden" name="next" value="{{ request.path }}">
-          <input type="hidden" name="language" id="language-input">
-        </form>
 
         <div class="header-top__actions">
-          <button class="header__theme">
-              <svg class="icon light"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-sun"></use></svg>
-              <svg class="icon dark"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-moon"></use></svg>
-          </button>
-          <div class="header__lang">
-              <button class="header__lang-current">
-                  {% get_current_language as LANGUAGE_CODE %}
-                  <span>{{ LANGUAGE_CODE|upper }}</span>
-                  <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bottom"></use></svg>
-              </button>
-              <div class="header__lang-list">
-                  <svg class="polygon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sublist-polygon"></use></svg>
-                  {% get_language_info_list for LANGUAGES as languages %}
-                  {% for language in languages %}
-                      <a href="#" class="header__lang-list-item {% if language.code == LANGUAGE_CODE %}active{% endif %}"
-                         onclick="document.getElementById('language-input').value = '{{ language.code }}'; document.getElementById('language-form').submit(); return false;">
-                          {{ language.name_local }}
-                          {% if language.code == LANGUAGE_CODE %}
-                              <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg>
-                          {% endif %}
-                      </a>
-                  {% endfor %}
-              </div>
-          </div>
+            <button class="header__theme">
+                <svg class="icon light"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-sun"></use></svg>
+                <svg class="icon dark"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-moon"></use></svg>
+            </button>
+
+            <div class="header__lang">
+                <button class="header__lang-current">
+                    {% get_current_language as LANGUAGE_CODE %}
+                    <span>{{ LANGUAGE_CODE|upper }}</span>
+                    <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bottom"></use></svg>
+                </button>
+
+                <div class="header__lang-list">
+                    <svg class="polygon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sublist-polygon"></use></svg>
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    {% for language in languages %}
+                        <a href="#" class="header__lang-list-item {% if language.code == LANGUAGE_CODE %}active{% endif %}"
+                           data-lang-code="{{ language.code }}">
+                            {{ language.name_local }}
+                            {% if language.code == LANGUAGE_CODE %}
+                                <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg>
+                            {% endif %}
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+
         </div>
-
-
 
       </div>
     </div>
@@ -415,7 +389,8 @@
         </div>
 
         <div class="header-middle__right">
-          <form class="header__search">
+
+          <form class="header__search" id="searchform">
             <svg class="icon">
               <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-search"></use>
             </svg>
@@ -425,114 +400,8 @@
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use>
               </svg>
             </button>
-
             <div class="header__search-list">
-              <div class="header__search-list-step1">
-                <div class="header__search-list-label">Coins</div>
-                <a href="#" class="header__search-list-item">
-                  <img src="{% static 'app/img/eth.svg' %}" alt="">
-                  <span class="name">Ethereum</span>
-                  <span class="chain">ETH</span>
-                </a>
-                <a href="#" class="header__search-list-item">
-                  <img src="{% static 'app/img/eth.svg' %}" alt="">
-                  <span class="name">Tether</span>
-                  <span class="chain">USDT</span>
-                </a>
-                <a href="#" class="header__search-list-item">
-                  <img src="{% static 'app/img/eth.svg' %}" alt="">
-                  <span class="name">Ethereum Classic</span>
-                  <span class="chain">ETC</span>
-                </a>
-                <a href="#" class="header__search-list-all">View All Coins (100)</a>
-
-                <div class="header__search-list-label">Airdrops</div>
-                <a href="#" class="header__search-list-item">
-                  <img src="{% static 'app/img/eth.svg' %}" alt="">
-                  <span class="name">Fortune Coin</span>
-                </a>
-                <a href="#" class="header__search-list-item">
-                  <img src="{% static 'app/img/eth.svg' %}" alt="">
-                  <span class="name">JioCoin</span>
-                </a>
-                <a href="#" class="header__search-list-item">
-                  <img src="{% static 'app/img/eth.svg' %}" alt="">
-                  <span class="name">NFT Coin</span>
-                </a>
-                <a href="#" class="header__search-list-all">View All Airdrops (62)</a>
-              </div>
-
-              <div class="header__search-list-step2">
-                <button type="button" class="header__search-list-back"><svg class="arrow">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-right"></use>
-                  </svg>back</button>
-                <div class="header__search-list-label">Coins</div>
-                <a href="#" class="header__search-list-item">
-                  <img src="{% static 'app/img/eth.svg' %}" alt="">
-                  <span class="name">Ethereum</span>
-                  <span class="chain">ETH</span>
-                </a>
-                <a href="#" class="header__search-list-item">
-                  <img src="{% static 'app/img/eth.svg' %}" alt="">
-                  <span class="name">Tether</span>
-                  <span class="chain">USDT</span>
-                </a>
-                <a href="#" class="header__search-list-item">
-                  <img src="{% static 'app/img/eth.svg' %}" alt="">
-                  <span class="name">Ethereum Classic</span>
-                  <span class="chain">ETC</span>
-                </a>
-                <a href="#" class="header__search-list-item">
-                  <img src="{% static 'app/img/eth.svg' %}" alt="">
-                  <span class="name">Ethereum Classic</span>
-                  <span class="chain">ETC</span>
-                </a>
-                <a href="#" class="header__search-list-item">
-                  <img src="{% static 'app/img/eth.svg' %}" alt="">
-                  <span class="name">Ethereum Classic</span>
-                  <span class="chain">ETC</span>
-                </a>
-                <a href="#" class="header__search-list-item">
-                  <img src="{% static 'app/img/eth.svg' %}" alt="">
-                  <span class="name">Ethereum Classic</span>
-                  <span class="chain">ETC</span>
-                </a>
-                <a href="#" class="header__search-list-item">
-                  <img src="{% static 'app/img/eth.svg' %}" alt="">
-                  <span class="name">Ethereum Classic</span>
-                  <span class="chain">ETC</span>
-                </a>
-                <a href="#" class="header__search-list-item">
-                  <img src="{% static 'app/img/eth.svg' %}" alt="">
-                  <span class="name">Ethereum Classic</span>
-                  <span class="chain">ETC</span>
-                </a>
-                <a href="#" class="header__search-list-item">
-                  <img src="{% static 'app/img/eth.svg' %}" alt="">
-                  <span class="name">Ethereum Classic</span>
-                  <span class="chain">ETC</span>
-                </a>
-                <a href="#" class="header__search-list-item">
-                  <img src="{% static 'app/img/eth.svg' %}" alt="">
-                  <span class="name">Ethereum Classic</span>
-                  <span class="chain">ETC</span>
-                </a>
-                <a href="#" class="header__search-list-item">
-                  <img src="{% static 'app/img/eth.svg' %}" alt="">
-                  <span class="name">Ethereum Classic</span>
-                  <span class="chain">ETC</span>
-                </a>
-                <a href="#" class="header__search-list-item">
-                  <img src="{% static 'app/img/eth.svg' %}" alt="">
-                  <span class="name">Ethereum Classic</span>
-                  <span class="chain">ETC</span>
-                </a>
-                <a href="#" class="header__search-list-item">
-                  <img src="{% static 'app/img/eth.svg' %}" alt="">
-                  <span class="name">Ethereum Classic</span>
-                  <span class="chain">ETC</span>
-                </a>
-              </div>
+              {% include 'app/components_html/header_search_component.html' %}
             </div>
           </form>
 
@@ -928,30 +797,35 @@
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-moon"></use>
               </svg>
             </button>
+
             <div class="footer__lang">
-              <button class="footer__lang-current">
-                <span>En</span>
-                <svg class="arrow">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bottom"></use>
-                </svg>
-              </button>
-              <div class="footer__lang-list">
-                <svg class="polygon">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sublist-polygon"></use>
-                </svg>
-                <a href="#" class="footer__lang-list-item active">English <svg class="icon">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use>
-                  </svg></a>
-                <a href="#" class="footer__lang-list-item">Русский</a>
-                <a href="#" class="footer__lang-list-item">Spanish</a>
-                <a href="#" class="footer__lang-list-item">Portugal</a>
-                <a href="#" class="footer__lang-list-item">Chinese</a>
-              </div>
+                <button class="footer__lang-current">
+                    {% get_current_language as LANGUAGE_CODE %}
+                    <span>{{ LANGUAGE_CODE|upper }}</span>
+                    <svg class="arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-bottom"></use></svg>
+                </button>
+
+                <div class="footer__lang-list">
+                    <svg class="polygon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sublist-polygon"></use></svg>
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    {% for language in languages %}
+                        <a href="#" class="footer__lang-list-item {% if language.code == LANGUAGE_CODE %}active{% endif %}"
+                           data-lang-code="{{ language.code }}">
+                            {{ language.name_local }}
+                            {% if language.code == LANGUAGE_CODE %}
+                                <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use></svg>
+                            {% endif %}
+                        </a>
+                    {% endfor %}
+                </div>
             </div>
           </div>
+
         </div>
+
       </div>
     </div>
+
     <div class="footer__bottom">
       <div class="footer__bottom-wrap container">
         <div class="footer__bottom-info">

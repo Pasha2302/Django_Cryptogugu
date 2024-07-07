@@ -421,4 +421,6 @@ export {
   setEventResetFilters,
   setEventTrendingCoinsFilterTableHead,
 
+  requestServer,
+
 };

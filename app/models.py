@@ -65,9 +65,26 @@ class UserSettings(models.Model):
         return f"Settings for user {self.user_id}"
 
 
+
+class Airdrops(models.Model):
+    name = models.CharField(max_length=255)
+    status = models.BooleanField(default=False)
+    end_date = models.DateField(blank=True, null=True)
+    reward = models.CharField(max_length=255)
+    path_coin_img = models.CharField(max_length=255)
+
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Date Added")
+    objects: QuerySet = DefaultManager()
+
+    def __str__(self):
+        return self.name
+
+
 class Coin(models.Model):
     name = models.CharField(max_length=255)
-    label = models.CharField(max_length=50)
+    symbol = models.CharField(max_length=50)
+    contract_address = models.CharField(max_length=42, blank=True, null=True)
+
     tags = ArrayField(models.CharField(max_length=50), verbose_name="Tags", blank=True, default=list)
     chain = models.CharField(max_length=30)
 

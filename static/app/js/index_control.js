@@ -6,6 +6,12 @@ import {
   setNextBackPages,
   setObserverTrendingCoins,
 
+  setShowMore,
+  setEventTrendingCoinsFilterItem,
+  setEventTrendingCoinsFilterItemSublist,
+  setEventResetFilters,
+  setEventTrendingCoinsFilterTableHead,
+
 } from "./moduls/modul_index.js";
 import getDropdownManager from "./moduls/dropdown.js";
 
@@ -14,10 +20,12 @@ window.addEventListener('load', () => {
   console.log("\nindex_control.")
   var dropdownManager = getDropdownManager();
   
-  setObserverTrendingCoins();
+  // setObserverTrendingCoins();
   setShowRowsNumber();
   setNextBackPages();
   setOpenAndCloseFilters();
+
+  setShowMore();
 
   setEventTrendingCoins(
     [
@@ -42,5 +50,11 @@ window.addEventListener('load', () => {
     ],
     dropdownManager
   );
+
+  setEventTrendingCoinsFilterItem();
+  setEventTrendingCoinsFilterItemSublist();
+  setEventResetFilters();
+  setEventTrendingCoinsFilterTableHead();
+
 
 });

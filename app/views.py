@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
 from django.http import HttpRequest, JsonResponse, HttpResponse
 
+from .controllers_views.controllers_header_search import HeaderSearchManager
 from .controllers_views.controllers_index import IndexContextManager
 from .controllers_views.controllers_settings_user import save_user, clear_data
 
@@ -53,6 +54,17 @@ def index(request: HttpRequest):
     # print(f"\nMenu items: {context['menu_items']}")
     return render(request, 'app/index.html', context=context, status=200)
 
+
+
+def get_header_search_component(request: HttpRequest):
+    if request.method == 'POST':
+        context = HeaderSearchManager(request).get_context()
+        html_data = render_to_string('app/components_html/header_search_component.html', context)
+        data = {'coins_html': html_data}
+        return JsonResponse(data=data, status=200)
+
+    else:
+        return JsonResponse(data={'status': 'Incorrect request'}, status=402)
 
 
 def airdrops(request: HttpRequest):

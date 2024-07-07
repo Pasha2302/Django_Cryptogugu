@@ -797,27 +797,37 @@
 
   <section class="most-popular">
     <div class="most-popular__wrap container">
-      <img src="{% static 'app/img/most-popular.svg' %}" alt="">
-      <div class="most-popular__text">
-        <h2>CoinMooner - The most popular new cryptocurrency listing and ranking website</h2>
-        <p>Coinmooner is a well-known and respected brand within the cryptocurrency world. We are the most popular cryptocurrency listing and ranking website. New token owners always look for opportunities to list their projects on our website. That ensures that the information on our platform is always accessible and up to date. <br> <br>
-          Most of the cryptocurrencies are listed on CoinMooner even before they are listed on CoinMarketCap & CoinGecko.
-        </p>
-      </div>
+        <img src="{% static 'app/img/most-popular.svg' %}" alt="">
+        <div class="most-popular__text">
+            <h2>{% blocktrans %}CoinMooner - The most popular new cryptocurrency listing and ranking website{% endblocktrans %}</h2>
+            <p>
+                {% blocktrans %}
+                Coinmooner is a well-known and respected brand within the cryptocurrency world. We are the most popular cryptocurrency listing and ranking website. New token owners always look for opportunities to list their projects on our website. That ensures that the information on our platform is always accessible and up to date. <br><br>
+                Most of the cryptocurrencies are listed on CoinMooner even before they are listed on CoinMarketCap & CoinGecko.
+                {% endblocktrans %}
+            </p>
+        </div>
 
-      <div class="most-popular__text">
-        <h3>Find DeFi tokens that will generate huge profits</h3>
-        <p>CoinMooner became a platform that makes cryptocurrencies more accessible to the public and provides entertaining features, developments, crypto-related news, tutorials, and other valuable materials. One of the main goals is to stay relevant and keep up with the rapid growth of crypto. <br> <br>
-          To follow our ideology, we developed state-of-the-art mechanisms and features that allow our visitors to analyze the tokens. Our visitors can use various rankings, filtering options, token contract audits, charts, trading history, and many other valuable options. All of this combined brings consistent results!</p>
-      </div>
+        <div class="most-popular__text">
+            <h3>{% trans "Find DeFi tokens that will generate huge profits" %}</h3>
+            <p>{% blocktrans %}
+                CoinMooner became a platform that makes cryptocurrencies more accessible to the public and provides entertaining features, developments, crypto-related news, tutorials, and other valuable materials. One of the main goals is to stay relevant and keep up with the rapid growth of crypto. <br> <br>
+                To follow our ideology, we developed state-of-the-art mechanisms and features that allow our visitors to analyze the tokens. Our visitors can use various rankings, filtering options, token contract audits, charts, trading history, and many other valuable options. All of this combined brings consistent results!
+                {% endblocktrans %}
+            </p>
+        </div>
 
-      <div class="most-popular__text">
-        <h3>How does CoinMooner work, and how to list a project?</h3>
-        <p>All new cryptocurrency projects can be submitted using the "Submit Token" form. Once the project is submitted, it will be checked by our support staff. If everything is correct, the project will be listed under the "NEW" tab on the main page, and the project's community can start voting. Votes are an essential part of the overall success of the project. The more votes a project gets, the higher its ranking is and, thus, the more exposure and engagement it gets. <br> <br>
-          We monitor new projects every day without exceptions. Our competent support is monitoring new information and updates daily - 24/7.</p>
-      </div>
+        <div class="most-popular__text">
+            <h3>{% trans "How does CoinMooner work, and how to list a project?" %}</h3>
+            <p>{% blocktrans %}
+                All new cryptocurrency projects can be submitted using the "Submit Token" form. Once the project is submitted, it will be checked by our support staff. If everything is correct, the project will be listed under the "NEW" tab on the main page, and the project's community can start voting. Votes are an essential part of the overall success of the project. The more votes a project gets, the higher its ranking is and, thus, the more exposure and engagement it gets. <br> <br>
+                We monitor new projects every day without exceptions. Our competent support is monitoring new information and updates daily - 24/7.
+                {% endblocktrans %}
+            </p>
+        </div>
     </div>
   </section>
+
 
   <section class="subscribe">
     <div class="subscribe__wrap container">
