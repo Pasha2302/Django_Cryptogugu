@@ -91,37 +91,37 @@ def get_contract_address_from_JSON():
     print(f"Count Coins JSON: {count_coins}")
 
 
-def check_contract_address(get_coins=False):
+def check_contract_address_api(loop: AbstractEventLoop):
     count = 0
     coins_without_address = Coin.objects.filter(contract_address__isnull=True)
     # coins_without_address = Coin.objects.filter(contract_address__isnull=False)
-
-    if get_coins: return coins_without_address
 
     for coin in coins_without_address:
         # coin_dict = coin.__dict__
         count += 1
         print(f"\nМонета без contract_address [{count}]:")
         print(f"Name: {coin.name}\nSymbol: {coin.symbol}\nContract Address: {coin.contract_address}\n")
-        get_contract_address_from_api(coin.symbol)
-        time.sleep(4)
+        loop.run_until_complete( get_contract_address_from_api(coin.symbol) )
+        time.sleep(2)
         # for key, value in coin_dict.items():
         #     print(f"{key}: {value}")
         print("\n" + "==" * 60)
+
+    return coins_without_address
 
 
 async def search_coin_mydb(name, symbol, db_coin_local):
     query = f"SELECT * FROM coin WHERE name='{name}' AND symbol='{symbol}'"
     result = await db_coin_local.execute_query(query=query, fetch=True)
-    total_rows = len(result)
-    # print(f"Записей найдено: {total_rows=}")
-    for data in result:
-        if total_rows > 1:
-            for k, v in data.items():
-                print(f"{k}:  {v}")
-            print('--' * 40)
 
-    print('==' * 40)
+    if result and is_valid_bsc_address(address=result[0]['contractAddress']):
+        total_rows = len(result)
+        print(f"Записей найдено: {total_rows=}")
+        for k, v in result[0].items():
+            print(f"{k}:  {v}")
+        print('--' * 40)
+
+        print('==' * 40)
 
 
 
@@ -136,9 +136,9 @@ def get_contract_address_from_mydb():
         loop.run_until_complete(db_coin_local.connect())
         loop: AbstractEventLoop
         try:
-            check_coins = check_contract_address(get_coins=True)
+            check_coins = check_contract_address_api(loop)
             for coin in check_coins:
-                # print(f"Name: {coin.name}\nSymbol: {coin.symbol}\nContract Address: {coin.contract_address}\n")
+                print(f"\n[SEARCH] Name: {coin.name}\nSymbol: {coin.symbol}\nContract Address: {coin.contract_address}")
                 loop.run_until_complete( search_coin_mydb(coin.name, coin.symbol, db_coin_local) )
         finally:
             # loop.run_until_complete(db_coinmooner.disconnect())
@@ -146,8 +146,8 @@ def get_contract_address_from_mydb():
             time.sleep(0.35)
 
 
-def get_contract_address_from_api(search_coin: str):
-    asyncio.run(get_contract(search=search_coin))
+async def get_contract_address_from_api(search_coin: str):
+    await get_contract(search=search_coin)
 
 
 def main():

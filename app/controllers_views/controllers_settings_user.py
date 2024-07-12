@@ -23,9 +23,9 @@ class SettingsManager:
         self.user_id_str = request.COOKIES.get('userId')
         self.user_settings_obj = None
         self.customer_data = dict()
+        self.status_votes = dict()
 
         if self.user_id_str is not None and self.user_id_str != 'null':
-            print(f"{self.user_id_str=}")
             self.user_id = uuid.UUID(self.user_id_str)
             self.user_settings_obj, _ = UserSettings.objects.get_or_create(user_id=self.user_id)
         else:
@@ -34,7 +34,11 @@ class SettingsManager:
         if request.method == 'POST':
             self.customer_data = json.loads(request.body).get('data')
             print(f"\n\nCustomer Data: {self.customer_data}")
-            self.__save_settings()
+
+            if self.customer_data.get('filter_item'):
+                self.__save_settings_filter()
+            if self.customer_data.get('vole_coin_id'):
+                self.status_votes = self.__save_vote_coin_id()
 
         self.per_page = abs(self.__get_per_page())
 
@@ -101,9 +105,9 @@ class SettingsManager:
         return int(per_page)
 
 
-    def __save_settings(self):
+    def __save_settings_filter(self):
         per_page = self.customer_data['per_page']
-        filter_item_list = self.customer_data.get('filter_item')
+        filter_item_list = self.customer_data['filter_item']
 
         try:
             self.user_settings_obj.per_page = per_page
@@ -113,10 +117,19 @@ class SettingsManager:
                     if hasattr(self.user_settings_obj, data_info):  # Проверяем, что атрибут существует
                         setattr(self.user_settings_obj, data_info, filter_item['active'])
                     else:
-                        print(f"[method = 'POST'] Атрибут '{data_info}' не найден в модели UserSettings!")
+                        print(f"[ __save_settings ] Атрибут '{data_info}' не найден в модели UserSettings!")
 
             self.user_settings_obj.save()
             print(f"\nUser Settings Obj: {vars(self.user_settings_obj)}")
         except UserSettings.DoesNotExist as err:
             print(err)
             print("[method = 'POST'] Пользователь не найден в базе!")
+
+    def __save_vote_coin_id(self):
+        if self.user_settings_obj:
+            vole_coin_id = self.customer_data['vole_coin_id']
+            if self.user_settings_obj.vote_for_coin(vole_coin_id):
+                return {"status": "Vote registered", "vole_coin_id": vole_coin_id}
+            else:
+                return {"status": "You have already voted for this coin"}
+        return {"status": "User settings not found"}

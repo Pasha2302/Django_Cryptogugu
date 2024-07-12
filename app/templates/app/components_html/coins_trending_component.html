@@ -116,13 +116,13 @@
 
   <td>
     <div class="coin-table__votes">
-      <span>{{ data_coin.votes }}</span>
+      <span class="js-all_vote-{{ data_coin.id }}">{{ data_coin.votes }}</span>
     </div>
   </td>
 
   <td>
     <div class="coin-table__votes24h">
-      <span class="cost up">
+      <span class="cost up js-daily_vote-{{ data_coin.id }}">
         <svg class="arrow">
           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-up"></use>
         </svg>
@@ -132,7 +132,7 @@
 
   <td>
     <div class="coin-table__vote">
-      <button class="btn btn_light btn_light-check"><svg class="icon">
+      <button class="btn btn_light btn_light-check js-vote" data-id="{{ data_coin.id }}"><svg class="icon">
           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check"></use>
         </svg> Vote</button>
     </div>

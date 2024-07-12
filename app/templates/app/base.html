@@ -305,37 +305,8 @@
   <header class="header">
     <div class="header-top">
       <div class="header-top__wrap container">
-        <ul class="header-top__rate">
-          <li class="header-top__rate-item">
-            <span class="header-top__rate-label">BNB:</span>
-            <span class="header-top__rate-value">$304.39</span>
-          </li>
-          <li class="header-top__rate-item">
-            <span class="header-top__rate-label">BTC:</span>
-            <span class="header-top__rate-value">$24 000.45</span>
-          </li>
-          <li class="header-top__rate-item">
-            <span class="header-top__rate-label">ETH:</span>
-            <span class="header-top__rate-value">$12 000.10</span>
-          </li>
-          <li class="header-top__rate-item">
-            <span class="header-top__rate-label">Mooner:</span>
-            <span class="header-top__rate-value">0,1123</span>
-          </li>
-          <li class="header-top__rate-item">
-            <span class="header-top__rate-label">Cryptocurrencies listed:</span>
-            <span class="header-top__rate-value">10 841</span>
-          </li>
-          <li class="header-top__rate-item">
-            <span class="header-top__rate-label">Total Audits:</span>
-            <span class="header-top__rate-value">412</span>
-          </li>
-          <li class="header-top__rate-item">
-            <span class="header-top__rate-label">Total KYCs:</span>
-            <span class="header-top__rate-value">310</span>
-          </li>
-        </ul>
 
+        {% include 'app/components_html/header_top_rate_component.html' %}
 
         <div class="header-top__actions">
             <button class="header__theme">
@@ -855,6 +826,21 @@
     </div>
   </footer>
 
+
+  <div class="banner-block js-votes-banner">
+    <div class="banner-block__overlay"></div>
+    <div class="banner-block__item">
+      <div class="banner-block__top">
+        <div class="banner-block__title"></div>
+        <button class="banner-block__item-close">
+          <span><svg class="icon">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use>
+          </svg></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <div class="banner-block recapcha ">
     <div class="banner-block__overlay"></div>
     <div class="banner-block__item">
@@ -866,7 +852,7 @@
       </div>
 
       <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-      <div class="g-recaptcha" data-sitekey="asdaksjdhalkdhadahjdak"></div>
+      <div class="g-recaptcha" data-sitekey="6Lc49dUpAAAAAF-QengKmZF0uOjaorkT2zWawBEz"></div>
     </div>
   </div>
 

@@ -1,5 +1,6 @@
 from django.contrib.postgres.fields import ArrayField
 from django.db import models
+from django.utils import timezone
 import uuid
 from decimal import Decimal
 
@@ -59,10 +60,22 @@ class UserSettings(models.Model):
 
     head_filter = models.CharField(max_length=30, null=True)
 
+    coins_votes = ArrayField(models.CharField(max_length=50), verbose_name="Coins Votes", blank=True, default=list)
+
     objects = UserSettingsManager()
 
     def __str__(self):
         return f"Settings for user {self.user_id}"
+
+    def has_voted_for(self, coin_id):
+        return coin_id in self.coins_votes
+
+    def vote_for_coin(self, coin_id):
+        if not self.has_voted_for(coin_id):
+            self.coins_votes.append(coin_id)
+            self.save()
+            return True
+        return False
 
 
 
@@ -78,6 +91,15 @@ class Airdrops(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class PromotedCoins(models.Model):
+    coin = models.OneToOneField("Coin", on_delete=models.CASCADE, related_name='promoted')
+    start_date = models.DateTimeField(default=timezone.now)
+    end_date = models.DateTimeField()
+
+    def __str__(self):
+        return f"Promoted: {self.coin.name} from {self.start_date} to {self.end_date}"
 
 
 class Coin(models.Model):

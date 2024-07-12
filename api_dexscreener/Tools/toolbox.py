@@ -477,6 +477,7 @@ class TgBot3000:
         conf = {}
     def __init__(self):
         self.token = self.conf['tb3000']
+        print(f'Token: {self.token}')
         self.chat_id = self.conf['mci']
         self.base_url = f"https://api.telegram.org/bot{self.token}/"
 
@@ -655,10 +656,10 @@ if __name__ == '__main__':
     bot = TgBot3000()
 
     # Отправка сообщения
-    message_text = "Привет, мир!"
+    message_text = "SSSSSSSSS!"
     bot.send_message(message_text)
 
     # Отправка изображения
-    photo_path = "110600528.jpeg"  # Укажите путь к изображению
-    photo_caption = "Красивый пейзаж"
-    bot.send_photo(photo_path=photo_path, caption=photo_caption)
+    # photo_path = "110600528.jpeg"  # Укажите путь к изображению
+    # photo_caption = "Красивый пейзаж"
+    # bot.send_photo(photo_path=photo_path, caption=photo_caption)

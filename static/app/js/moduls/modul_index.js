@@ -363,16 +363,17 @@ var setEventTrendingCoinsFilterItem = () => {
 
 
 var setEventTrendingCoinsFilterTableHead = () => {
-  var buttonsHead = document.querySelectorAll(".coin-table thead button");
-  var buttonsElms = document.querySelectorAll('button.trending-coins__filter-item');
+  var tableElm = document.querySelector('section.trending-coins');
+  var buttonsHead = tableElm.querySelectorAll(".coin-table thead button");
+  var buttonsElms = tableElm.querySelectorAll('button.trending-coins__filter-item');
   var filteredButtons = Array.from(buttonsElms).filter(button => !button.classList.contains('trending-coins__filter-item_sub'));
 
   buttonsHead.forEach((button) => {
     button.addEventListener("click", function () {
       var filter_item = [];
       // Переключение стрелки
-      document.querySelector('button.trending-coins__filter-item[data-info="today_hot"]').classList.remove('active');
-      document.querySelector('button.trending-coins__filter-item[data-info="all_time_best"]').classList.remove('active');
+      tableElm.querySelector('button.trending-coins__filter-item[data-info="today_hot"]').classList.remove('active');
+      tableElm.querySelector('button.trending-coins__filter-item[data-info="all_time_best"]').classList.remove('active');
       var svg = this.querySelector("svg use");
       var currentHref = svg.getAttribute("xlink:href");
       var info = this.dataset.info;
@@ -407,11 +408,57 @@ var setEventTrendingCoinsFilterTableHead = () => {
 }
 
 
+var setEventPromotedCoinsFilterTableHead = () => {
+  var tableElm = document.querySelector('section.promoted-coins');
+  var buttonsHead = tableElm.querySelectorAll(".coin-table thead button");
+
+  buttonsHead.forEach((button) => {
+    button.addEventListener("click", function () {
+      // Переключение стрелки
+      var svg = this.querySelector("svg use");
+      var currentHref = svg.getAttribute("xlink:href");
+      var info = this.dataset.info;
+
+      buttonsHead.forEach((btn) => {
+        btn.classList.remove("active");
+        btn.querySelector("svg use").setAttribute("xlink:href", "#icon-arrow-bott");
+      });
+
+      if (currentHref === "#icon-arrow-bott") {
+        svg.setAttribute("xlink:href", "#icon-arrow-up");
+        info += ',DESC'
+      } else {
+        svg.setAttribute("xlink:href", "#icon-arrow-bott");
+        info += ',ASC'
+      }
+
+      this.classList.add("active");
+      getDataPromotedCoinsTable(info);
+
+    });
+  });
+}
+
+
+function getDataPromotedCoinsTable(info='votes,ASC') {
+  requestServer(
+    "table-promoted-coins-component/",
+    "POST",
+    { data_info: 'head_filter', active: info }
+  ).then((data) => {
+      // console.log('\nShow More Button Data:', data);
+      var targetBlock = document.querySelector('div.coin-table.js-promoted-coins');
+      targetBlock.innerHTML = data.coins_html;
+      setEventPromotedCoinsFilterTableHead();
+    });
+}
+
+
 export {
   setOpenAndCloseFilters,
   setEventTrendingCoins,
   setNextBackPages,
-  setObserverTrendingCoins,
+  // setObserverTrendingCoins,
   setShowRowsNumber,
 
   setShowMore,
@@ -419,6 +466,11 @@ export {
   setEventTrendingCoinsFilterItem,
   setEventTrendingCoinsFilterItemSublist,
   setEventResetFilters,
+
   setEventTrendingCoinsFilterTableHead,
+  getDataPromotedCoinsTable,
+
+
+  requestServer,
 
 };

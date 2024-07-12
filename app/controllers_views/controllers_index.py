@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import json
 from itertools import chain
 from django.core.paginator import Paginator
@@ -8,14 +10,16 @@ from app.models import Coin
 from django.utils import timezone
 from datetime import timedelta
 from django.utils.translation import gettext as _
-from decimal import Decimal
 
 
 class FilterCoin:
-    def __init__(self, settings: SettingsManager):
-        self.__data_coins = Coin.objects.all()
+    def __init__(self, settings: SettingsManager | None = None, data_coins=None):
+        if data_coins is None:
+            self.__data_coins = Coin.objects.all()
+        else:
+            self.__data_coins = data_coins
 
-        if settings.user_settings_obj:
+        if settings is not None and settings.user_settings_obj:
             if settings.user_settings_obj.all_time_best:
                 self.__data_coins = Coin.objects.order_by('-votes')
 
@@ -41,12 +45,12 @@ class FilterCoin:
             if settings.user_settings_obj.head_filter:
                 symbol, sort = settings.user_settings_obj.head_filter.split(',')
                 if symbol != 'None':
-                    self.__head_filter_coins(symbol, sort)
+                    self.head_filter_coins(symbol, sort)
             # self.print_time_since_creation()
 
 
-    def __head_filter_coins(self, symbol: str, sort: str):
-        print(f"\n__head_filter_coins: {symbol=}  /  {sort=}")
+    def head_filter_coins(self, symbol: str, sort: str):
+        # print(f"\n__head_filter_coins: {symbol=}  /  {sort=}")
         if sort == "DESC": self.__data_coins = self.__data_coins.order_by(f'-{symbol}')
         else: self.__data_coins = self.__data_coins.order_by(symbol)
 
@@ -66,6 +70,14 @@ class FilterCoin:
     def get_coins(self):
         return self.__data_coins
 
+    @staticmethod
+    def get_coins_tops_section():
+        return {
+            'trending': Coin.objects.order_by('-volume_usd')[:5],
+            'most_viewed': Coin.objects.order_by('-votes')[:5],
+            'top_gainers': Coin.objects.order_by('-price')[:5],
+        }
+
     def print_time_since_creation(self):
         for coin in self.__data_coins:
             time_since_creation = timezone.now() - coin.created_at
@@ -81,7 +93,8 @@ class IndexContextManager:
         self.current_uri = request.build_absolute_uri()
         self.base_url = self.__get_base_url()
 
-        self.__data_coins = FilterCoin(self.settings).get_coins()
+        self.__filter_coin_obj = FilterCoin(self.settings)
+        self.__data_coins = self.__filter_coin_obj.get_coins()
         self.__per_page = self.settings.per_page
         self.__paginator = Paginator(self.__data_coins, self.__per_page)
 
@@ -123,6 +136,7 @@ class IndexContextManager:
             'current_uri': self.current_uri if self.__page_number > 1 else self.base_url,
 
             'filter_item': self.settings.get_filter_item(),
+            'coins_tops_section': self.__filter_coin_obj.get_coins_tops_section()
         }
 
     def get_context(self) -> dict:
@@ -190,3 +204,73 @@ class IndexContextManager:
                 pagination = list(chain.from_iterable(x if isinstance(x, list) else [x] for x in pagination))
 
         return pagination
+
+
+class PromotedCoinsTableManager:
+    def __init__(self, request: HttpRequest):
+        self.__customer_data = json.loads(request.body).get('data')
+        self.__data_head_filter = self.__customer_data.get('active')
+        self.args = self.__data_head_filter.split(',')
+
+        self.__data_coins = Coin.objects.filter(promoted__isnull=False).select_related('promoted')
+        # print(f"\nData Coins Promoted: {self.__data_coins,}")
+
+        filter_coins_obj = FilterCoin(data_coins=self.__data_coins)
+        filter_coins_obj.head_filter_coins(symbol=self.args[0], sort=self.args[1])
+        self.__context = {
+            'filter_item': self.get_filter_item(),
+            'page_obj': {'object_list': filter_coins_obj.get_coins()},
+            'page_start_index': 0,
+        }
+
+    def get_filter_item(self):
+        filter_item = {
+            'head_filter': [
+                {'active': False, 'title': 'Market Cap', 'symbol': 'market_cap', 'sort': 'ASC'},
+                {'active': False, 'title': 'Price', 'symbol': 'price', 'sort': 'ASC'},
+                {'active': False, 'title': 'Volume', 'symbol': 'volume_usd', 'sort': 'ASC'},
+                {'active': False, 'title': '24h', 'symbol': 'price_change_24h', 'sort': 'ASC'},
+                {'active': False, 'title': 'Launch Date', 'symbol': 'launch_date', 'sort': 'ASC'},
+                {'active': False, 'title': 'Votes', 'symbol': 'votes', 'sort': 'ASC'},
+                {'active': False, 'title': 'Votes 24', 'symbol': 'votes24h', 'sort': 'ASC'},
+            ],
+        }
+
+        if self.args:
+            for head_filter in filter_item['head_filter']:
+                symbol, sort = self.args[0], self.args[1]
+                if head_filter['symbol'] == symbol:
+                    head_filter['active'] = True
+                    head_filter['sort'] = sort
+                    break
+
+        return filter_item
+
+    def get_context(self):
+        return self.__context
+
+
+class VoteManager:
+    def __init__(self, request: HttpRequest):
+        self.__settings = SettingsManager(request)
+        self.__data_vote = None
+
+    def get_data_vote(self):
+        return self.__data_vote
+
+    def check_and_save_vote(self):
+        if self.__settings.status_votes.get("status") == "Vote registered":
+            self.__data_vote = self.save_vote(self.__settings.status_votes['vole_coin_id'])
+        else: self.__data_vote = self.__settings.status_votes
+
+    @staticmethod
+    def save_vote(vole_coin_id):
+        # Увеличьте количество голосов для указанной монеты
+        coin = Coin.objects.get(id=vole_coin_id)
+        coin.votes += 1
+        coin.votes24h += 1
+        coin.save()
+        return {"daily_vote": coin.votes24h, "vote": coin.votes}
+
+
+

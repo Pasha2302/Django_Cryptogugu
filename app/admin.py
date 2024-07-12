@@ -1,6 +1,17 @@
 from django.contrib import admin
 
-from app.models import Coin
+from app.models import Coin, PromotedCoins
+
+
+@admin.register(PromotedCoins)
+class PromotedCoinsAdmin(admin.ModelAdmin):
+    list_display = ('coin', 'start_date', 'end_date')
+    list_filter = ('start_date', 'end_date')
+    search_fields = ('coin__name', 'coin__symbol')
+
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+        return qs.select_related('coin')
 
 
 @admin.register(Coin)

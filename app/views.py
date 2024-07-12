@@ -5,7 +5,7 @@ from django.template.loader import render_to_string
 from django.http import HttpRequest, JsonResponse, HttpResponse
 
 from .controllers_views.controllers_header_search import HeaderSearchManager
-from .controllers_views.controllers_index import IndexContextManager
+from .controllers_views.controllers_index import IndexContextManager, PromotedCoinsTableManager, VoteManager
 from .controllers_views.controllers_settings_user import save_user, clear_data
 
 
@@ -62,6 +62,28 @@ def get_header_search_component(request: HttpRequest):
         html_data = render_to_string('app/components_html/header_search_component.html', context)
         data = {'coins_html': html_data}
         return JsonResponse(data=data, status=200)
+
+    else:
+        return JsonResponse(data={'status': 'Incorrect request'}, status=402)
+
+
+def get_table_promoted_coins_component(request: HttpRequest):
+    if request.method == 'POST':
+        context = PromotedCoinsTableManager(request).get_context()
+        html_data = render_to_string('app/components_html/table_coins_component.html', context)
+        data = {'coins_html': html_data}
+        return JsonResponse(data=data, status=200)
+
+    else:
+        return JsonResponse(data={'status': 'Incorrect request'}, status=402)
+
+
+def voting(request: HttpRequest):
+    if request.method == 'POST':
+        vote_manager = VoteManager(request=request)
+        vote_manager.check_and_save_vote()
+        data_vote = vote_manager.get_data_vote()
+        return JsonResponse(data=data_vote, status=200)
 
     else:
         return JsonResponse(data={'status': 'Incorrect request'}, status=402)

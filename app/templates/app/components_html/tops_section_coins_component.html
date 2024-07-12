@@ -1,0 +1,166 @@
+{% load static %}
+{% load custom_filters %}
+
+
+<section class="tops-section">
+  <div class="tops-section__wrap container">
+    <div class="tops-section__slider swiper">
+
+        <!--                TABLES                                -->
+      <div class="swiper-wrapper">
+
+        <!--////////////////////////////////////////////////////////////////////////////////////////////          -->
+        <div class="tops-section__block swiper-slide">
+            <!--            HEADER                            -->
+          <div class="tops-section__block-top">
+            <div class="label">Trending</div>
+            <span class="">Price</span>
+          </div>
+            <!--            COINS                              -->
+          <div class="tops-section__block-list">
+            {% for coin_trending in coins_tops_section.trending %}
+              <a href="#" class="tops-section__block-list-item">
+                <div class="left">
+                  <img src="{% static 'app/' %}{{ coin_trending.path_coin_img }}" alt="">
+                  <div class="name">{{ coin_trending.name }}</div>
+                  <div class="chain">{{ coin_trending.chain }}</div>
+                </div>
+                <div class="cost">
+                  {% if coin_trending.normalized_price %}
+                    {% with coin_trending.normalized_price|split:"|" as split_list %}
+
+                      {% if split_list|length > 2 %}
+                        ${{ split_list|get_index:0 }}(0<sub>{{ split_list|get_index:1 }}</sub>){{ split_list|get_index:2 }}
+
+                      {% else %}
+                        ${{ coin_trending.normalized_price }}
+                      {% endif %}
+
+                    {% endwith %}
+
+                  {% elif coin_trending.normalized_price is None %}
+                    <span class="none">—</span>
+
+                  {% endif %}
+                </div>
+              </a>
+            {% endfor %}
+
+          </div>
+        </div>
+
+        <!--////////////////////////////////////////////////////////////////////////////////////////////          -->
+        <div class="tops-section__block swiper-slide">
+            <!--            HEADER                            -->
+          <div class="tops-section__block-top">
+            <div class="label">Most Viewed</div>
+            <span class="">Price</span>
+          </div>
+            <!--            COINS                              -->
+          <div class="tops-section__block-list">
+            <a href="#" class="tops-section__block-list-item">
+              <div class="left">
+                <img src="{% static 'app/img/icon6.png' %}" alt="">
+                <div class="name">FloraChain</div>
+                <div class="chain">FYT</div>
+              </div>
+              <div class="cost">$0.008079</div>
+            </a>
+            <a href="#" class="tops-section__block-list-item">
+              <div class="left">
+                <img src="{% static 'app/img/icon7.png' %}" alt="">
+                <div class="name">Wrapped TAO</div>
+                <div class="chain">WTAO</div>
+              </div>
+              <div class="cost">$87.46</div>
+            </a>
+            <a href="#" class="tops-section__block-list-item">
+              <div class="left">
+                <img src="{% static 'app/img/icon8.png' %}" alt="">
+                <div class="name">Novatoken</div>
+                <div class="chain">NVT</div>
+              </div>
+              <div class="cost">$0.00002256</div>
+            </a>
+            <a href="#" class="tops-section__block-list-item">
+              <div class="left">
+                <img src="{% static 'app/img/icon9.png' %}" alt="">
+                <div class="name">SHARBI</div>
+                <div class="chain">SHARBI</div>
+              </div>
+              <div class="cost">$0.008079</div>
+            </a>
+            <a href="#" class="tops-section__block-list-item">
+              <div class="left">
+                <img src="{% static 'app/img/icon10.png' %}" alt="">
+                <div class="name">FERMA SOSEDI</div>
+                <div class="chain">FERMA</div>
+              </div>
+              <div class="cost">$87.46</div>
+            </a>
+          </div>
+        </div>
+
+        <!--////////////////////////////////////////////////////////////////////////////////////////////          -->
+        <div class="tops-section__block swiper-slide">
+            <!--             HEADER                            -->
+          <div class="tops-section__block-top">
+            <div class="label">Top Gainers</div>
+            <span class="">Price Change</span>
+          </div>
+            <!--             COINS                              -->
+          <div class="tops-section__block-list">
+            <a href="#" class="tops-section__block-list-item">
+              <div class="left">
+                <img src="{% static 'app/img/icon11.png' %}" alt="">
+                <div class="name">FloraChain</div>
+                <div class="chain">FYT</div>
+              </div>
+              <div class="cost">$0.0000008191</div>
+            </a>
+            <a href="#" class="tops-section__block-list-item">
+              <div class="left">
+                <img src="{% static 'app/img/icon12.png' %}" alt="">
+                <div class="name">Wrapped TAO</div>
+                <div class="chain">WTAO</div>
+              </div>
+              <div class="cost">$87.46</div>
+            </a>
+            <a href="#" class="tops-section__block-list-item">
+              <div class="left">
+                <img src="{% static 'app/img/icon2.png' %}" alt="">
+                <div class="name">Render Token</div>
+                <div class="chain">RNDR</div>
+              </div>
+              <div class="cost down"><svg class="arrow">
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-up"></use>
+                </svg> +5.93%</div>
+            </a>
+            <a href="#" class="tops-section__block-list-item">
+              <div class="left">
+                <img src="{% static 'app/img/icon14.png' %}" alt="">
+                <div class="name">SHARBI</div>
+                <div class="chain">SHARBI</div>
+              </div>
+              <div class="cost">$0.008079</div>
+            </a>
+            <a href="#" class="tops-section__block-list-item">
+              <div class="left">
+                <img src="{% static 'app/img/icon5.png' %}" alt="">
+                <div class="name">Blur</div>
+                <div class="chain">BLUR</div>
+              </div>
+              <div class="cost up"><svg class="arrow">
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-up"></use>
+                </svg> +5.93%</div>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="tops-section__pagination"></div>
+    </div>
+  </div>
+</section>

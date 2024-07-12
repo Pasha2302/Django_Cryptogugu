@@ -4,13 +4,16 @@ import {
   setOpenAndCloseFilters,
   setShowRowsNumber,
   setNextBackPages,
-  setObserverTrendingCoins,
+
+  // setObserverTrendingCoins,
 
   setShowMore,
   setEventTrendingCoinsFilterItem,
   setEventTrendingCoinsFilterItemSublist,
   setEventResetFilters,
+
   setEventTrendingCoinsFilterTableHead,
+  getDataPromotedCoinsTable,
 
 } from "./moduls/modul_index.js";
 import getDropdownManager from "./moduls/dropdown.js";
@@ -54,7 +57,8 @@ window.addEventListener('load', () => {
   setEventTrendingCoinsFilterItem();
   setEventTrendingCoinsFilterItemSublist();
   setEventResetFilters();
-  setEventTrendingCoinsFilterTableHead();
 
+  setEventTrendingCoinsFilterTableHead();
+  getDataPromotedCoinsTable();
 
 });
