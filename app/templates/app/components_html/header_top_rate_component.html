@@ -2,29 +2,20 @@
 
 
 <ul class="header-top__rate">
-  <li class="header-top__rate-item">
-    <span class="header-top__rate-label">BNB:</span>
-    <span class="header-top__rate-value">$304.39</span>
-  </li>
-  <li class="header-top__rate-item">
-    <span class="header-top__rate-label">BTC:</span>
-    <span class="header-top__rate-value">$24 000.45</span>
-  </li>
-  <li class="header-top__rate-item">
-    <span class="header-top__rate-label">ETH:</span>
-    <span class="header-top__rate-value">$12 000.10</span>
-  </li>
-  <li class="header-top__rate-item">
-    <span class="header-top__rate-label">SOL:</span>
-    <span class="header-top__rate-value">$141.84</span>
-  </li>
+  {% for base_coin in top_rate_items.base_coins_list %}
+    <li class="header-top__rate-item">
+      <span class="header-top__rate-label">{{ base_coin.symbol }}:</span>
+      <span class="header-top__rate-value">${{ base_coin.normalized_price }}</span>
+    </li>
+  {% endfor %}
+
   <li class="header-top__rate-item">
     <span class="header-top__rate-label">Cryptocurrencies listed:</span>
-    <span class="header-top__rate-value">8379</span>
+    <span class="header-top__rate-value">{{ top_rate_items.count_coins_int }}</span>
   </li>
   <li class="header-top__rate-item">
     <span class="header-top__rate-label">Airdrops listed:</span>
-    <span class="header-top__rate-value">412</span>
+    <span class="header-top__rate-value">{{ top_rate_items.count_airdrops_int }}</span>
   </li>
 </ul>
 

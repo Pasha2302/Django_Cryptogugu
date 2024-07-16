@@ -28,6 +28,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django_celery_beat',     # pip install celery django-celery-beat
+    'django_celery_results',  # pip install django-celery-results
     'app',
 ]
 
@@ -153,3 +155,39 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# ================================================================================================================== #
+from celery.schedules import crontab
+
+# Периодические задачи Celery
+CELERY_BEAT_SCHEDULE = {
+    'reset_votes24h_daily': {
+        'task': 'app.tasks.reset_votes24h',
+        # 'schedule': crontab(hour=0, minute=0),  # Запуск в полночь каждый день
+        # 'schedule': crontab(minute=0),  # Чтобы выполнить задачу каждый час:
+        'schedule': crontab(minute='*/30'), # Для выполнения задачи каждые 5 минут, можно использовать параметр minute с шагом */5
+    },
+    'auto_voting_every_day': {
+        'task': 'app.tasks.auto_voting',
+        # 'schedule': crontab(hour=0, minute=0),  # Запуск в полночь каждый день
+        # 'schedule': crontab(minute=0),  # Чтобы выполнить задачу каждый час:
+        'schedule': crontab(minute='*/5'), # Для выполнения задачи каждые 5 минут, можно использовать параметр minute с шагом */5
+    },
+    'start_update_coins_every_day': {
+            'task': 'app.tasks.start_update_coins',
+            # 'schedule': crontab(hour=0, minute=0),  # Запуск в полночь каждый день
+            # 'schedule': crontab(minute=0),  # Чтобы выполнить задачу каждый час:
+            'schedule': crontab(minute='*/10'), # Для выполнения задачи каждые 5 минут, можно использовать параметр minute с шагом */5
+        },
+}
+
+# Настройки Celery (нужна библиотека redis - pip install redis)
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'UTC'
+

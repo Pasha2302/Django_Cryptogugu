@@ -29,7 +29,7 @@ class Command(BaseCommand):
             market_cap_presale = item['market_cap_presale'] if item['market_cap_presale'] else False
             coin = Coin(
                 name=item['name'],
-                label=item['label'],
+                symbol=item['label'],
                 tags=item.get('tags', []),
                 chain=item['chain'],
                 market_cap=item.get('market_cap', None),
@@ -49,5 +49,5 @@ class Command(BaseCommand):
             self.stdout.write(self.style.SUCCESS(f"Coin {coin.name} saved successfully"))
 
 
-# /home/pavelpc/PycharmProjects/Working_Projects/Django_Cryptogugu/cryptogugu/app/management/commands/format_coins_data.json
+# /home/pavelpc/PycharmProjects/Working_Projects/Django_Cryptogugu/cryptogugu/app/management/commands/coins_data.json
 # python manage.py load_coins path/to/your/jsonfile.json

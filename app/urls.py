@@ -15,6 +15,9 @@ urlpatterns = [
     path("promote/", views.promote, name="promote"),
 
     path("clear-settings/", views.clear_settings, name="clear_settings"),
+    path("reset-all-votes/", views.reset_all_votes, name="reset_all_votes"),
+
+
     path("header-search-component/", views.get_header_search_component, name="header_search_component"),
     path("table-promoted-coins-component/", views.get_table_promoted_coins_component, name="get_table_promoted_coins_component"),
 

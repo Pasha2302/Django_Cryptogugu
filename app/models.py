@@ -78,7 +78,6 @@ class UserSettings(models.Model):
         return False
 
 
-
 class Airdrops(models.Model):
     name = models.CharField(max_length=255)
     status = models.BooleanField(default=False)
@@ -105,13 +104,15 @@ class PromotedCoins(models.Model):
 class Coin(models.Model):
     name = models.CharField(max_length=255)
     symbol = models.CharField(max_length=50)
-    contract_address = models.CharField(max_length=42, blank=True, null=True)
+    contract_address = models.CharField(max_length=52, blank=True, null=True)
+    selected_auto_voting = models.BooleanField(default=False)
 
     tags = ArrayField(models.CharField(max_length=50), verbose_name="Tags", blank=True, default=list)
     chain = models.CharField(max_length=30)
 
     market_cap = models.DecimalField(max_digits=35, decimal_places=2, blank=True, null=True)
     price = models.DecimalField(max_digits=64, decimal_places=34, blank=True, null=True)
+    liquidity_usd = models.DecimalField(max_digits=20, decimal_places=2, blank=True, null=True)
 
     volume_usd = models.DecimalField(max_digits=20, decimal_places=2)
     volume_btc = models.DecimalField(max_digits=20, decimal_places=2)
@@ -147,3 +148,38 @@ class Coin(models.Model):
         verbose_name = "Coin"
         verbose_name_plural = "Coins"
 
+
+# ==================================================================================================================== #
+class BaseCoin(models.Model):
+    name = models.CharField(max_length=255)
+    symbol = models.CharField(max_length=50)
+    contract_address = models.CharField(max_length=52, blank=True, null=True)
+    pair_url = models.URLField(max_length=200)
+    market_cap = models.DecimalField(max_digits=35, decimal_places=2, blank=True, null=True)
+    price = models.DecimalField(max_digits=64, decimal_places=34, blank=True, null=True)
+    liquidity_usd = models.DecimalField(max_digits=20, decimal_places=2, blank=True, null=True)
+
+    volume_usd = models.DecimalField(max_digits=20, decimal_places=2)
+    volume_btc = models.DecimalField(max_digits=20, decimal_places=2)
+    price_change_24h = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Price Change 24h")
+
+    path_coin_img = models.CharField(max_length=255)
+    path_chain_img = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Date Added")
+
+    objects: QuerySet = DefaultManager()  # Явное определение менеджера
+
+    @property
+    def normalized_price(self):
+        self.price: Decimal
+        if self.price is not None:
+            return self.price.normalize()
+        return None
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ["id"]
+        verbose_name = "Base Coin"
+        verbose_name_plural = "Base Coins"

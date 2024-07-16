@@ -1,0 +1,54 @@
+[
+    {
+        "name": "Binance coin",
+        "symbol": "BNB",
+        "contract_address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+        "pair_url": "https://api.dexscreener.com/latest/dex/pairs/ethereum/0x9E7809C21BA130c1A51C112928eA6474D9a9Ae3C",
+        "market_cap": "10875",
+        "price": "12333.33",
+        "volume_usd": "0.0",
+        "volume_btc": "0.0",
+        "price_change_24h": "0.0",
+        "path_coin_img": "img/coin/bnb111.png",
+        "path_chain_img": "img/chain/binance.svg"
+    },
+    {
+        "name": "Ethereum Token",
+        "symbol": "ETH",
+        "contract_address": "0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
+        "pair_url": "https://api.dexscreener.com/latest/dex/pairs/bsc/0xb125aa15Ad943D96e813E4A06d0c34716F897e26",
+        "market_cap": "0.0",
+        "price": "0.00000000",
+        "volume_usd": "0.0",
+        "volume_btc": "0.0",
+        "price_change_24h": "0.0",
+        "path_coin_img": "img/coin/eth111.png",
+        "path_chain_img": "img/chain/binance.svg"
+    },
+    {
+        "name": "Bitcoin",
+        "symbol": "BTC",
+        "contract_address": "0x9BE89D2a4cd102D8Fecc6BF9dA793be995C22541",
+        "pair_url": "https://api.dexscreener.com/latest/dex/pairs/bsc/0xA589248905a5454f379750fACfB0B25C329eC287",
+        "market_cap": "0.0",
+        "price": "0.00000000",
+        "volume_usd": "0.0",
+        "volume_btc": "0.0",
+        "price_change_24h": "0.0",
+        "path_coin_img": "img/coin/bts111.png",
+        "path_chain_img": "img/chain/eth.svg"
+    },
+    {
+        "name": "Solana",
+        "symbol": "SOL",
+        "contract_address": "So11111111111111111111111111111111111111112",
+        "pair_url": "https://api.dexscreener.com/latest/dex/pairs/ethereum/0x127452F3f9cDc0389b0Bf59ce6131aA3Bd763598",
+        "market_cap": "0.0",
+        "price": "0.00000000",
+        "volume_usd": "0.0",
+        "volume_btc": "0.0",
+        "price_change_24h": "0.0",
+        "path_coin_img": "img/coin/sol1111.png",
+        "path_chain_img": "img/chain/solana.svg"
+    }
+]

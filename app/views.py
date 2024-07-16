@@ -4,14 +4,23 @@ from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
 from django.http import HttpRequest, JsonResponse, HttpResponse
 
+from .controllers_views.controllers_base import BaseContextManager
 from .controllers_views.controllers_header_search import HeaderSearchManager
 from .controllers_views.controllers_index import IndexContextManager, PromotedCoinsTableManager, VoteManager
 from .controllers_views.controllers_settings_user import save_user, clear_data
+from .models import Coin
 
 
 def clear_settings(request: HttpRequest):
     clear_data()
     return HttpResponse("All user settings have been cleared.")
+
+
+def reset_all_votes(request: HttpRequest):
+    Coin.objects.update(votes=0)
+    Coin.objects.update(votes24h=0)
+    Coin.objects.update(selected_auto_voting=False)
+    return HttpResponse("Голосование Обнулено.")
 
 
 def get_user_id(request: HttpRequest):
@@ -49,7 +58,7 @@ def set_settings_user(request: HttpRequest):
 
 
 def index(request: HttpRequest):
-    context = IndexContextManager(request).get_context()
+    context = IndexContextManager(request).get_context() | BaseContextManager().get_context()
     # context['LANGUAGES'] = settings.LANGUAGES
     # print(f"\nMenu items: {context['menu_items']}")
     return render(request, 'app/index.html', context=context, status=200)

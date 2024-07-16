@@ -35,10 +35,11 @@ class SettingsManager:
             self.customer_data = json.loads(request.body).get('data')
             print(f"\n\nCustomer Data: {self.customer_data}")
 
-            if self.customer_data.get('filter_item'):
-                self.__save_settings_filter()
             if self.customer_data.get('vole_coin_id'):
                 self.status_votes = self.__save_vote_coin_id()
+            else:
+                self.__save_settings_filter()
+
 
         self.per_page = abs(self.__get_per_page())
 
@@ -107,7 +108,7 @@ class SettingsManager:
 
     def __save_settings_filter(self):
         per_page = self.customer_data['per_page']
-        filter_item_list = self.customer_data['filter_item']
+        filter_item_list = self.customer_data.get('filter_item')
 
         try:
             self.user_settings_obj.per_page = per_page
