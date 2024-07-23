@@ -71,7 +71,7 @@ class RequestAiohttp:
                 if count_no_200 == 3:
                     print({"error": f"Response Status {response.status}"})
 
-        print(f"Content Type: {response.content_type}")
+        # print(f"Content Type: {response.content_type}")
         if response.content_type == 'text/html':
             data_server = await response.text()
             content_type = 'html'

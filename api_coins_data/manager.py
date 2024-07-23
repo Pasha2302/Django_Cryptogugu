@@ -7,8 +7,8 @@ import aiohttp
 import django
 from asgiref.sync import sync_to_async
 
-from api_coins_data.Tools import toolbox
-from api_coins_data.module_aiorequest import RequestAiohttp
+from .Tools import toolbox
+from .module_aiorequest import RequestAiohttp
 
 # Установка переменной окружения для настроек Django
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'src.settings')
@@ -207,6 +207,7 @@ def start_update_coins_data():
 
 
 if __name__ == '__main__':
+    pass
     # Coin.objects.all().delete()
     # Coin.objects.update(volume_btc=0)
-    start_update_coins_data()
+    # start_update_coins_data()

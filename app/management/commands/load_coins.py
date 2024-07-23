@@ -18,12 +18,12 @@ class Command(BaseCommand):
 
         for item in data:
             # Преобразование launch_date из строки в дату
-            launch_date = None
-            if item['launch_date']:
-                try:
-                    launch_date = datetime.strptime(item['launch_date'], '%d/%m/%Y').date()
-                except ValueError:
-                    self.stderr.write(self.style.ERROR(f"Invalid date format for launch_date: {item['launch_date']}"))
+            # launch_date = None
+            # if item['launch_date']:
+            #     try:
+            #         launch_date = datetime.strptime(item['launch_date'], '%d/%m/%Y').date()
+            #     except ValueError:
+            #         self.stderr.write(self.style.ERROR(f"Invalid date format for launch_date: {item['launch_date']}"))
 
             # Создание и сохранение экземпляра Coin
             market_cap_presale = item['market_cap_presale'] if item['market_cap_presale'] else False
@@ -41,7 +41,7 @@ class Command(BaseCommand):
                 votes24h=item['votes24h'],
                 path_coin_img=item['path_coin_img'],
                 path_chain_img=item['path_chain_img'],
-                launch_date=launch_date,
+                launch_date=item['launch_date'],
                 market_cap_presale=market_cap_presale,
                 launch_date_str=item.get('launch_date_str', None)
             )
