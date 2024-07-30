@@ -57,6 +57,8 @@ class RequestAiohttp:
 
             if response.status == 200:
                 break
+            elif response.status == 400:
+                break
             elif response.status == 429:
                 return 429
             elif response.status == 405:
@@ -70,6 +72,7 @@ class RequestAiohttp:
                 count_no_200 += 1
                 if count_no_200 == 3:
                     print({"error": f"Response Status {response.status}"})
+                    break
 
         # print(f"Content Type: {response.content_type}")
         if response.content_type == 'text/html':

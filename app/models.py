@@ -5,11 +5,68 @@ import uuid
 from decimal import Decimal
 
 from django.db.models import QuerySet
+from django.core.exceptions import ValidationError
+
+
+class DefaultManager(models.Manager):
+    pass
+
+
+class SiteSettings(models.Model):
+    count_coins = models.IntegerField(null=True, blank=True)
+    count_airdrops = models.IntegerField(null=True, blank=True)
+
+    objects: QuerySet = DefaultManager()  # Явное определение менеджера
+
+    def save(self, *args, **kwargs):
+        if not self.pk and SiteSettings.objects.exists():
+            raise ValidationError('Можно создать только одну запись Site Settings')
+        return super(SiteSettings, self).save(*args, **kwargs)
+
+    class Meta:
+        verbose_name = 'Site Settings'
+        verbose_name_plural = 'Site Settings'
+
+    def __str__(self):
+        return "Site Data"
+
+
+class ReclamBanner(models.Model):
+    POSITION_CHOICES = [
+        ('right-banner', 'Top Right Banner'),
+        ('left-banner', 'Top Left Banner'),
+        ('banner_1', 'Banner Bottom 1'),
+        ('banner_2', 'Banner Bottom 2'),
+        ('banner_3', 'Banner Bottom 3'),
+        ('banner_4', 'Banner Bottom 4'),
+        ('banner_5', 'Banner Bottom 5'),
+        ('banner_6', 'Banner Bottom 6'),
+    ]
+
+    position = models.CharField(max_length=20, choices=POSITION_CHOICES)
+    image = models.ImageField(upload_to='banners/')
+    link = models.URLField(blank=True, null=True)
+    start_time = models.DateTimeField()
+    end_time = models.DateTimeField()
+    is_active = models.BooleanField(default=True)  # Для отображения/скрытия баннера
+
+    def is_currently_active(self):
+        now = timezone.now()
+        return self.is_active and self.start_time <= now <= self.end_time
+
+    class Meta:
+        verbose_name = 'Reclam Banner'
+        verbose_name_plural = 'Reclam Banners'
+
+    def __str__(self):
+        return f"{self.position} banner"
 
 
 def format_decimal_number(number):
+    # print(f"\nNumber: {number} / {type(number)=}")
     number_str = format(number, 'f').rstrip('0')  # Преобразовать число в строку и удалить замыкающие нули
     # print(number_str)
+    # if not number_str: return None
 
     if '.' in number_str:
         integer_part, fractional_part = number_str.split('.')
@@ -30,10 +87,6 @@ def format_decimal_number(number):
         return number_str
 
 
-class DefaultManager(models.Manager):
-    pass
-
-
 class UserSettingsManager(models.Manager):
     def get_or_create_default_settings(self, user_id):
         # ID дефолтного пользователя
@@ -47,6 +100,7 @@ class UserSettingsManager(models.Manager):
 class UserSettings(models.Model):
     user_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     per_page = models.PositiveIntegerField(default=10)
+    theme_site = models.CharField(max_length=10, default='dark')
 
     today_hot = models.BooleanField(default=False)
     all_time_best = models.BooleanField(default=True)
@@ -114,16 +168,16 @@ class Coin(models.Model):
     price = models.DecimalField(max_digits=64, decimal_places=34, blank=True, null=True)
     liquidity_usd = models.DecimalField(max_digits=20, decimal_places=2, blank=True, null=True)
 
-    volume_usd = models.DecimalField(max_digits=20, decimal_places=2)
-    volume_btc = models.DecimalField(max_digits=20, decimal_places=2)
+    volume_usd = models.DecimalField(max_digits=20, decimal_places=2, blank=True, null=True)
+    volume_btc = models.DecimalField(max_digits=20, decimal_places=2, blank=True, null=True)
     price_change_24h = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Price Change 24h")
 
     votes = models.IntegerField(default=0)
     votes24h = models.IntegerField(default=0)
     market_cap_presale = models.BooleanField(default=False)
 
-    path_coin_img = models.CharField(max_length=255)
-    path_chain_img = models.CharField(max_length=255)
+    path_coin_img = models.ImageField(upload_to='coin_images/', max_length=255)
+    path_chain_img = models.ImageField(upload_to='chain_images/', max_length=255)
 
     launch_date_str = models.CharField(max_length=50, blank=True, null=True)
     launch_date = models.DateField(blank=True, null=True)

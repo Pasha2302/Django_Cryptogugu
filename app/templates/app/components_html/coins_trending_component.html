@@ -11,7 +11,7 @@
     <div class="coin-table__name">
       <span class="coin-table__num">{{ forloop.counter0|add:page_start_index|add:1 }}</span>
       <a href="#" class="coin-table__name-left">
-        <img src="{% static 'app/' %}{{ data_coin.path_coin_img }}" alt="">
+        <img src="{{ data_coin.path_coin_img.url }}" alt="">
         <div class="coin-table__name-info">
           <span class="name">{{ data_coin.name }}</span>
           <span class="label">{{ data_coin.symbol }}</span>
@@ -28,21 +28,21 @@
 
   <td>
     <div class="coin-table__chain">
-      <img src="{% static 'app/' %}{{ data_coin.path_chain_img }}" alt="">
+      <img src="{{ data_coin.path_chain_img.url }}" alt="">
       <span>{{data_coin.chain}}</span>
     </div>
   </td>
 
   <td>
     <div class="coin-table__cap">
-      {% if data_coin.market_cap %}
-         ${{ data_coin.market_cap }}
-
-      {% elif data_coin.market_cap_presale %}
+      {% if data_coin.market_cap_presale %}
         <div class="cap-presale"><svg class="arrow">
           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-loading"></use></svg>
           Presale
         </div>
+
+      {% elif data_coin.market_cap %}
+         ${{ data_coin.market_cap }}
 
       {% elif data_coin.market_cap is None %}<span class="none">—</span>
       {% endif %}

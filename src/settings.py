@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 from django.utils.translation import gettext_lazy as _
-
+from celery.schedules import crontab
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -59,7 +59,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR / 'templates'
+            BASE_DIR / 'templates',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -151,6 +151,14 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
+
+# Включите сжатие (необязательно, но рекомендуется для улучшения производительности) в настройках:
+WHITENOISE_USE_FINDERS = True
+WHITENOISE_USE_CDN = True
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -158,27 +166,26 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # ================================================================================================================== #
-from celery.schedules import crontab
 
 # Периодические задачи Celery
 CELERY_BEAT_SCHEDULE = {
     'reset_votes24h_daily': {
         'task': 'app.tasks.reset_votes24h',
         # 'schedule': crontab(hour=0, minute=0),  # Запуск в полночь каждый день
-        # 'schedule': crontab(minute=0),  # Чтобы выполнить задачу каждый час:
-        'schedule': crontab(minute='*/30'), # Для выполнения задачи каждые 5 минут, можно использовать параметр minute с шагом */5
+        'schedule': crontab(minute='0'),  # Чтобы выполнить задачу каждый час:
     },
     'auto_voting_every_day': {
         'task': 'app.tasks.auto_voting',
         # 'schedule': crontab(hour=0, minute=0),  # Запуск в полночь каждый день
         # 'schedule': crontab(minute=0),  # Чтобы выполнить задачу каждый час:
-        'schedule': crontab(minute='*/5'), # Для выполнения задачи каждые 5 минут, можно использовать параметр minute с шагом */5
+        'schedule': crontab(minute='*/30'),
+        # Для выполнения задачи каждые 5 минут, можно использовать параметр minute с шагом */5
     },
     'start_update_coins_every_day': {
             'task': 'app.tasks.start_update_coins',
             # 'schedule': crontab(hour=0, minute=0),  # Запуск в полночь каждый день
             # 'schedule': crontab(minute=0),  # Чтобы выполнить задачу каждый час:
-            'schedule': crontab(minute='*/10'), # Для выполнения задачи каждые 5 минут, можно использовать параметр minute с шагом */5
+            'schedule': crontab(minute='*/10'),
         },
 }
 

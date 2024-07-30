@@ -21,7 +21,7 @@
             {% for coin_trending in coins_tops_section.trending %}
               <a href="#" class="tops-section__block-list-item">
                 <div class="left">
-                  <img src="{% static 'app/' %}{{ coin_trending.path_coin_img }}" alt="">
+                  <img src="{{ coin_trending.path_coin_img.url }}" alt="">
                   <div class="name">{{ coin_trending.name }}</div>
                   <div class="chain">{{ coin_trending.chain }}</div>
                 </div>

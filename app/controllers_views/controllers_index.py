@@ -6,10 +6,13 @@ from django.core.paginator import Paginator
 from django.http import HttpRequest
 
 from app.controllers_views.controllers_settings_user import SettingsManager
-from app.models import Coin
+from app.models import Coin, ReclamBanner
 from django.utils import timezone
 from datetime import timedelta
 from django.utils.translation import gettext as _
+from django.utils import timezone
+
+now = timezone.now()
 
 
 class FilterCoin:
@@ -21,10 +24,10 @@ class FilterCoin:
 
         if settings is not None and settings.user_settings_obj:
             if settings.user_settings_obj.all_time_best:
-                self.__data_coins = Coin.objects.order_by('-votes')
+                self.__data_coins = self.__data_coins.order_by('-votes')
 
             elif settings.user_settings_obj.today_hot:
-                self.__data_coins = Coin.objects.order_by('-votes24h')
+                self.__data_coins = self.__data_coins.order_by('-votes24h')
 
             if settings.user_settings_obj.presale:
                 self.__data_coins = self.__data_coins.filter(market_cap_presale=True)
@@ -48,11 +51,12 @@ class FilterCoin:
                     self.head_filter_coins(symbol, sort)
             # self.print_time_since_creation()
 
-
     def head_filter_coins(self, symbol: str, sort: str):
-        # print(f"\n__head_filter_coins: {symbol=}  /  {sort=}")
-        if sort == "DESC": self.__data_coins = self.__data_coins.order_by(f'-{symbol}')
-        else: self.__data_coins = self.__data_coins.order_by(symbol)
+        # Сортировка по нескольким полям: order_by('volume', 'id') гарантирует,
+        # что если значения volume одинаковы, записи будут отсортированы по id.
+        # Это делает порядок сортировки стабильным и однозначным.
+        if sort == "DESC": self.__data_coins = self.__data_coins.order_by(f'-{symbol}', 'id')
+        else: self.__data_coins = self.__data_coins.order_by(symbol, 'id')
 
         if symbol == 'market_cap':
             original_coins = list(self.__data_coins)
@@ -84,7 +88,6 @@ class FilterCoin:
             print(f"\n\n{coin.name} was created {time_since_creation} ago")
 
 
-
 class IndexContextManager:
     def __init__(self, request: HttpRequest):
         self.settings = SettingsManager(request)
@@ -98,6 +101,7 @@ class IndexContextManager:
         self.__per_page = self.settings.per_page
         self.__paginator = Paginator(self.__data_coins, self.__per_page)
 
+        # set page_number
         if self.customer_data.get('currentPage') is not None: self.__page_number = self.customer_data['currentPage']
         elif self.customer_data.get('morePage') is not None: self.__page_number = self.customer_data['morePage']
         else: self.__page_number = self.__get_page_number(request)
@@ -110,7 +114,14 @@ class IndexContextManager:
         self.prev_page = self.__get_prev_page()
 
         self.__page_obj = self.__get_page_obj()
+
+        self.top_banners, self.bottom_banners = self.get_reclam_banners()
+        print(f"\nTop Banners: {self.top_banners}")
+        print(f"\nBottom Banners: {self.bottom_banners}")
         self.__context = {
+            'user_id': self.settings.user_settings_obj.user_id,
+            'top_banners': self.top_banners,
+            'bottom_banners': self.bottom_banners,
             'menu_items': [
                 {'name': _('Coin Ranking'), 'url': 'index'},
                 {'name': _('Airdrops'), 'url': 'airdrops'},
@@ -138,6 +149,29 @@ class IndexContextManager:
             'filter_item': self.settings.get_filter_item(),
             'coins_tops_section': self.__filter_coin_obj.get_coins_tops_section()
         }
+
+    @staticmethod
+    def extract_number(banner):
+        try:
+            # Извлечение числовой части после "banner_"
+            return int(banner.position.split('_')[1])
+        except (IndexError, ValueError):
+            return 0  # Для баннеров, у которых нет числа
+
+    def get_reclam_banners(self):
+        top_banners = ReclamBanner.objects.filter(
+            position__in=['left-banner', 'right-banner'], is_active=True, start_time__lte=now, end_time__gte=now
+        )
+        if top_banners:
+            top_banners = sorted(top_banners, key=lambda b: b.position == 'left-banner', reverse=True)
+
+        bottom_banners = ReclamBanner.objects.filter(
+            position__startswith='banner_', is_active=True, start_time__lte=now, end_time__gte=now
+        )
+        if bottom_banners:
+            bottom_banners = sorted(bottom_banners, key=self.extract_number)
+
+        return top_banners, bottom_banners
 
     def get_context(self) -> dict:
         return self.__context

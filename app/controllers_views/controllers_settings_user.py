@@ -37,12 +37,16 @@ class SettingsManager:
 
             if self.customer_data.get('vole_coin_id'):
                 self.status_votes = self.__save_vote_coin_id()
+            elif self.customer_data.get('theme_site'):
+                self.set_theme_site()
             else:
                 self.__save_settings_filter()
 
-
         self.per_page = abs(self.__get_per_page())
 
+    def set_theme_site(self):
+        self.user_settings_obj.theme_site = self.customer_data['theme_site']
+        self.user_settings_obj.save()
 
     def get_filter_item(self):
         filter_item = {
@@ -56,7 +60,7 @@ class SettingsManager:
                 {'data_info': 'doxxed', 'active': self.user_settings_obj.doxxed, 'title': 'Doxxed'},
                 {'data_info': 'audited', 'active': self.user_settings_obj.audited, 'title': 'Audited'},
             ],
-            # ['BSC', 'SOL', 'ETH', 'MATIC', 'TRON', 'BASE', 'TON', 'CRONOS', 'HARMONY', 'ETHEREUMFAIR', 'PULSECHAIN', 'ARBITRUM']
+
             'item_sub': [
                 {'active': False, 'title': 'Ethereum', 'symbol': 'eth'},
                 {'active': False, 'title': 'WAX', 'symbol': 'wax'},
@@ -95,7 +99,6 @@ class SettingsManager:
 
         return filter_item
 
-
     def __get_per_page(self):
         per_page = 10
         if self.user_settings_obj is not None:
@@ -104,7 +107,6 @@ class SettingsManager:
             except UserSettings.DoesNotExist:
                 print('\nПользователь Не Найден в Базе!')
         return int(per_page)
-
 
     def __save_settings_filter(self):
         per_page = self.customer_data['per_page']

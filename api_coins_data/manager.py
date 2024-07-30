@@ -18,7 +18,7 @@ django.setup()
 from app.models import Coin, BaseCoin
 from django.db.models.query import QuerySet
 
-headers = {'accept': 'application/json, text/plain, */*',}
+headers = {'accept': 'application/json, text/plain, */*', }
 
 
 class DexscreenerAPIManager:
@@ -26,6 +26,9 @@ class DexscreenerAPIManager:
         self.__coins_data: list[Coin,] = list(coins_data)
         self.__api_url = api_url
         self.__session = None
+        self.__dexscreener_api_data_coins = []
+        self.no_data_coins = []
+
         self.__check_dict_quote_token_and_rialto = {
             'solana': ('SOL', 'raydium'),
             'ethereum': ('WETH', 'uniswap'),
@@ -34,11 +37,10 @@ class DexscreenerAPIManager:
             'polygon': ('WMATIC', 'uniswap'),
         }
 
-    def start(self, limit=10, base_coins=None):
+    def start(self, limit: int | None = 10, base_coins=None):
         print("\nSTART")
         asyncio.run(self.__get_data_coin(limit, base_coins))
         print(f"\n END")
-
 
     async def __get_data_coin(self, limit, base_coins):
         async with toolbox.AiohttpSession(limit=5, total=600).create_session() as session:
@@ -47,10 +49,10 @@ class DexscreenerAPIManager:
 
             if base_coins is None:
                 list_requests_coroutine = self.__get_list_requests(self.__coins_data, limit)
-                print(f'\n\nВсего запросов: {len(list_requests_coroutine)}')
+                print(f'\n\nВсего монет по API Dexscreener: {len(list_requests_coroutine)}')
                 for cor in list_requests_coroutine:
                     result = await cor['request']
-                    await self.__check_coin(api_data=result, input_coin=cor['input_coin'])
+                    self.__check_coin(api_data=result, input_coin=cor['input_coin'])
 
             else:
                 for base_coins_obj in self.__coins_data:
@@ -63,7 +65,6 @@ class DexscreenerAPIManager:
                         base_coins_obj.liquidity_usd = data_api['liquidity']['usd']
                         base_coins_obj.market_cap = data_api['fdv']
                         await sync_to_async(base_coins_obj.save)()
-
 
     def __get_list_requests(self, coins, limit):
         list_requests = []
@@ -81,8 +82,7 @@ class DexscreenerAPIManager:
                 if limit == 0: break
         return list_requests
 
-
-    async def __check_coin(self, api_data, input_coin):
+    def __check_coin(self, api_data, input_coin):
         if not api_data.get('pairs'): return
 
         datas = [
@@ -100,19 +100,19 @@ class DexscreenerAPIManager:
                 'search_coin': input_coin, 'data_api': self.__check_chain(input_coin, datas_api_sort)
             }
 
-            if data.get('data_api'): await self.__save_data_db(data)
+            if data.get('data_api'):
+                self.__dexscreener_api_data_coins.append(data)
 
+    def save_data_db(self):
+        for api_data in self.__dexscreener_api_data_coins:
+            coin_id = api_data['search_coin']['coin_id']
+            coin_obj = Coin.objects.get(id=coin_id)
 
-    @staticmethod
-    async def __save_data_db(api_data):
-        coin_id = api_data['search_coin']['coin_id']
-        coin_obj = await sync_to_async(Coin.objects.get)(id=coin_id)
-        coin_obj.price = api_data['data_api']['priceUsd']
-        coin_obj.volume_usd = api_data['data_api']['volume']['h24']
-        coin_obj.liquidity_usd = api_data['data_api']['liquidity']['usd']
-        coin_obj.market_cap = api_data['data_api']['fdv']
-        await sync_to_async(coin_obj.save)()
-
+            coin_obj.price = api_data['data_api']['priceUsd']
+            coin_obj.volume_usd = api_data['data_api']['volume']['h24']
+            coin_obj.liquidity_usd = api_data['data_api']['liquidity']['usd']
+            coin_obj.market_cap = api_data['data_api']['fdv']
+            coin_obj.save()
 
     def __check_chain(self, data_search_coin, datas_api):
         verified_data_quote_token = []
@@ -126,22 +126,20 @@ class DexscreenerAPIManager:
             if self.__check_rialto(i_api, i_api['chainId']):
                 verified_data_rialto.append(i_api)
 
-        if verified_data_rialto: return verified_data_rialto[0]
-        elif verified_data_quote_token: return verified_data_quote_token[0]
-
+        if verified_data_rialto:
+            return verified_data_rialto[0]
+        elif verified_data_quote_token:
+            return verified_data_quote_token[0]
 
     def __check_quote_token_symbol(self, data_api: dict, input_chain: str) -> bool:
         quote_token_symbol_check = self.__check_dict_quote_token_and_rialto.get(input_chain)
         if quote_token_symbol_check:
-            quote_token_symbol_api = data_api['quoteToken']['symbol']
-            return quote_token_symbol_check[0] == quote_token_symbol_api
-
+            return quote_token_symbol_check[0] == data_api['quoteToken']['symbol']
 
     def __check_rialto(self, data_api: dict, input_chain: str) -> bool:  # проверка по бирже.
         check_rialto = self.__check_dict_quote_token_and_rialto.get(input_chain)
         if check_rialto:
-            dexId_rialto = data_api['dexId']
-            return check_rialto[1] == dexId_rialto
+            return check_rialto[1] == data_api['dexId']
 
     @staticmethod
     def __rename_chain(chain_coin):
@@ -165,6 +163,9 @@ class DexscreenerAPIManager:
         )
         data_server = await async_request.get_data_server()
         if isinstance(data_server, dict):
+            if not data_server.get('pairs'):
+                print(f"\n\n[DexscreenerAPIManager] No Data Coin:\nData Server: {data_server}\nInput Data: {input_coin}")
+                self.no_data_coins.append(input_coin)
             return data_server
         else:
             print(f"\nNo __request DATA: !:\n{input_coin=}")
@@ -194,16 +195,102 @@ def get_coins_to_json():
         json.dump(new_data, json_file, ensure_ascii=False, indent=4)
 
 
+
+class MobulaAPIManager:
+    def __init__(self, data_coins: list[dict,]):
+        self.__data_coins = data_coins
+        self.__datas_api = []
+        self.__no_data_coins_modula = []
+        self.__headers = {
+            'accept': 'application/json, text/plain, */*',
+            'Authorization': 'c19c0edb-0430-4930-a650-1244a4304b49'
+        }
+        print(f'\nВсего монет по API Modula: {len(data_coins)}')
+
+    def start(self):
+        print("\nSTART")
+        asyncio.run(self.__get_data_coin())
+        print(f"\n END")
+
+
+    async def __get_data_coin(self):
+        async with toolbox.AiohttpSession(limit=5, total=600).create_session() as session:
+            session: aiohttp.ClientSession
+
+            tasks_list = [self.__request(session=session, input_coin=data) for data in self.__data_coins]
+            # results = await asyncio.gather(*tasks_list, return_exceptions=True)
+            # for res in results:
+            for task in tasks_list:
+                res = await task
+                if not res.get('no_data'):
+                    self.__datas_api.append(res)
+                else:
+                    print(f'\n[MobulaAPIManager] Bed Request!:\n{res}')
+                    self.__no_data_coins_modula.append(res)
+
+    async def __request(self, session, input_coin):
+        contract_address = input_coin['contract_address']
+        chain = self.__rename_chain(input_coin['chain'])
+        url = f'https://api.mobula.io/api/1/market/data?asset={contract_address}&blockchain={chain}'
+
+        async_request = RequestAiohttp(
+            session=session, method='get', url=url, headers=self.__headers, cookies=None,
+            # proxy='https://141.94.17.33:22222',
+        )
+        data_coin_api = await async_request.get_data_server()
+
+        if isinstance(data_coin_api, dict):
+            if not data_coin_api.get('data'):
+                return {'no_data': {'input_coin': input_coin, 'data_coin_api': data_coin_api}}
+            return {'input_coin': input_coin, 'data_coin_api': data_coin_api['data']}
+        else:
+            raise TypeError(f"\nNo __request DATA: !:\n{input_coin=}\n{data_coin_api=}")
+
+    def save_data_coins_to_json(self):
+        if self.__datas_api:
+            toolbox.save_json_data(json_data=self.__datas_api, path_file='api_mobula_data_coins.json')
+            toolbox.save_json_data(json_data=self.__no_data_coins_modula, path_file='api_mobula_no_data_coins.json')
+        else: print('\nMobulaAPIManager [save_data_coins_to_json]: Нет Данных для сохранения в JSON ...')
+
+    def save_data_coins_to_db(self):
+        if self.__datas_api:
+            for api_data in self.__datas_api:
+                coin_id = api_data['input_coin']['coin_id']
+                coin_obj = Coin.objects.get(id=coin_id)
+
+                coin_obj.price = api_data['data_coin_api']['price']
+                coin_obj.volume_usd = api_data['data_coin_api'].get('volume', 0.0)
+                coin_obj.liquidity_usd = api_data['data_coin_api']['liquidity']
+                coin_obj.market_cap = api_data['data_coin_api']['market_cap']
+                coin_obj.save()
+
+        else: print('\nMobulaAPIManager [save_data_coins_to_db]: Нет Данных для сохранения в BD ...')
+
+    @staticmethod
+    def __rename_chain(chain_coin: str):
+        chain = chain_coin.lower()
+        if chain == 'bsc':
+            chain = 'BNB Smart Chain (BEP20)'
+        return chain
+
+
 def start_update_coins_data():
     api_url_dexscreener = 'https://api.dexscreener.com/latest/dex/tokens/{}'
 
     coins_objects = Coin.objects.all()
     dexscreener_api = DexscreenerAPIManager(coins_data=coins_objects, api_url=api_url_dexscreener)
     dexscreener_api.start(limit=None)
+    dexscreener_api.save_data_db()
 
     coins_objects = BaseCoin.objects.all()
-    dexscreener_api = DexscreenerAPIManager(coins_data=coins_objects, api_url=None)
-    dexscreener_api.start(limit=None, base_coins=True)
+    dexscreener_api_base_coin = DexscreenerAPIManager(coins_data=coins_objects, api_url=None)
+    dexscreener_api_base_coin.start(limit=None, base_coins=True)
+
+    if dexscreener_api.no_data_coins:
+        modula_api = MobulaAPIManager(data_coins=dexscreener_api.no_data_coins)
+        modula_api.start()
+        modula_api.save_data_coins_to_db()
+        modula_api.save_data_coins_to_json()
 
 
 if __name__ == '__main__':

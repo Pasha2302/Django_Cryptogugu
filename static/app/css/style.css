@@ -225,6 +225,12 @@ ul {
   display: block;
 }
 
+.js-vote.voted {
+  background: var(--yellow);
+  color: var(--main-bg);
+  pointer-events: none;
+}
+
 h1, .h1 {
   display: block;
 }

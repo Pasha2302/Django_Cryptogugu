@@ -1,0 +1,43 @@
+{% load my_tag %}
+{% load tz %}
+
+
+<div class="container">
+
+    {{ "<h2>Текст тестового фильтра.</h2>"|tag_filter_test }}
+    {{ "<h2>Текст тестового фильтра.</h2>"|tag_filter_test:"true" }}
+
+    {{ 'Павел это мое имя'|strong_first }}
+    <p>{{ "Hello <world>"|strong_first }}</p>
+
+    {% autoescape off %}
+    <p>{{ "Hello <world>"|strong_first }}</p>
+    {% endautoescape %}
+
+    {% autoescape off %}
+    <p>{{ "<h2>Текст тестового фильтра.</h2>"|strong_first }}</p>
+    {% endautoescape %}
+
+    <p>{{ "<h2>Текст тестового фильтра.</h2>"|strong_first }}</p>
+
+    {% autoescape on %}
+    <!-- Если по умолчанию в фильтре отключен автоэскейпинг используем блок < autoescape on > -->
+        <p>{{ "Hello <world>"|strong_first }}</p>
+    {% endautoescape %}
+
+
+    
+    <!-- Время в UTC -->
+    <p>Current time in UTC: {% current_time_in_timezone "UTC" %}</p>
+
+    <!-- Московское Впемя -->
+     <p>Current time in Moscow: {% current_time_in_timezone "Europe/Moscow" %}</p>
+
+    <!-- Время в Париже -->
+    <p>Paris time: {% current_time_in_timezone "Europe/Paris" %}</p>
+
+    <!-- Время в Нью-Йорке -->
+    <p>New York time: {% current_time_in_timezone "America/New_York" %}</p>
+
+</div>
+

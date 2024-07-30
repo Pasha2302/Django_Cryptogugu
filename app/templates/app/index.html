@@ -18,25 +18,33 @@
 <title>{% block title %}{{ page_title }}{% endblock %}</title>
 
 <main class="main">
+
   <section class="reclams-banner">
     <div class="reclams-banner__wrap container">
-      <div class="reclams-banner__top">
-        <a href="#" class="reclams-banner__item"><img src="{% static 'app/img/rec.jpg' %}" alt=""></a>
-        <a href="#" class="reclams-banner__item"><img src="{% static 'app/img/rec.jpg' %}" alt=""></a>
-      </div>
-
-      <div class="reclams-banner__slider swiper">
-        <div class="swiper-wrapper">
-          <a href="#" class="swiper-slide"><img src="{% static 'app/img/rec.jpg' %}" alt=""></a>
-          <a href="#" class="swiper-slide"><img src="{% static 'app/img/rec.jpg' %}" alt=""></a>
-          <a href="#" class="swiper-slide"><img src="{% static 'app/img/rec.jpg' %}" alt=""></a>
-          <a href="#" class="swiper-slide"><img src="{% static 'app/img/rec.jpg' %}" alt=""></a>
-          <a href="#" class="swiper-slide"><img src="{% static 'app/img/rec.jpg' %}" alt=""></a>
-          <a href="#" class="swiper-slide"><img src="{% static 'app/img/rec.jpg' %}" alt=""></a>
+        {% if top_banners %}
+        <div class="reclams-banner__top">
+            {% for banner in top_banners %}
+              <a href="{{ banner.link }}" class="reclams-banner__item" id="top-{{ banner.position }}" target="_blank">
+                  <img src="{{ banner.image.url }}" alt="">
+              </a>
+            {% endfor %}
         </div>
-      </div>
+        {% endif %}
+
+        {% if bottom_banners %}
+        <div class="reclams-banner__slider swiper">
+            <div class="swiper-wrapper">
+                {% for banner in bottom_banners %}
+                <a href="{{ banner.link }}" class="swiper-slide" id="bottom-{{ banner.position }}" target="_blank">
+                    <img src="{{ banner.image.url }}" alt="">
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
     </div>
   </section>
+
 
   {% include 'app/components_html/tops_section_coins_component.html' %}
 

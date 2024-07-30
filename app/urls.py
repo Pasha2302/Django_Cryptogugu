@@ -1,6 +1,3 @@
-from django.conf import settings
-from django.conf.urls.static import static
-
 from django.urls import path, re_path
 from . import views
 
@@ -8,6 +5,8 @@ from . import views
 urlpatterns = [
     path("", views.index, name="index"),
     path("get-user-id/", views.get_user_id, name="get_user_id"),
+    path("set-theme-site/", views.set_theme_site, name="set_theme_site"),
+
     path("set-settings-user/", views.set_settings_user, name="set_settings_user"),
     path("show-more/", views.show_more, name="show_more"),
 
@@ -28,8 +27,3 @@ urlpatterns = [
     # path(r"test_paginator/slots", views.SlotsListView.as_view(), name="slots_list"),
 
 ]
-
-
-# Добавление URL-паттернов для обслуживания статических файлов в отладочном режиме
-if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

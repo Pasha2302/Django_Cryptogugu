@@ -27,13 +27,20 @@ class Command(BaseCommand):
 
             # Создание и сохранение экземпляра Coin
             market_cap_presale = item['market_cap_presale'] if item['market_cap_presale'] else False
+            price = item['price'] if float(item['price']) != 0 else None
+
+            if item.get('market_cap'):
+                market_cap = item['market_cap'] if float(item['market_cap']) != 0 else None
+            else: market_cap = None
+
             coin = Coin(
                 name=item['name'],
-                symbol=item['label'],
+                symbol=item['symbol'],
+                contract_address=item['contract_address'],
                 tags=item.get('tags', []),
                 chain=item['chain'],
-                market_cap=item.get('market_cap', None),
-                price=item['price'],
+                market_cap=market_cap,
+                price=price,
                 volume_usd=item['volume_usd'],
                 volume_btc=item['volume_btc'],
                 price_change_24h=item['price_change_24h'],

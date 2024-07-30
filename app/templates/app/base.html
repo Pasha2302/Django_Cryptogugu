@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {% load i18n %}
 {% load static %}
+{% load my_tag %}
 
 <html lang="{{ LANGUAGE_CODE }}">
 
@@ -23,7 +24,7 @@
   <title>{% block title %} CoinMooner {% endblock %}</title>
 </head>
 
-<body>
+<body data-theme="{% get_current_theme user_id %}">
 
   <svg xmlns="http://www.w3.org/2000/svg" style="position: absolute; width: 0px; height: 0px; visibility: hidden;">
     <symbol id="icon-arrow-bottom" viewBox="0 0 16 16" fill="none">
@@ -376,8 +377,8 @@
             </div>
           </form>
 
-          <a href="{% url 'promote' %}" class="btn btn_light">Promote</a>
-          <a href="#" class="btn btn_light">Submit Token</a>
+          <a href="{% url 'promote' %}" class="btn btn_light" data-action="btn-promote">Promote</a>
+          <a href="#" class="btn btn_light" data-action="btn-test">Submit Token</a>
 
           <button class="header__burger">
             <span></span>
@@ -841,20 +842,20 @@
     </div>
   </div>
 
-  <div class="banner-block recapcha ">
-    <div class="banner-block__overlay"></div>
-    <div class="banner-block__item">
-      <div class="banner-block__top">
-        <div class="banner-block__title">Prove you are human</div>
-        <button class="banner-block__item-close"><span><svg class="icon">
-              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use>
-            </svg></span></button>
-      </div>
+<!--  <div class="banner-block recapcha ">-->
+<!--    <div class="banner-block__overlay"></div>-->
+<!--    <div class="banner-block__item">-->
+<!--      <div class="banner-block__top">-->
+<!--        <div class="banner-block__title">Prove you are human</div>-->
+<!--        <button class="banner-block__item-close"><span><svg class="icon">-->
+<!--              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use>-->
+<!--            </svg></span></button>-->
+<!--      </div>-->
 
-      <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-      <div class="g-recaptcha" data-sitekey="6Lc49dUpAAAAAF-QengKmZF0uOjaorkT2zWawBEz"></div>
-    </div>
-  </div>
+<!--      <script src="https://www.google.com/recaptcha/api.js" async defer></script>-->
+<!--      <div class="g-recaptcha" data-sitekey="6Lc49dUpAAAAAF-QengKmZF0uOjaorkT2zWawBEz"></div>-->
+<!--    </div>-->
+<!--  </div>-->
 
   <script src="{% static 'app/js/swiper.min.js' %}"></script>
   <script src="{% static 'app/js/script.js' %}"></script>

@@ -1,0 +1,610 @@
+[
+    {
+        "input_coin": {
+            "coin_id": 191,
+            "name": "5th Scape",
+            "symbol": "5SCAPE",
+            "contract_address": "0xfA6D77B3202127730bac11D692B93fc39e693B7E",
+            "chain": "ethereum"
+        },
+        "data_coin_api": {
+            "market_cap": 137835468,
+            "liquidity": 31976,
+            "price_change_1h": 0,
+            "price_change_24h": 0,
+            "price": 0.02650682082307824,
+            "is_listed": false,
+            "decimals": 18,
+            "name": "5th Scape",
+            "symbol": "5SCAPE",
+            "priceNative": 8.061243045527963e-06,
+            "native": {
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "decimals": 18,
+                "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+                "type": "eth",
+                "logo": "https://metacore.mobula.io/60989b438a473ed77703f7bcd3530fc15542996a6607ae831de8c5e3e10f688d.png",
+                "id": 100004304
+            },
+            "approximations": {},
+            "contracts": [
+                {
+                    "address": "0xfa6d77b3202127730bac11d692b93fc39e693b7e",
+                    "blockchain": "Ethereum",
+                    "blockchainId": "1",
+                    "decimals": 18
+                }
+            ],
+            "total_supply": 5200000000,
+            "circulating_supply": 5200000000
+        }
+    },
+    {
+        "input_coin": {
+            "coin_id": 194,
+            "name": "Love Hate Inu",
+            "symbol": "LHINU",
+            "contract_address": "0xCeDefE438860D2789dA6419b3a19cEcE2A41038d",
+            "chain": "ethereum"
+        },
+        "data_coin_api": {
+            "id": 3940,
+            "market_cap": 220600,
+            "market_cap_diluted": 220601,
+            "liquidity": 143,
+            "price": 2.206118655943927e-06,
+            "off_chain_volume": 661414,
+            "volume": 0,
+            "volume_change_24h": -100,
+            "volume_7d": 3,
+            "is_listed": true,
+            "price_change_24h": 0.57028735,
+            "price_change_1h": 0.2216623,
+            "price_change_7d": 0,
+            "price_change_1m": -73.82063,
+            "price_change_1y": -91.80907,
+            "ath": 0.025713431915900274,
+            "atl": 1.361516880151871e-18,
+            "name": "Love Hate Inu",
+            "symbol": "LHINU",
+            "logo": "https://metacore.mobula.io/03844fb25ddbdb141db5ef1782a81dc18d6e327d5d5dc4afa752ee5461545eb8.png",
+            "rank": 4461,
+            "contracts": [
+                {
+                    "address": "0xcedefe438860d2789da6419b3a19cece2a41038d",
+                    "blockchain": "Ethereum",
+                    "blockchainId": "1",
+                    "decimals": 18
+                }
+            ],
+            "total_supply": "99995199393",
+            "circulating_supply": "99994590110",
+            "decimals": 18,
+            "priceNative": 6.709238649002273e-10,
+            "native": {
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "decimals": 18,
+                "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+                "type": "eth",
+                "logo": "https://metacore.mobula.io/60989b438a473ed77703f7bcd3530fc15542996a6607ae831de8c5e3e10f688d.png",
+                "id": 100004304
+            }
+        }
+    },
+    {
+        "input_coin": {
+            "coin_id": 202,
+            "name": "HealthyOcean",
+            "symbol": "HLO",
+            "contract_address": "0x9f8a2aeA53cE5F92964593746F74Bb0E4d958285",
+            "chain": "BSC"
+        },
+        "data_coin_api": {
+            "market_cap": 2231,
+            "liquidity": 1104,
+            "price_change_1h": 0,
+            "price_change_24h": 0,
+            "price": 2.2308361622578597e-06,
+            "is_listed": false,
+            "decimals": 9,
+            "name": "HealthyOcean",
+            "symbol": "HLO",
+            "priceNative": 3.801442757402079e-09,
+            "native": {
+                "name": "BNB",
+                "symbol": "BNB",
+                "decimals": 18,
+                "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+                "type": "eth",
+                "logo": "https://assets.coingecko.com/coins/images/825/large/bnb-icon2_2x.png?1644979850",
+                "id": 100001566
+            },
+            "approximations": {},
+            "contracts": [
+                {
+                    "address": "0x9f8a2aea53ce5f92964593746f74bb0e4d958285",
+                    "blockchain": "BNB Smart Chain (BEP20)",
+                    "blockchainId": "56",
+                    "decimals": 9
+                }
+            ],
+            "total_supply": 1000000000,
+            "circulating_supply": 936365476.5016
+        }
+    },
+    {
+        "input_coin": {
+            "coin_id": 205,
+            "name": "Keter Network",
+            "symbol": "KTR",
+            "contract_address": "0xE27ff8c37AfD8f9c3e4D8c31a3d226119421fC29",
+            "chain": "BSC"
+        },
+        "data_coin_api": {
+            "market_cap": 15660,
+            "liquidity": 1006,
+            "price_change_1h": 0,
+            "price_change_24h": 0,
+            "price": 0.0001044015158115514,
+            "is_listed": false,
+            "decimals": 9,
+            "name": "Keter Network",
+            "symbol": "KTR",
+            "priceNative": 1.779047663195206e-07,
+            "native": {
+                "name": "BNB",
+                "symbol": "BNB",
+                "decimals": 18,
+                "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+                "type": "eth",
+                "logo": "https://assets.coingecko.com/coins/images/825/large/bnb-icon2_2x.png?1644979850",
+                "id": 100001566
+            },
+            "approximations": {},
+            "contracts": [
+                {
+                    "address": "0xe27ff8c37afd8f9c3e4d8c31a3d226119421fc29",
+                    "blockchain": "BNB Smart Chain (BEP20)",
+                    "blockchainId": "56",
+                    "decimals": 9
+                }
+            ],
+            "total_supply": 150000000,
+            "circulating_supply": 150000000
+        }
+    },
+    {
+        "input_coin": {
+            "coin_id": 221,
+            "name": "Supra Token",
+            "symbol": "SUPRA",
+            "contract_address": "0x4Ae2f11Df681eEC979bD93085Dd1A05E9593c8C6",
+            "chain": "BSC"
+        },
+        "data_coin_api": {
+            "market_cap": 285896,
+            "liquidity": 3371,
+            "price_change_1h": 0,
+            "price_change_24h": 0,
+            "price": 28.58959759788624,
+            "is_listed": false,
+            "decimals": 18,
+            "name": "Supra Token",
+            "symbol": "SUPRA",
+            "priceNative": 0.04871792943123455,
+            "native": {
+                "name": "BNB",
+                "symbol": "BNB",
+                "decimals": 18,
+                "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+                "type": "eth",
+                "logo": "https://assets.coingecko.com/coins/images/825/large/bnb-icon2_2x.png?1644979850",
+                "id": 100001566
+            },
+            "approximations": {},
+            "contracts": [
+                {
+                    "address": "0x4ae2f11df681eec979bd93085dd1a05e9593c8c6",
+                    "blockchain": "BNB Smart Chain (BEP20)",
+                    "blockchainId": "56",
+                    "decimals": 18
+                }
+            ],
+            "total_supply": 10000,
+            "circulating_supply": 10000
+        }
+    },
+    {
+        "input_coin": {
+            "coin_id": 225,
+            "name": "E.T AI Swap",
+            "symbol": "ETAI",
+            "contract_address": "0x5AAa5DcEF49a8C2caB513Aaf9eFc6922B1b42D0B",
+            "chain": "BSC"
+        },
+        "data_coin_api": {
+            "market_cap": 3860930,
+            "liquidity": 9628,
+            "price_change_1h": 0,
+            "price_change_24h": 0,
+            "price": 9.192691389060345e-08,
+            "is_listed": false,
+            "decimals": 9,
+            "name": "E.T AI Swap",
+            "symbol": "ETAI",
+            "priceNative": 1.5664749699326685e-10,
+            "native": {
+                "name": "BNB",
+                "symbol": "BNB",
+                "decimals": 18,
+                "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+                "type": "eth",
+                "logo": "https://assets.coingecko.com/coins/images/825/large/bnb-icon2_2x.png?1644979850",
+                "id": 100001566
+            },
+            "approximations": {},
+            "contracts": [
+                {
+                    "address": "0x5aaa5dcef49a8c2cab513aaf9efc6922b1b42d0b",
+                    "blockchain": "BNB Smart Chain (BEP20)",
+                    "blockchainId": "56",
+                    "decimals": 9
+                }
+            ],
+            "total_supply": 42000000000000,
+            "circulating_supply": 1035963304583.308
+        }
+    },
+    {
+        "input_coin": {
+            "coin_id": 228,
+            "name": "Bigfoot Monster",
+            "symbol": "BIGF",
+            "contract_address": "0xE785ec36356B973d8c0A071d478940D6f42C0178",
+            "chain": "ethereum"
+        },
+        "data_coin_api": {
+            "id": 10508,
+            "market_cap": 26223,
+            "market_cap_diluted": 26950,
+            "liquidity": 10644,
+            "price": 2.6950205030254867e-05,
+            "off_chain_volume": 1164,
+            "volume": 0,
+            "volume_change_24h": -100,
+            "volume_7d": 541,
+            "is_listed": true,
+            "price_change_24h": 0.4445587,
+            "price_change_1h": 0.3950615,
+            "price_change_7d": 0,
+            "price_change_1m": -20.06499,
+            "price_change_1y": 51.07094,
+            "ath": 0.0008316215518965035,
+            "atl": 1.5061715944421332e-06,
+            "name": "Bigfoot Monster",
+            "symbol": "BIGF",
+            "logo": "https://metacore.mobula.io/e586d4a88057f8a63f5551ae5e3cd053ec02801b728c3cf254eec53d86b8577d.png",
+            "rank": 7060,
+            "contracts": [
+                {
+                    "address": "0xe785ec36356b973d8c0a071d478940d6f42c0178",
+                    "blockchain": "Ethereum",
+                    "blockchainId": "1",
+                    "decimals": 8
+                }
+            ],
+            "total_supply": "1000000000",
+            "circulating_supply": "973000000",
+            "decimals": 8,
+            "priceNative": 8.196084861544147e-09,
+            "native": {
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "decimals": 18,
+                "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+                "type": "eth",
+                "logo": "https://metacore.mobula.io/60989b438a473ed77703f7bcd3530fc15542996a6607ae831de8c5e3e10f688d.png",
+                "id": 100004304
+            }
+        }
+    },
+    {
+        "input_coin": {
+            "coin_id": 237,
+            "name": "PEPE Community Coin",
+            "symbol": "PEPE",
+            "contract_address": "0x0c1b3983D2a4Aa002666820DE5a0B43293291Ea6",
+            "chain": "BSC"
+        },
+        "data_coin_api": {
+            "market_cap": 24509,
+            "liquidity": 2335,
+            "price_change_1h": 0,
+            "price_change_24h": 0,
+            "price": 2.4509035413473528e-11,
+            "is_listed": false,
+            "decimals": 9,
+            "name": "PEPE Community Coin",
+            "symbol": "PEPE",
+            "priceNative": 4.176447232644897e-14,
+            "native": {
+                "name": "BNB",
+                "symbol": "BNB",
+                "decimals": 18,
+                "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+                "type": "eth",
+                "logo": "https://assets.coingecko.com/coins/images/825/large/bnb-icon2_2x.png?1644979850",
+                "id": 100001566
+            },
+            "approximations": {},
+            "contracts": [
+                {
+                    "address": "0x0c1b3983d2a4aa002666820de5a0b43293291ea6",
+                    "blockchain": "BNB Smart Chain (BEP20)",
+                    "blockchainId": "56",
+                    "decimals": 9
+                }
+            ],
+            "total_supply": 1000000000000000,
+            "circulating_supply": 813002140566527.1
+        }
+    },
+    {
+        "input_coin": {
+            "coin_id": 238,
+            "name": "American Coin",
+            "symbol": "AC",
+            "contract_address": "0xc577b6599234b5B29E602aeB5BC6EeAb333829A3",
+            "chain": "BSC"
+        },
+        "data_coin_api": {
+            "market_cap": 56332196,
+            "liquidity": 4,
+            "price_change_1h": 0,
+            "price_change_24h": 0,
+            "price": 1.1266439191600815e-06,
+            "is_listed": false,
+            "decimals": 6,
+            "name": "American Coin",
+            "symbol": "AC",
+            "priceNative": 1.91985069953655e-09,
+            "native": {
+                "name": "BNB",
+                "symbol": "BNB",
+                "decimals": 18,
+                "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+                "type": "eth",
+                "logo": "https://assets.coingecko.com/coins/images/825/large/bnb-icon2_2x.png?1644979850",
+                "id": 100001566
+            },
+            "approximations": {},
+            "contracts": [
+                {
+                    "address": "0xc577b6599234b5b29e602aeb5bc6eeab333829a3",
+                    "blockchain": "BNB Smart Chain (BEP20)",
+                    "blockchainId": "56",
+                    "decimals": 6
+                }
+            ],
+            "total_supply": 50000000003000,
+            "circulating_supply": 50000000001879
+        }
+    },
+    {
+        "input_coin": {
+            "coin_id": 245,
+            "name": "Fibtegis Token",
+            "symbol": "FBTGS",
+            "contract_address": "0x82d096B2A56DB0318B4aE16D10A03F35540fAdCf",
+            "chain": "BSC"
+        },
+        "data_coin_api": {
+            "market_cap": 47907,
+            "liquidity": 1748,
+            "price_change_1h": 0,
+            "price_change_24h": 0,
+            "price": 0.00266151882141244,
+            "is_listed": false,
+            "decimals": 18,
+            "name": "Fibtegis Token",
+            "symbol": "FBTGS",
+            "priceNative": 4.535344916189392e-06,
+            "native": {
+                "name": "BNB",
+                "symbol": "BNB",
+                "decimals": 18,
+                "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+                "type": "eth",
+                "logo": "https://assets.coingecko.com/coins/images/825/large/bnb-icon2_2x.png?1644979850",
+                "id": 100001566
+            },
+            "approximations": {},
+            "contracts": [
+                {
+                    "address": "0x82d096b2a56db0318b4ae16d10a03f35540fadcf",
+                    "blockchain": "BNB Smart Chain (BEP20)",
+                    "blockchainId": "56",
+                    "decimals": 18
+                }
+            ],
+            "total_supply": 0,
+            "circulating_supply": 0
+        }
+    },
+    {
+        "input_coin": {
+            "coin_id": 249,
+            "name": "ZEDEK",
+            "symbol": "ZDK",
+            "contract_address": "0xCbEaaD74dcB3a4227D0E6e67302402E06c119271",
+            "chain": "BSC"
+        },
+        "data_coin_api": {
+            "market_cap": 20996,
+            "liquidity": 10271,
+            "price_change_1h": 0,
+            "price_change_24h": 0,
+            "price": 3.1052699871863345e-11,
+            "is_listed": false,
+            "decimals": 9,
+            "name": "ZEDEK",
+            "symbol": "ZDK",
+            "priceNative": 5.291516383982244e-14,
+            "native": {
+                "name": "BNB",
+                "symbol": "BNB",
+                "decimals": 18,
+                "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+                "type": "eth",
+                "logo": "https://assets.coingecko.com/coins/images/825/large/bnb-icon2_2x.png?1644979850",
+                "id": 100001566
+            },
+            "approximations": {},
+            "contracts": [
+                {
+                    "address": "0xcbeaad74dcb3a4227d0e6e67302402e06c119271",
+                    "blockchain": "BNB Smart Chain (BEP20)",
+                    "blockchainId": "56",
+                    "decimals": 9
+                }
+            ],
+            "total_supply": 674090236223794.5,
+            "circulating_supply": 674090236223794.5
+        }
+    },
+    {
+        "input_coin": {
+            "coin_id": 250,
+            "name": "Macro Protocol",
+            "symbol": "MTP",
+            "contract_address": "0xB3088F5c7eC3CD2ea2fa85d6e12c60e3A3eCF408",
+            "chain": "BSC"
+        },
+        "data_coin_api": {
+            "market_cap": 13182,
+            "liquidity": 3783,
+            "price_change_1h": 0,
+            "price_change_24h": 0,
+            "price": 1.318212308742454e-05,
+            "is_listed": false,
+            "decimals": 18,
+            "name": "Macro Protocol",
+            "symbol": "MTP",
+            "priceNative": 2.246291645512624e-08,
+            "native": {
+                "name": "BNB",
+                "symbol": "BNB",
+                "decimals": 18,
+                "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+                "type": "eth",
+                "logo": "https://assets.coingecko.com/coins/images/825/large/bnb-icon2_2x.png?1644979850",
+                "id": 100001566
+            },
+            "approximations": {},
+            "contracts": [
+                {
+                    "address": "0xb3088f5c7ec3cd2ea2fa85d6e12c60e3a3ecf408",
+                    "blockchain": "BNB Smart Chain (BEP20)",
+                    "blockchainId": "56",
+                    "decimals": 18
+                }
+            ],
+            "total_supply": 1000000000,
+            "circulating_supply": 932264904.2857
+        }
+    },
+    {
+        "input_coin": {
+            "coin_id": 254,
+            "name": "Wrapped PWR",
+            "symbol": "WPWR",
+            "contract_address": "0xd9Dcd611beD2be9A4700C725a3810870B9BfF094",
+            "chain": "ethereum"
+        },
+        "data_coin_api": {
+            "id": 5360,
+            "market_cap": 568589,
+            "market_cap_diluted": 571097,
+            "liquidity": 19349,
+            "price": 0.0021829936478612636,
+            "off_chain_volume": 1040,
+            "volume": 0,
+            "volume_change_24h": -100,
+            "volume_7d": 183,
+            "is_listed": true,
+            "price_change_24h": 0.57028735,
+            "price_change_1h": 0.2216623,
+            "price_change_7d": 0,
+            "price_change_1m": -2.0224855,
+            "price_change_1y": -26.072226,
+            "ath": 0.008479013627603144,
+            "atl": 3.7137263226966267e-06,
+            "name": "MaxxChain",
+            "symbol": "PWR",
+            "logo": "https://metacore.mobula.io/e64772fe740e12b4465c15f3bdacc8a81aa4d27265413414711311eae182ff72.png",
+            "rank": 3435,
+            "contracts": [
+                {
+                    "address": "0xd9dcd611bed2be9a4700c725a3810870b9bff094",
+                    "blockchain": "Ethereum",
+                    "blockchainId": "1",
+                    "decimals": 18
+                }
+            ],
+            "total_supply": "261611706",
+            "circulating_supply": "261892680",
+            "decimals": 18,
+            "priceNative": 6.638910973032228e-07,
+            "native": {
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "decimals": 18,
+                "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+                "type": "eth",
+                "logo": "https://metacore.mobula.io/60989b438a473ed77703f7bcd3530fc15542996a6607ae831de8c5e3e10f688d.png",
+                "id": 100004304
+            }
+        }
+    },
+    {
+        "input_coin": {
+            "coin_id": 255,
+            "name": "SafeNFT",
+            "symbol": "SNFT",
+            "contract_address": "0x311827832c1f670229eF0AFbE96D2DF8195c8C9A",
+            "chain": "BSC"
+        },
+        "data_coin_api": {
+            "market_cap": 2709285,
+            "liquidity": 0,
+            "price_change_1h": 0,
+            "price_change_24h": 0,
+            "price": 3.1503314913391343e-12,
+            "is_listed": false,
+            "decimals": 0,
+            "name": "SafeNFT",
+            "symbol": "SNFT",
+            "priceNative": 5.36830316532343e-15,
+            "native": {
+                "name": "BNB",
+                "symbol": "BNB",
+                "decimals": 18,
+                "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+                "type": "eth",
+                "logo": "https://assets.coingecko.com/coins/images/825/large/bnb-icon2_2x.png?1644979850",
+                "id": 100001566
+            },
+            "approximations": {},
+            "contracts": [
+                {
+                    "address": "0x311827832c1f670229ef0afbe96d2df8195c8c9a",
+                    "blockchain": "BNB Smart Chain (BEP20)",
+                    "blockchainId": "56",
+                    "decimals": 0
+                }
+            ]
+        }
+    }
+]

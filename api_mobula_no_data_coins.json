@@ -1,0 +1,100 @@
+[
+    {
+        "no_data": {
+            "input_coin": {
+                "coin_id": 180,
+                "name": "MEME101",
+                "symbol": "MEME101",
+                "contract_address": "GmU4ZqzR2pPb8KVQqAajssc2iMks5vNpVABy8cBxMtv6",
+                "chain": "solana"
+            },
+            "data_coin_api": {
+                "error": "Token is not ERC20 compliant."
+            }
+        }
+    },
+    {
+        "no_data": {
+            "input_coin": {
+                "coin_id": 198,
+                "name": "United States Trust Coin",
+                "symbol": "USTC",
+                "contract_address": "8ntMoKpPdwrvnAmrtg1bNG6cxMNADQyqBMdMD4D2p5u7",
+                "chain": "solana"
+            },
+            "data_coin_api": {
+                "error": "Token is not ERC20 compliant."
+            }
+        }
+    },
+    {
+        "no_data": {
+            "input_coin": {
+                "coin_id": 203,
+                "name": "Jeston Troodoh",
+                "symbol": "TROODOH",
+                "contract_address": "5c8PTWuTdL6Ep7pcQNWieuaRog2Df7iSftGQgZrqRBrz",
+                "chain": "solana"
+            },
+            "data_coin_api": {
+                "error": "Token is not ERC20 compliant."
+            }
+        }
+    },
+    {
+        "no_data": {
+            "input_coin": {
+                "coin_id": 211,
+                "name": "Luke Bullmar",
+                "symbol": "BELMAR",
+                "contract_address": "2NGCjWG997pz8BNCdA7XrhjfCHK67zYqtXFGbA6wjShv",
+                "chain": "solana"
+            },
+            "data_coin_api": {
+                "error": "Token is not ERC20 compliant."
+            }
+        }
+    },
+    {
+        "no_data": {
+            "input_coin": {
+                "coin_id": 222,
+                "name": "Samoyedcoin",
+                "symbol": "SAMO",
+                "contract_address": "8Kyoh1MVfK5scxVCXrn2sns9ERXTBcXPrf5qqnkPAq5y",
+                "chain": "solana"
+            },
+            "data_coin_api": {
+                "error": "Token is not ERC20 compliant."
+            }
+        }
+    },
+    {
+        "no_data": {
+            "input_coin": {
+                "coin_id": 227,
+                "name": "Dixi",
+                "symbol": "DIXI",
+                "contract_address": "BGKFJeQ8vhyJC52J6zYiQRMNARv9ERpEfzWDfy1wpwg8",
+                "chain": "solana"
+            },
+            "data_coin_api": {
+                "error": "Token is not ERC20 compliant."
+            }
+        }
+    },
+    {
+        "no_data": {
+            "input_coin": {
+                "coin_id": 248,
+                "name": "OneMoon",
+                "symbol": "ONEMOON",
+                "contract_address": "0xCB35e4945c7F463c5CCBE3BF9f0389ab9321248F",
+                "chain": "HARMONY"
+            },
+            "data_coin_api": {
+                "error": "Token is not ERC20 compliant."
+            }
+        }
+    }
+]

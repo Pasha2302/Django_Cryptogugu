@@ -50,15 +50,14 @@ def auto_voting():
                 coin.votes24h += votes24h
                 coin.save()
 
-            time.sleep(20) # 1550
+            time.sleep(20)  # 1550
 
     else:
         Coin.objects.update(selected_auto_voting=False)
-        return "Все монеты прошли голосование ..."
+        print("Все монеты прошли голосование ...")
 
 
 @shared_task
 def start_update_coins():
     start_update_coins_data()
 
-    # Smog / Market Cap: $44566251.00 / Price: $0.03183 / Volume: $94334.41
